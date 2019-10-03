@@ -5,50 +5,44 @@ using Ocaramba;
 using NSelene;
 using OpenQA.Selenium;
 using static NSelene.Selene;
-using Ocaramba.WebElements;
+
 
 namespace Nowpow.Automation.Features.StepDefinitions
 {
     public class EditReferralModal : ProjectPageBase
     {
         private static readonly NLog.Logger Logger = LogManager.GetCurrentClassLogger();
-        SeleneElement acceptanceStatusContainer = S("#acceptanceStatusContainer>div");
-        SeleneElement contactStatusContainer = S("#contactStatusContainer>div");
+       
+        SeleneElement contactStatusContainer = S("[data-id='contactStatus']");
+        SeleneElement saveButton = S("#btn-save");
         
 
 
         public EditReferralModal(DriverContext driverContext) : base(driverContext)
         {
-
-        }
-        internal EditReferralModal SelectAcceptanceStatus(string statusName)
-        {
-            acceptanceStatusContainer.Click();
-            Select acceptances = new Select(S("div.btn-group.bootstrap-select.open ul"));
-            acceptances.SelectByIndex(1);
-            return this;
-        }
+            DriverContext.Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+        }      
 
         internal EditReferralModal SelectContactStatus(string statusName)
         {
             contactStatusContainer.Click();
-            Select contacts = new Select(S("div.btn-group.bootstrap-select.open ul"));
-            contacts.SelectByText(statusName);
+            S(By.XPath("//li[@class='selected']//span[@class='text'][contains(text(),'Contacted')]")).Click();
+            
+            return this;
+        }        
+
+        internal EditReferralModal EnterNote(string note)
+        {
+            S("div.col-xs-12.outcome").SendKeys(note);
             return this;
         }
 
-        internal object EnterNote(string note)
+        internal PatientPage Save()
         {
-            throw new NotImplementedException();
+            saveButton.Click();
+            return new PatientPage(DriverContext);
         }
 
-
-        //internal EditReferralModal SelectContactStatus(string contacted)
-        //{
-        //    contactStatusContainer.Click();
-        //    Select contacts = new Select(S("div.btn-group.bootstrap-select.open ul"));
-        //    contacts.SelectByIndex(2);
-        //    return this;
-        //}
+        
     }
 }

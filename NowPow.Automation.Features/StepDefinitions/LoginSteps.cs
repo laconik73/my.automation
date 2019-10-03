@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Configuration;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NowPow.Automation.Features.StepDefinitions;
 using Ocaramba;
 using TechTalk.SpecFlow;
@@ -30,6 +31,8 @@ namespace Nowpow.Automation.Features.StepDefinitions
             if (userType.Contains("CPT"))
             {
                 var userIndex = userType.Replace("CPT", "");
+                //var envConsoleParameter = TestContext.Parameters["environment"];
+                //var envURL = ConfigurationManager.AppSettings[envConsoleParameter + "_url"];
                 var userName = ConfigurationManager.AppSettings["cpt_username"].Replace("@", userIndex + "@");
                 new LoginPage(driverContext)
                                  .GoTo()

@@ -57,63 +57,28 @@ namespace Nowpow.Automation.Features.StepDefinitions
             Assert.AreNotEqual(ReferralListed.Displayed, "referral was not listed");       
             
         }
+        [When(@"user opens Edit Referral modal")]
+        public void WhenUserOpensEditReferralModal()
+        {
+            new PatientPage(driverContext).OpenEditReferral();
+        }
 
         [When(@"user edits opened referral info")]
         public void WhenUserEditsOpenedReferralInfo()
         {
             var note = DateTime.Now.Ticks.ToString();
             var modal = new EditReferralModal(driverContext);
-            modal
-                .SelectAcceptanceStatus("Accepted")
+            modal                
                 .SelectContactStatus("Contacted")
                 .EnterNote(note)
                 .Save();
         }
-
-
-        [When(@"user opens Edit Referral modal")]
-        public void WhenUserOpensEditReferralModal()
+        [Then(@"referral info should be saved")]
+        public void ThenReferralInfoShouldBeSaved()
         {
-            new PatientPage(driverContext).OpenEditReferral();
-        }
-        
-        [When(@"user selects  referral'(.*)'Contacted'")]
-        public void WhenUserSelectsReferralContacted(string contacted)
-        {
-            DateTime.Now.Ticks.ToString();
-            var modal = new EditReferralModal(driverContext);
-            modal.SelectAcceptanceStatus()
-                .SelectContactStatus(contacted);
+            new PatientPage(driverContext).VerifyStatusDisplay();
         }
 
-        [When(@"user selects '(.*)' contact status")]
-        public void WhenUserSelectsContactStatus(string statusName)
-        {
-            DateTime.Now.Ticks.ToString();
-            var modal = new EditReferralModal(driverContext);
-            modal.SelectAcceptanceStatus()
-                .SelectContactStatus(statusName);
-        }
 
-        [Then(@"'(.*)' dropdown is displayed and is editable")]
-        public void ThenDropdownIsDisplayedAndIsEditable(string serviceReceived)
-        {
-            new EditReferralModal(driverContext);
-            bool dropdown = Verify("div.serviceReceivedAndOutcome");
-            Console.WriteLine("service received is displayed and editable");
-        }
-
-        private bool Verify(string dropdown)
-        {
-            try
-            {
-                bool isdropdownDisplayed = S(By.CssSelector("div.serviceReceivedAndOutcome")).Displayed;
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
     }
 }

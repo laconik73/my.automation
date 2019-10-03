@@ -100,10 +100,10 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Verify Referral Service Received dropdown appearance")]
-        public virtual void VerifyReferralServiceReceivedDropdownAppearance()
+        [NUnit.Framework.DescriptionAttribute("02. Verify Contact Status Display")]
+        public virtual void _02_VerifyContactStatusDisplay()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify Referral Service Received dropdown appearance", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("02. Verify Contact Status Display", null, ((string[])(null)));
 #line 15
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
@@ -120,21 +120,9 @@ testRunner.Given("\'CPT\' user is logged in", ((string)(null)), ((TechTalk.SpecF
 #line 21
  testRunner.When("user opens Edit Referral modal", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 22
- testRunner.And("user selects  referral\'s contact status as \'Contacted\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("user edits opened referral info", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 23
- testRunner.Then("\'Service Received\' dropdown is displayed and is editable", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 24
- testRunner.And("user selects referrals\'s contact status as \'Other\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 25
- testRunner.Then("\'Service Received\' dropdown is displayed and is editable", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 26
- testRunner.When("user selects referral\'s contact status as \'Unable to Contact\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 27
- testRunner.Then("\'Service Received\' dropdown is displayed, set to No, and is not editable", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 28
- testRunner.When("the user selects referral\'s contact status as \'Attempted Contact\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 29
- testRunner.Then("\'Service Received\' dropdown is not displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("referral info should be saved", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

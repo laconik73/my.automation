@@ -40,8 +40,9 @@ namespace Nowpow.Automation.Features.StepDefinitions
         SeleneElement conditionCheckbox = S("div.col-xs-1");     
         SeleneElement updateButton = S("#btn-add");
         SeleneElement saveButton = S("#update");
-        SeleneElement rowEntryInfo = S(By.XPath("//div[@class='col-xs-10 row']//div[@id='2406']"));
-        
+        SeleneElement rowEntryInfo = S("div.col-xs-11.row.entry-info");
+
+
 
         public SeleneCollection AllDropDownList { get; private set; }
 
@@ -54,7 +55,7 @@ namespace Nowpow.Automation.Features.StepDefinitions
         {
             S(By.Id("referrals")).Click();
             return new PatientPage(DriverContext);
-        }     
+        }       
 
 
         //Make a refferal via PatientPage
@@ -323,6 +324,16 @@ namespace Nowpow.Automation.Features.StepDefinitions
         {
             rowEntryInfo.Click();
             return new EditReferralModal(DriverContext);
+        }
+        internal PatientPage VerifyStatusDisplay()
+        {
+            //verify contact status display in patient referral
+            WaitForNot(S(".modal.modal-card.fade.in"), Be.Visible);
+            S("div.col-xs-1.info>i").Click();
+            String expectedRefStatus = S("span.referralStatusLabel").GetText();
+            String actualRefStatus = "CONTACTED";
+            Assert.AreEqual(expectedRefStatus, actualRefStatus);
+            return new PatientPage(DriverContext);
         }
     } 
 }

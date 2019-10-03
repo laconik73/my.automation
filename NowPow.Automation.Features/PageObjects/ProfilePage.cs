@@ -44,6 +44,7 @@ namespace NowPow.Automation.Features.StepDefinitions
             searchTextbox.SendKeys("sabina");
             return new ProfilePage(DriverContext);
         }
+        
                
     }
 }
