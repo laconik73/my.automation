@@ -14,7 +14,8 @@
         public ProjectPageBase(DriverContext driverContext)
         {
             this.DriverContext = driverContext;
-            this.Driver = driverContext.Driver;           
+            this.Driver = driverContext.Driver;
+            Driver.Manage().Window.Size = new System.Drawing.Size(1920, 1080);
 
         }
       protected IWebDriver Driver { get; set; }
