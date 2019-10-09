@@ -6,6 +6,11 @@ using static NSelene.Selene;
 using Ocaramba;
 using Ocaramba.Extensions;
 using NowPow.Automation.PageObjects;
+using OpenQA.Selenium;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Linq;
+using OpenQA.Selenium.Chrome;
+using System.Configuration;
 
 namespace NowPow.Automation.Features.StepDefinitions
 
@@ -18,6 +23,7 @@ namespace NowPow.Automation.Features.StepDefinitions
         SeleneElement nextButton = S("#btn-next");
         SeleneElement passwordTextbox = S("#inputPassword");
         SeleneElement signInButton = S("#btn-signin");
+        
 
         public LoginPage(DriverContext driverContext) : base(driverContext)
         {
@@ -54,9 +60,10 @@ namespace NowPow.Automation.Features.StepDefinitions
         {
             signInButton.Click();
             return new DashboardPage(DriverContext);
-        }
+        }     
+        
 
-       
+        
     }
 
 }

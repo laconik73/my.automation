@@ -68,7 +68,8 @@ namespace Nowpow.Automation.Features.StepDefinitions
         {
             var note = DateTime.Now.Ticks.ToString();
             var modal = new EditReferralModal(driverContext);
-            modal                
+            modal 
+                
                 .SelectContactStatus("Contacted")
                 .EnterNote(note)
                 .Save();

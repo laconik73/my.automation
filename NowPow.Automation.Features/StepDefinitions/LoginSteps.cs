@@ -4,6 +4,9 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NowPow.Automation.Features.StepDefinitions;
 using Ocaramba;
 using TechTalk.SpecFlow;
+using NSelene;
+using static NSelene.Selene;
+using OpenQA.Selenium;
 
 namespace Nowpow.Automation.Features.StepDefinitions
 {
@@ -12,6 +15,9 @@ namespace Nowpow.Automation.Features.StepDefinitions
     {
         private readonly DriverContext driverContext;
         private readonly ScenarioContext scenarioContext;
+
+        public object Driver { get; private set; }
+
         public LoginSteps(ScenarioContext scenarioContext)
         {
             if (scenarioContext == null)
@@ -49,11 +55,13 @@ namespace Nowpow.Automation.Features.StepDefinitions
                     .EnterUsername(ConfigurationManager.AppSettings["sls_username"])
                     .EnterPassword(ConfigurationManager.AppSettings["sls_password"])
                     .LoginButton();
-            }
-            
+            }           
             
         }
-          
+       
+        
+        
+
 
     }
 }

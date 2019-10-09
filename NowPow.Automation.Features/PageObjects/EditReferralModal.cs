@@ -5,6 +5,7 @@ using Ocaramba;
 using NSelene;
 using OpenQA.Selenium;
 using static NSelene.Selene;
+using OpenQA.Selenium.Support.UI;
 
 
 namespace Nowpow.Automation.Features.StepDefinitions
@@ -12,7 +13,8 @@ namespace Nowpow.Automation.Features.StepDefinitions
     public class EditReferralModal : ProjectPageBase
     {
         private static readonly NLog.Logger Logger = LogManager.GetCurrentClassLogger();
-       
+
+        SeleneElement acceptanceStatusContainer = S("[data-id='acceptanceStatus']");
         SeleneElement contactStatusContainer = S("[data-id='contactStatus']");
         SeleneElement saveButton = S("#btn-save");
         
@@ -21,12 +23,13 @@ namespace Nowpow.Automation.Features.StepDefinitions
         public EditReferralModal(DriverContext driverContext) : base(driverContext)
         {
             DriverContext.Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
-        }      
+        }
+        
 
         internal EditReferralModal SelectContactStatus(string statusName)
         {
             contactStatusContainer.Click();
-            S(By.XPath("//li[@class='selected']//span[@class='text'][contains(text(),'Contacted')]")).Click();
+            S(By.XPath("//span[contains(text(),'Contacted')]")).Click();
             
             return this;
         }        
@@ -39,7 +42,8 @@ namespace Nowpow.Automation.Features.StepDefinitions
 
         internal PatientPage Save()
         {
-            saveButton.Click();
+            WaitForNot(S(".modal.modal-card.fade.in"), Be.Selected);
+            WaitFor(saveButton, Be.Enabled).Hover().Click();
             return new PatientPage(DriverContext);
         }
 

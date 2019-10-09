@@ -328,12 +328,13 @@ namespace Nowpow.Automation.Features.StepDefinitions
         internal PatientPage VerifyStatusDisplay()
         {
             //verify contact status display in patient referral
-            WaitForNot(S(".modal.modal-card.fade.in"), Be.Visible);
+            WaitForNot(S(".modal.modal-card.fade.in"), Be.InDom);
             S("div.col-xs-1.info>i").Click();
             String expectedRefStatus = S("span.referralStatusLabel").GetText();
-            String actualRefStatus = "CONTACTED";
+            String actualRefStatus = "NOTE ADDED";
             Assert.AreEqual(expectedRefStatus, actualRefStatus);
             return new PatientPage(DriverContext);
+            
         }
     } 
 }
