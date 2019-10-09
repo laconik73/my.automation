@@ -24,7 +24,14 @@ namespace Nowpow.Automation.Features.StepDefinitions
         {
             DriverContext.Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
         }
-        
+        internal EditReferralModal SelectAcceptanceStatus(string acceptanceName)
+        {
+            acceptanceStatusContainer.Click();
+            S(By.XPath("//span[contains(text(),'Accepted')]")).Click();
+
+            return this;
+        }
+
 
         internal EditReferralModal SelectContactStatus(string statusName)
         {
@@ -47,6 +54,6 @@ namespace Nowpow.Automation.Features.StepDefinitions
             return new PatientPage(DriverContext);
         }
 
-        
+       
     }
 }

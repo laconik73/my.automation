@@ -72,10 +72,10 @@ namespace NowPowAutomaiton.TestFeatures
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("01. Adding a Service")]
-        public virtual void _01_AddingAService()
+        [NUnit.Framework.DescriptionAttribute("01. Verify Popup window")]
+        public virtual void _01_VerifyPopupWindow()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("01. Adding a Service", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("01. Verify Popup window", null, ((string[])(null)));
 #line 5
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
