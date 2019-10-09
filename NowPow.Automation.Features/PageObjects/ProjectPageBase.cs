@@ -7,17 +7,17 @@
 
     public partial class ProjectPageBase
     {
-       protected SeleneElement smallSpinner = S("#spinnerSmall");
-        protected SeleneElement spinner = S("#spinner");
-        
+        protected SeleneElement smallSpinner = S("#spinnerSmall");
+        protected SeleneElement spinner = S("#spinner");        
         
         public ProjectPageBase(DriverContext driverContext)
         {
             this.DriverContext = driverContext;
-            this.Driver = driverContext.Driver;           
-
+            this.Driver = driverContext.Driver;
+            Driver.Manage().Window.Size = new System.Drawing.Size(1920, 1080);
+            Driver.Manage().Window.Maximize();
         }
-      protected IWebDriver Driver { get; set; }
+        protected IWebDriver Driver { get; set; }
         public DriverContext DriverContext { get; set; }
              
     }
