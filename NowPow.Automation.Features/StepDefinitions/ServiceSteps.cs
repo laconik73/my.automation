@@ -40,6 +40,14 @@ namespace Nowpow.Automation.Features.StepDefinitions
         {
             new ServicePage(driverContext).OpenFavoriteService();
         }
+        [When(@"user searches for the organization in coordinated network")]
+        public void WhenUserSearchesForTheOrganizationInCoordinatedNetwork()
+        {
+            new ServicePage(driverContext)
+                .SearchServices("Davis")
+                .Submit()
+                .ClickServiceLink();
+        }
         [When(@"user click on button '(.*)'")]
         public void WhenUserClickOnButton(string Refer)
         {
@@ -66,14 +74,7 @@ namespace Nowpow.Automation.Features.StepDefinitions
             string actualReferral = "Service Offerings";
             Assert.AreEqual(expectedReferral, actualReferral);
         }
-        [When(@"user searches for the organization in coordinated network")]
-        public void WhenUserSearchesForTheOrganizationInCoordinatedNetwork()
-        {
-            new ServicePage(driverContext)
-                .SearchServices("Davis")
-                .Submit()
-                .ClickServiceLink();
-        }
+        
 
     }
 }
