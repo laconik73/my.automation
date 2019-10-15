@@ -22,6 +22,8 @@ Given 'CPT' user is logged in
 	And user edits opened referral info
 	Then referral info should be saved
 
+
+
 	
 
 

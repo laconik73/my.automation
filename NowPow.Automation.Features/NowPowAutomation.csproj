@@ -73,6 +73,7 @@
       <HintPath>..\packages\Microsoft.AnalysisServices.AdomdClient.retail.amd64.18.0.2\lib\net45\Microsoft.AnalysisServices.SPClient.Interfaces.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.JScript" />
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -212,6 +213,7 @@
     </None>
     <None Include="specflow.json" />
     <None Include="TestData\ImportPatient.xlsx" />
+    <None Include="TestFeatures\CoordinatedReferrals.feature" />
     <None Include="TestFeatures\SLS.feature" />
     <None Include="TestFeatures\Patient.feature" />
     <None Include="TestFeatures\Referral.feature" />

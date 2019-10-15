@@ -66,6 +66,15 @@ namespace Nowpow.Automation.Features.StepDefinitions
             string actualReferral = "Service Offerings";
             Assert.AreEqual(expectedReferral, actualReferral);
         }
+        [When(@"user searches for the organization in coordinated network")]
+        public void WhenUserSearchesForTheOrganizationInCoordinatedNetwork()
+        {
+            new ServicePage(driverContext)
+                .SearchServices("Davis")
+                .Submit()
+                .ClickServiceLink();
+        }
+
     }
 }
 

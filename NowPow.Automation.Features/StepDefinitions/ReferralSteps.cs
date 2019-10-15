@@ -77,8 +77,7 @@ namespace Nowpow.Automation.Features.StepDefinitions
         public void ThenReferralInfoShouldBeSaved()
         {
             new PatientPage(driverContext).VerifyStatusDisplay();
-        }
-
-
+        }    
+       
     }
 }

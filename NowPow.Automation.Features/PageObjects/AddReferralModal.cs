@@ -5,6 +5,7 @@ using static NSelene.Selene;
 using NowPow.Automation.Features.StepDefinitions;
 using System;
 
+
 namespace Nowpow.Automation.Features.PageObjects
 {
     internal class AddReferralModal : ProjectPageBase
@@ -13,6 +14,8 @@ namespace Nowpow.Automation.Features.PageObjects
         SeleneElement restrictionCheckbox = S("#referralRow");
         SeleneElement consentCheckbox = S("#referralRow.col-xs-8");
         SeleneElement sendButton = S("#btn-add.btn-modal");
+        SeleneElement addDocumentButton = S(".btn.btn-attach-document");
+        SeleneElement filePicker = S("input[id='file-picker'][type='file']");
 
         public AddReferralModal(DriverContext driverContext) : base(driverContext)
         {

@@ -13,7 +13,7 @@ namespace Ocaramba.Tests.PageObjects
             this.DriverContext = driverContext;
             this.Driver = driverContext.Driver;
             Driver.Manage().Window.Size = new System.Drawing.Size(1920, 1080);
-            Driver.Manage().Window.Maximize();
+            //Driver.Manage().Window.Maximize();
         }
 
         protected IWebDriver Driver { get; set; }

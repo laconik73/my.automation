@@ -14,7 +14,9 @@ namespace Nowpow.Automation.Features.StepDefinitions
         private static readonly NLog.Logger Logger = LogManager.GetCurrentClassLogger();
         SeleneElement favoriteService = S(".favorite.col-xs-12.col-md-12.col-lg-4");
         SeleneElement referButton = S("#btn-refer");
-        SeleneElement logoutButton = S("#dropdownMenu3");
+        SeleneElement servicesSearch = S("#services-search-query");
+        SeleneElement searchButton = S("#btn-search");
+        SeleneElement serviceTitle = S("a[href*='services'][data-name*='Davis']");
 
         public ServicePage(DriverContext driverContext) : base(driverContext)
         {
@@ -38,6 +40,22 @@ namespace Nowpow.Automation.Features.StepDefinitions
             return new MakeReferralModal(DriverContext);
         }
 
-      
+        internal ServicePage SearchServices(string coordinatedOrgName)
+        {
+            servicesSearch.SendKeys(coordinatedOrgName);
+            return this;
+        }
+
+        internal ServicePage Submit()
+        {
+            searchButton.Click();
+            return new ServicePage(DriverContext);
+        }
+
+        internal ServicePage ClickServiceLink()
+        {
+            serviceTitle.Click();
+            return new ServicePage(DriverContext);
+        }
     }      
 }
