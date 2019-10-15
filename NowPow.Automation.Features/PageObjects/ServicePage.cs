@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NLog;
 using NowPow.Automation.Features.StepDefinitions;
@@ -55,6 +56,13 @@ namespace Nowpow.Automation.Features.StepDefinitions
         internal ServicePage ClickServiceLink()
         {
             serviceTitle.Click();
+            //switching to popup window 
+            string newWindowHandle = Driver.WindowHandles.Last();
+            var newWindow = Driver.SwitchTo().Window(newWindowHandle);
+
+            // verify popup window title
+            string expectedNewWindowTitle = "Davis Park Health - North | NowPow";
+            Assert.AreEqual(expectedNewWindowTitle, newWindow.Title);
             return new ServicePage(DriverContext);
         }
     }      
