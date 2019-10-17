@@ -13,6 +13,7 @@ EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Dev|Any CPU = Dev|Any CPU
+		DevRelease|Any CPU = DevRelease|Any CPU
 		Smoke|Any CPU = Smoke|Any CPU
 		SmokeRelease|Any CPU = SmokeRelease|Any CPU
 		Staged|Any CPU = Staged|Any CPU
@@ -21,6 +22,8 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{2122B870-2D95-4F84-A739-44DC4605B4C9}.Dev|Any CPU.ActiveCfg = Dev|Any CPU
 		{2122B870-2D95-4F84-A739-44DC4605B4C9}.Dev|Any CPU.Build.0 = Dev|Any CPU
+		{2122B870-2D95-4F84-A739-44DC4605B4C9}.DevRelease|Any CPU.ActiveCfg = DevRelease|Any CPU
+		{2122B870-2D95-4F84-A739-44DC4605B4C9}.DevRelease|Any CPU.Build.0 = DevRelease|Any CPU
 		{2122B870-2D95-4F84-A739-44DC4605B4C9}.Smoke|Any CPU.ActiveCfg = Smoke|Any CPU
 		{2122B870-2D95-4F84-A739-44DC4605B4C9}.Smoke|Any CPU.Build.0 = Smoke|Any CPU
 		{2122B870-2D95-4F84-A739-44DC4605B4C9}.SmokeRelease|Any CPU.ActiveCfg = SmokeRelease|Any CPU

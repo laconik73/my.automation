@@ -19,13 +19,13 @@ namespace NowPow.Automation.Features.StepDefinitions
         SeleneElement addNeedButton = S("#btn-addNeed");
         SeleneElement takeActionButton = S("#btn-takeAction");
         SeleneElement addInteraction = S(By.XPath("//a[contains(text(),'Add Interaction')]"));
-        SeleneElement patientTab = S("[data-link='private/patients'][type]");
-        SeleneElement referralsTab = S("[data-link='private/referrals/sent'][type]");        
-        SeleneElement screeningsTab = S("[data-link='private/screenings'][type]");     
-        SeleneElement erxTab = S("[data-link='private/eRX'][type]");      
-        SeleneElement servicesTab = S("[data-link='private/services'][type]");  
-        SeleneElement adminTab = S("[data-link='private/admin/dataanalytics'][type]");     
-      
+        SeleneElement patientTab = S("[data-link='private/patients']");
+        SeleneElement referralsTab = S("[data-link='private/referrals/sent']");        
+        SeleneElement screeningsTab = S("[data-link='private/screenings']");     
+        SeleneElement erxTab = S("[data-link='private/eRX']");      
+        SeleneElement servicesTab = S("[data-link='private/services']");
+        SeleneElement adminTab = S("[data-link='private/admin/dataanalytics']");
+        SeleneElement hamburgerIcon = S(".navbar-toggle.collapse.in");
 
         public DashboardPage(DriverContext driverContext) : base(driverContext)
         {
@@ -39,12 +39,14 @@ namespace NowPow.Automation.Features.StepDefinitions
             patientCard.Click();
             return this;
         }
+
         //Open subtab "Needs" from patient details
         internal DashboardPage OpenNeeds(string subtabName)
         {
             S(By.Id(subtabName.ToLower())).Click();
             return this;
         }
+
         //To add needs modal
         internal AddNeedModal AddNeed()
         {
@@ -52,6 +54,7 @@ namespace NowPow.Automation.Features.StepDefinitions
             WaitFor(addNeedButton, Be.Visible).Click();
             return new AddNeedModal(DriverContext);
         }
+
         //To open "Take Action" dropdown menu
         internal DashboardPage TakeAction()
         {
@@ -64,6 +67,7 @@ namespace NowPow.Automation.Features.StepDefinitions
             addInteraction.Click();
             return new AddInteractionModal(DriverContext);
         }
+
         internal DashboardPage OpenDrawer()
         {
             WaitForNot(S("#patientInteractionModal-container"), Be.InDom);
@@ -74,41 +78,48 @@ namespace NowPow.Automation.Features.StepDefinitions
         //Verify Patient tab
         internal PatientPage OpenPatient(string tabName)
         {
-            
-            patientTab.Click();
+            ClickNavigationLink(patientTab);
             WaitFor(S("#count-top"), Be.Visible);
             return new PatientPage(DriverContext);
         }
+
         //Verify Referrals tab
         internal ReferralsSentPage OpenReferrals(string tabName)
         {
-            referralsTab.Click();
+            ClickNavigationLink(referralsTab);
             WaitFor(S("#main-header>div>h2"), Be.Visible);
             return new ReferralsSentPage(DriverContext);
         }
+
         //Verify Screening Tab
         internal ScreeningPage OpenScreenings(string tabName)
         {
-            screeningsTab.Click();
+            ClickNavigationLink(screeningsTab);
             WaitFor(S(".col-xs-12.row.card-white > div:nth-child(1)"), Be.Visible);
             return new ScreeningPage(DriverContext);
         }
+
         //Verify eRx tab
         internal ErxPage OpenErx(string tabName)
         {
-            erxTab.Click();
+            ClickNavigationLink(erxTab);
             return new ErxPage(DriverContext);
         }
+
         //Verify Services tab
         internal ServicePage OpenServices(string tabName)
         {
-            WaitFor(servicesTab, Be.Visible);
-            servicesTab.Click();
+            ClickNavigationLink(servicesTab);
             return new ServicePage(DriverContext);
-        }     
-          
-        
+        }
 
+        internal void ClickNavigationLink(SeleneElement navElement)
+        {
+            WaitFor(hamburgerIcon, Be.Visible);
+            hamburgerIcon.Click();
+            WaitFor(navElement, Be.Visible);
+            navElement.Click();
+        }
     }
 }
 
