@@ -19,12 +19,12 @@ namespace NowPow.Automation.Features.StepDefinitions
         SeleneElement addNeedButton = S("#btn-addNeed");
         SeleneElement takeActionButton = S("#btn-takeAction");
         SeleneElement addInteraction = S(By.XPath("//a[contains(text(),'Add Interaction')]"));
-        SeleneElement patientTab = S("[data-link='private/patients'][type]");
-        SeleneElement referralsTab = S("[data-link='private/referrals/sent'][type]");        
-        SeleneElement screeningsTab = S("[data-link='private/screenings'][type]");     
-        SeleneElement erxTab = S("[data-link='private/eRX'][type]");      
-        SeleneElement servicesTab = S("[data-link='private/services'][type]");
-        SeleneElement adminTab = S("[data-link='private/admin/dataanalytics'][type]");
+        SeleneElement patientTab = S("[data-link='private/patients']");
+        SeleneElement referralsTab = S("[data-link='private/referrals/sent']");        
+        SeleneElement screeningsTab = S("[data-link='private/screenings']");     
+        SeleneElement erxTab = S("[data-link='private/eRX']");      
+        SeleneElement servicesTab = S("[data-link='private/services']");
+        SeleneElement adminTab = S("[data-link='private/admin/dataanalytics']");
         SeleneElement hamburgerIcon = S(".navbar-toggle.collapse.in");
 
         public DashboardPage(DriverContext driverContext) : base(driverContext)
