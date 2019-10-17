@@ -264,6 +264,13 @@ namespace Nowpow.Automation.Features.PageObjects
                  .Click();
             return this;
         }
+
+        internal SendNudgeModal SendNudge()
+        {
+            WaitForNot(spinner, Be.InDom);
+            S("#btn-nudge").Click();
+            return new SendNudgeModal(DriverContext);
+        }
     }
 }
           

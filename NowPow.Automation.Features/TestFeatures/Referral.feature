@@ -22,6 +22,21 @@ Given 'CPT' user is logged in
 	And user edits opened referral info
 	Then referral info should be saved
 
+Scenario: 03.Making a Referral via eRx page
+Given 'CPT' user is logged in
+	And user chooses tab 'Patient'
+	And user searches for a Patient
+	And user chooses patient card
+	When user chooses 'View eRx' button
+	And user makes referral
+	Then referral is sent
+	And user chooses 'Back to Patient' button
+	And user chooses subtab 'Referrals'
+	Then new referral is listed on patient referrals
+
+
+
+
 
 
 	

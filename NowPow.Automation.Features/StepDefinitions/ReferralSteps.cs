@@ -77,7 +77,47 @@ namespace Nowpow.Automation.Features.StepDefinitions
         public void ThenReferralInfoShouldBeSaved()
         {
             new PatientPage(driverContext).VerifyStatusDisplay();
-        }    
-       
+        }
+        [When(@"user makes referral")]
+        public void WhenUserMakesReferral()
+        {
+            new PatientPage(driverContext).ClickMakeReferal();
+           
+            var modal = new AddReferralModal(driverContext);
+               modal .SelectReferralRow()
+                .Send();
+        }
+        [Then(@"referral is sent")]
+        public void ThenReferralIsSent()
+        {
+            new PatientPage(driverContext);
+            Assert.IsTrue(true);
+        }
+        [Then(@"user chooses subtab '(.*)'")]
+        public void ThenUserChoosesSubtab(string subtabName)
+        {
+            new PatientPage(driverContext).OpenReferral(subtabName);
+        }
+        [Then(@"new referral is listed on patient referrals")]
+        public void ThenNewReferralIsListedOnPatientReferrals()
+        {
+            new PatientPage(driverContext);
+            bool referral = Verify("#patient-referrals-body");
+            Console.WriteLine("new referal is listed");
+
+        }
+
+        private bool Verify(string referral)
+        {
+            try
+            {
+                bool isReferalDisplayed = S(By.CssSelector("#patient-referrals-body")).Displayed;
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

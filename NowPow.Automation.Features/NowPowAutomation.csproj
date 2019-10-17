@@ -188,6 +188,7 @@
     <Compile Include="PageObjects\ScreeningPage.cs" />
     <Compile Include="PageObjects\PatientPage.cs" />
     <Compile Include="PageObjects\SearchForServicesModal.cs" />
+    <Compile Include="PageObjects\SendNudgeModal.cs" />
     <Compile Include="PageObjects\SLSOrganizationPage.cs" />
     <Compile Include="ProjectBaseConfiguration.cs" />
     <Compile Include="ProjectPageBase.cs" />

@@ -4,7 +4,7 @@ using NSelene;
 using static NSelene.Selene;
 using NowPow.Automation.Features.StepDefinitions;
 using System;
-
+using OpenQA.Selenium;
 
 namespace Nowpow.Automation.Features.PageObjects
 {
@@ -16,6 +16,7 @@ namespace Nowpow.Automation.Features.PageObjects
         SeleneElement sendButton = S("#btn-add.btn-modal");
         SeleneElement addDocumentButton = S(".btn.btn-attach-document");
         SeleneElement filePicker = S("input[id='file-picker'][type='file']");
+        private IJavaScriptExecutor driver;
 
         public AddReferralModal(DriverContext driverContext) : base(driverContext)
         {
@@ -43,6 +44,7 @@ namespace Nowpow.Automation.Features.PageObjects
         //Verify checkboxes in AddReferral Modal
         internal AddReferralModal SelectCheckbox1()
         {
+            WaitForNot(smallSpinner, Be.InDom);
             restrictionCheckbox.Click();
             return this;
         }
@@ -57,7 +59,15 @@ namespace Nowpow.Automation.Features.PageObjects
             return new ProfilePage(DriverContext);
         }
 
-        
+        internal AddReferralModal SelectReferralRow()
+        {
+            WaitForNot(smallSpinner, Be.InDom);
+            WaitFor(S("#restrictionsCheckBox"),Be.Visible)
+                .Hover()
+                .Click();
+            return this;           
+                       
+        }
     }
 }
 

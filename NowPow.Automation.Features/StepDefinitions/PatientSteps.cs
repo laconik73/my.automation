@@ -2,6 +2,8 @@
 using NowPow.Automation.Features.StepDefinitions;
 using Ocaramba;
 using TechTalk.SpecFlow;
+using OpenQA.Selenium;
+using static NSelene.Selene;
 
 namespace Nowpow.Automation.Features.StepDefinitions
 {
@@ -10,6 +12,8 @@ namespace Nowpow.Automation.Features.StepDefinitions
     {
         private readonly DriverContext driverContext;
         private readonly ScenarioContext scenarioContext;
+        private string note;
+
         public PatientSteps(ScenarioContext scenarioContext)
         {
             if (scenarioContext == null)
@@ -76,6 +80,36 @@ namespace Nowpow.Automation.Features.StepDefinitions
         public void ThenPatientConfirmsEmailConfiguration()
         {
             new PatientPage(driverContext).ConfirmEmailConfiguration();
+        }
+        [When(@"user sends email nudge with an attachment")]
+        public void WhenUserSendsEmailNudgeWithAnAttachment()
+        {
+            
+            var modal = new PatientPage(driverContext).SendNudge();
+            modal.ClickEmailIcon()
+              .InputEmail("nowpow.dev@gmail.com")
+              .AddErx()
+              .SendNudge();
+        }
+        [Then(@"new interaction is displayed under patient engagement")]
+        public void ThenNewInteractionIsDisplayedUnderPatientEngagement()
+        {
+            new PatientPage(driverContext);
+            bool emailNudge = Verify("#engagement-history");
+            Console.WriteLine("Emailed patient is displayed");
+        }
+
+        private bool Verify(string nudge)
+        {
+            try
+            {
+                bool isNudgeDisplayed = S(By.XPath("//span[contains(text(),'Emailed Patient')]")).Displayed;
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }

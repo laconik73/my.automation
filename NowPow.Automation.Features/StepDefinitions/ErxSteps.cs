@@ -231,6 +231,23 @@ namespace Nowpow.Automation.Features.StepDefinitions
             string actualIcon = "Referral Sent";
             Assert.AreEqual(expectedIcon, actualIcon);
         }
+        [When(@"user sends nudge")]
+        public void WhenUserSendsNudge()
+        {
+            var modal = new ErxPage(driverContext).SendNudge();
+            modal.ClickEmailIcon()
+              .InputEmail("nowpow.dev@gmail.com")
+              .AddNudge();
+        }
+        [Then(@"email nudge is sent")]
+        public void ThenEmailNudgeIsSent()
+        {
+            new ErxPage(driverContext);
+           
+
+        }
+
+
 
 
 

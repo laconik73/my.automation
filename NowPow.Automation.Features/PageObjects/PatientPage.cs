@@ -64,7 +64,7 @@ namespace Nowpow.Automation.Features.StepDefinitions
             WaitForNot(smallSpinner, Be.InDom);
             addReferralButton.Click();
             return new AddReferralModal(DriverContext);
-        }        
+        }       
 
         //Creating new patient profile
         internal PatientPage OpenNewProfile()
@@ -335,6 +335,16 @@ namespace Nowpow.Automation.Features.StepDefinitions
             Assert.AreEqual(expectedRefStatus, actualRefStatus);
             return new PatientPage(DriverContext);
             
+        }
+        internal AddReferralModal ClickMakeReferal()
+        {
+            S("div.send-referral").Hover().Click();
+            return new AddReferralModal(DriverContext);
+        }
+        internal SendNudgeModal SendNudge()
+        {
+            S("#btn-nudge").Click();
+            return new SendNudgeModal(DriverContext);
         }
     } 
 }

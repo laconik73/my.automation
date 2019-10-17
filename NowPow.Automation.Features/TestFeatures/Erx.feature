@@ -92,6 +92,16 @@ Then service is removed from an Erx
 #And user makes selections from 'Add Filters'
 #Then 'HealtheRx' is generated
 
+Scenario: 11.Sending Email Nudge via eRx Page
+Given 'CPT' user is logged in
+And user chooses tab 'Patient'
+And user chooses patient card
+When user chooses 'View eRx' button
+And user sends nudge
+Then email nudge is sent 
+
+
+
 
 
 
