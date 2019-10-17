@@ -78,10 +78,7 @@ namespace NowPow.Automation.Features.StepDefinitions
         //Verify Patient tab
         internal PatientPage OpenPatient(string tabName)
         {
-            WaitFor(hamburgerIcon, Be.Visible);
-            hamburgerIcon.Click();
-            WaitFor(patientTab, Be.Visible);
-            patientTab.Click();
+            ClickNavigationLink(patientTab);
             WaitFor(S("#count-top"), Be.Visible);
             return new PatientPage(DriverContext);
         }
@@ -89,10 +86,7 @@ namespace NowPow.Automation.Features.StepDefinitions
         //Verify Referrals tab
         internal ReferralsSentPage OpenReferrals(string tabName)
         {
-            WaitFor(hamburgerIcon, Be.Visible);
-            hamburgerIcon.Click();
-            WaitFor(referralsTab, Be.Visible);
-            referralsTab.Click();
+            ClickNavigationLink(referralsTab);
             WaitFor(S("#main-header>div>h2"), Be.Visible);
             return new ReferralsSentPage(DriverContext);
         }
@@ -100,7 +94,7 @@ namespace NowPow.Automation.Features.StepDefinitions
         //Verify Screening Tab
         internal ScreeningPage OpenScreenings(string tabName)
         {
-            screeningsTab.Click();
+            ClickNavigationLink(screeningsTab);
             WaitFor(S(".col-xs-12.row.card-white > div:nth-child(1)"), Be.Visible);
             return new ScreeningPage(DriverContext);
         }
@@ -108,18 +102,23 @@ namespace NowPow.Automation.Features.StepDefinitions
         //Verify eRx tab
         internal ErxPage OpenErx(string tabName)
         {
-            erxTab.Click();
+            ClickNavigationLink(erxTab);
             return new ErxPage(DriverContext);
         }
 
         //Verify Services tab
         internal ServicePage OpenServices(string tabName)
         {
+            ClickNavigationLink(servicesTab);
+            return new ServicePage(DriverContext);
+        }
+
+        internal void ClickNavigationLink(SeleneElement navElement)
+        {
             WaitFor(hamburgerIcon, Be.Visible);
             hamburgerIcon.Click();
-            WaitFor(servicesTab, Be.Visible);
-            servicesTab.Click();
-            return new ServicePage(DriverContext);
+            WaitFor(navElement, Be.Visible);
+            navElement.Click();
         }
     }
 }
