@@ -23,9 +23,9 @@ namespace NowPow.Automation.Features.StepDefinitions
         SeleneElement referralsTab = S("[data-link='private/referrals/sent'][type]");        
         SeleneElement screeningsTab = S("[data-link='private/screenings'][type]");     
         SeleneElement erxTab = S("[data-link='private/eRX'][type]");      
-        SeleneElement servicesTab = S("[data-link='private/services'][type]");  
-        SeleneElement adminTab = S("[data-link='private/admin/dataanalytics'][type]");     
-      
+        SeleneElement servicesTab = S("[data-link='private/services'][type]");
+        SeleneElement adminTab = S("[data-link='private/admin/dataanalytics'][type]");
+        SeleneElement hamburgerIcon = S(".navbar-toggle collapse in");
 
         public DashboardPage(DriverContext driverContext) : base(driverContext)
         {
@@ -102,13 +102,12 @@ namespace NowPow.Automation.Features.StepDefinitions
         //Verify Services tab
         internal ServicePage OpenServices(string tabName)
         {
+            WaitFor(hamburgerIcon, Be.Visible);
+            hamburgerIcon.Click();
             WaitFor(servicesTab, Be.Visible);
             servicesTab.Click();
             return new ServicePage(DriverContext);
-        }     
-          
-        
-
+        }
     }
 }
 
