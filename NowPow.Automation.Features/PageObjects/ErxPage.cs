@@ -25,7 +25,7 @@ namespace Nowpow.Automation.Features.PageObjects
         SeleneElement categoriesButton = S("#btn-categories");
         SeleneElement conditonsButton = S("#btn-conditions");
         SeleneElement inputHealtherxCode = S("input[class*='eRXcode']");
-        SeleneElement goButton = S("#eRXcode-next");        
+        SeleneElement goButton = S("#eRXcode-next");
         SeleneElement addNewButton = S("#label-add-service");
         SeleneElement saveButton = S("#btn-save");
         SeleneElement depressionCheckbox = S(By.XPath("//label[contains(text(),'Depression')]"));
@@ -39,6 +39,7 @@ namespace Nowpow.Automation.Features.PageObjects
         SeleneElement searchProviders = S("#search-providers");
         SeleneElement removeServiceButton = S("button[class*='btn-remove-service']");
         SeleneElement serviceInput = S("#services-search-input");
+        SeleneElement makeReferralButton = S("div.send-referral");
 
 
 
@@ -147,7 +148,7 @@ namespace Nowpow.Automation.Features.PageObjects
             return new ErxPage(DriverContext);
         }
         //verify typed code and displayed eRX code matches
-       
+
 
         internal ErxPage OpenConditionsCardTopper(string conditions)
         {
@@ -158,16 +159,14 @@ namespace Nowpow.Automation.Features.PageObjects
         internal ErxPage SelectDepression()
         {
 
-            depressionCheckbox.Hover().DoubleClick();
+            depressionCheckbox.Hover().Click();
             return this;
         }
-
         internal ErxPage SelectDiabetes()
         {
             diabetesCheckbox.Hover().Click();
             return this;
         }
-
         internal ErxPage Next()
         {
             nextButton.Click();
@@ -204,7 +203,7 @@ namespace Nowpow.Automation.Features.PageObjects
             WaitForNot(spinner, Be.InDom);
             WaitFor(saveButton, Be.Visible).Click();
             return new ErxPage(DriverContext);
-        }       
+        }
 
         internal ErxPage OpenEdit()
         {
@@ -219,6 +218,7 @@ namespace Nowpow.Automation.Features.PageObjects
             return this;
         }
 
+
         internal ErxPage SearchForServices()
         {
             S("#add-favorites").Click();
@@ -228,14 +228,13 @@ namespace Nowpow.Automation.Features.PageObjects
         {
             WaitForNot(smallSpinner, Be.InDom);
             S(".col-xs-1:nth-child(2)").Click();
-           return new ErxPage(DriverContext);
+            return new ErxPage(DriverContext);
         }
         internal ErxPage Update()
         {
             S("#btn-add").Click();
             return new ErxPage(DriverContext);
         }
-
         internal ErxPage SaveAddedService()
         {
             WaitForNot(S(".modal-backdrop.fade"), Be.InDom);
@@ -246,8 +245,7 @@ namespace Nowpow.Automation.Features.PageObjects
         {
             removeServiceButton.Click();
             return new ErxPage(DriverContext);
-        }        
-
+        }
         internal ErxPage SaveRemovedServiceOnErx()
         {
             saveButton.Click();
@@ -257,16 +255,22 @@ namespace Nowpow.Automation.Features.PageObjects
         {
             WaitFor(categoriesButton, Be.Visible).Hover().Click();
             return new ErxPage(DriverContext);
-        }       
-
+        }
         internal ErxPage SelectResult()
         {
-           WaitFor(S("#expand-3"), Be.Visible).Click();
-           WaitFor( S(By.XPath("//label[contains(text(),'Dental care - General')]")), Be.Visible)
-                .Hover()
-                .Click();
+            WaitFor(S("#expand-3"), Be.Visible).Click();
+            WaitFor(S(By.XPath("//label[contains(text(),'Dental care - General')]")), Be.Visible)
+                 .Hover()
+                 .Click();
             return this;
         }
-       
     }
 }
+          
+                
+
+        
+               
+
+        
+    

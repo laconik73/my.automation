@@ -152,13 +152,14 @@ namespace Nowpow.Automation.Features.StepDefinitions
             Assert.AreEqual(expectedErxCode, actualErxCode);
 
         }
+        
         [When(@"user selects '(.*)'")]
         public void WhenUserSelects(string conditions)
         {
             new ErxPage(driverContext).OpenConditionsCardTopper(conditions)
-            .SelectDepression()
-            .SelectDiabetes()
-            .Next();
+               .SelectDepression()
+               .SelectDiabetes()
+               .Next();
         }
         [When(@"user makes selections from '(.*)'")]
         public void WhenUserMakesSelectionsFrom(string filters)
@@ -221,7 +222,16 @@ namespace Nowpow.Automation.Features.StepDefinitions
                .OpenServiceCategoriesCardTopper(serviceCategories)
                .SelectResult()
                .Next();
-        }       
+        }
+        [Then(@"referral is marked as '(.*)'")]
+        public void ThenReferralIsMarkedAs(string referralSent)
+        {
+            new ErxPage(driverContext);
+            String expectedIcon = S(By.XPath("//div[@class='referral-sent-text'][contains(text(),'Referral Sent')]")).GetText();
+            string actualIcon = "Referral Sent";
+            Assert.AreEqual(expectedIcon, actualIcon);
+        }
+
 
 
     }
