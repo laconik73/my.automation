@@ -10,8 +10,7 @@
     using OpenQA.Selenium;
     using System.Collections.Generic;
     using OpenQA.Selenium.Chrome;
-
-
+    using System.Configuration;
 
     /// <summary>
     /// The base class for all tests <see href="https://github.com/ObjectivityLtd/NowPow/wiki/ProjectTestBase-class">More details on wiki</see>
@@ -21,6 +20,7 @@
     {
         private readonly ScenarioContext scenarioContext;
         private DriverContext driverContext = new DriverContext();
+        private string BrowserConfig => ConfigurationManager.AppSettings["browser"];
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ProjectTestBase"/> class.
@@ -54,24 +54,19 @@
 
         /// <summary>
         /// Gets the browser manager
-
         /// </summary>
-
-      
-        
-        
-
         protected DriverContext DriverContext
         {
             get
             {
-                return this.driverContext;
+                return this.DriverContext1;
             }
-            set { this.driverContext = value; }
+            set { this.DriverContext1 = value; }
         }
 
         public object TimeUnit { get; private set; }
         public ChromeDriver driver { get; private set; }
+        public DriverContext DriverContext1 { get => driverContext; set => driverContext = value; }
 
         /// <summary>
         /// Before the class.
@@ -99,8 +94,9 @@
         {
             this.DriverContext.CurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
             this.DriverContext.TestTitle = this.scenarioContext.ScenarioInfo.Title;
-            this.LogTest.LogTestStarting(this.driverContext);
-            if (false)
+            this.LogTest.LogTestStarting(this.DriverContext1);
+
+            if (BrowserConfig == BrowserType.RemoteWebDriver.ToString())
             {
                 SetBrowserStack();
             }
@@ -149,13 +145,13 @@
         {
             try
             {
-                this.DriverContext.IsTestFailed = this.scenarioContext.TestError != null || !this.driverContext.VerifyMessages.Count.Equals(0);
-                var filePaths = this.SaveTestDetailsIfTestFailed(this.driverContext);
+                this.DriverContext.IsTestFailed = this.scenarioContext.TestError != null || !this.DriverContext1.VerifyMessages.Count.Equals(0);
+                var filePaths = this.SaveTestDetailsIfTestFailed(this.DriverContext1);
                 this.SaveAttachmentsToTestContext(filePaths);
                 var javaScriptErrors = this.DriverContext.LogJavaScriptErrors();
 
-                this.LogTest.LogTestEnding(this.driverContext);
-                if (this.IsVerifyFailedAndClearMessages(this.driverContext) && this.scenarioContext.TestError == null)
+                this.LogTest.LogTestEnding(this.DriverContext1);
+                if (this.IsVerifyFailedAndClearMessages(this.DriverContext1) && this.scenarioContext.TestError == null)
                 {
                     Assert.Fail();
                 }
