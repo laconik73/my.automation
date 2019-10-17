@@ -25,7 +25,7 @@ namespace NowPow.Automation.Features.StepDefinitions
         SeleneElement erxTab = S("[data-link='private/eRX'][type]");      
         SeleneElement servicesTab = S("[data-link='private/services'][type]");
         SeleneElement adminTab = S("[data-link='private/admin/dataanalytics'][type]");
-        SeleneElement hamburgerIcon = S(".navbar-toggle collapse in");
+        SeleneElement hamburgerIcon = S(".navbar-toggle.collapse.in");
 
         public DashboardPage(DriverContext driverContext) : base(driverContext)
         {
