@@ -20,6 +20,7 @@ namespace NowPowAutomaiton.TestFeatures
     [NUnit.Framework.TestFixtureAttribute()]
     [NUnit.Framework.DescriptionAttribute("Referral Filter Options")]
     [NUnit.Framework.CategoryAttribute("cpt_username")]
+    [NUnit.Framework.CategoryAttribute("smoke")]
     public partial class ReferralFilterOptionsFeature
     {
         
@@ -33,7 +34,8 @@ namespace NowPowAutomaiton.TestFeatures
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Referral Filter Options", null, ProgrammingLanguage.CSharp, new string[] {
-                        "cpt_username"});
+                        "cpt_username",
+                        "smoke"});
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -76,20 +78,20 @@ namespace NowPowAutomaiton.TestFeatures
         public virtual void _01_VerifyFilterOptionsViaPatientReferralPage()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("01. Verify  filter options via Patient Referral Page", null, ((string[])(null)));
-#line 5
+#line 6
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 6
- testRunner.Given("\'CPT\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 7
- testRunner.And("user chooses tab \'Patient\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("\'CPT\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 8
- testRunner.And("user chooses patient card", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("user chooses tab \'Patient\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 9
- testRunner.And("user chooses subtab \'Referrals\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("user chooses patient card", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 10
- testRunner.When("user chooses \'My Referrals\' from \'User Level\' dropdown menu", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("user chooses subtab \'Referrals\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 11
+ testRunner.When("user chooses \'My Referrals\' from \'User Level\' dropdown menu", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 12
  testRunner.Then("dropdown menu displays options", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -100,20 +102,20 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void _02_VerifyCheckedItemsViaPatientReferralPage()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("02. Verify checked items via Patient Referral Page", null, ((string[])(null)));
-#line 13
+#line 14
  this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 14
- testRunner.Given("\'CPT\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 15
- testRunner.And("user chooses tab \'Patient\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("\'CPT\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 16
- testRunner.And("user chooses patient card", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("user chooses tab \'Patient\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 17
- testRunner.And("user chooses subtab \'Referrals\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("user chooses patient card", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 18
- testRunner.When("user chooses \'All Referrals\' from \'Status Filter\' dropdown menu", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("user chooses subtab \'Referrals\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 19
+ testRunner.When("user chooses \'All Referrals\' from \'Status Filter\' dropdown menu", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 20
  testRunner.Then("dropdown menu displays options", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

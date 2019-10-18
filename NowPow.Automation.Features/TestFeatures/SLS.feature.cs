@@ -19,6 +19,7 @@ namespace NowPowAutomaiton.TestFeatures
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
     [NUnit.Framework.DescriptionAttribute("SLS")]
+    [NUnit.Framework.CategoryAttribute("smoke")]
     [NUnit.Framework.CategoryAttribute("sls_username")]
     public partial class SLSFeature
     {
@@ -33,6 +34,7 @@ namespace NowPowAutomaiton.TestFeatures
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "SLS", null, ProgrammingLanguage.CSharp, new string[] {
+                        "smoke",
                         "sls_username"});
             testRunner.OnFeatureStart(featureInfo);
         }

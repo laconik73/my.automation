@@ -20,6 +20,7 @@ namespace NowPowAutomaiton.TestFeatures
     [NUnit.Framework.TestFixtureAttribute()]
     [NUnit.Framework.DescriptionAttribute("Screenings")]
     [NUnit.Framework.CategoryAttribute("cpt_username")]
+    [NUnit.Framework.CategoryAttribute("smoke")]
     public partial class ScreeningsFeature
     {
         
@@ -33,7 +34,8 @@ namespace NowPowAutomaiton.TestFeatures
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Screenings", null, ProgrammingLanguage.CSharp, new string[] {
-                        "cpt_username"});
+                        "cpt_username",
+                        "smoke"});
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -76,20 +78,20 @@ namespace NowPowAutomaiton.TestFeatures
         public virtual void _01_MakingPatientScreening()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("01. Making Patient Screening", null, ((string[])(null)));
-#line 5
+#line 6
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 6
-testRunner.Given("\'CPT\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 7
-testRunner.And("user chooses a tab \'Screenings\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.Given("\'CPT\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 8
-testRunner.When("user chooses  \'Start\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+testRunner.And("user chooses a tab \'Screenings\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 9
-testRunner.And("user answers screening questions", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.When("user chooses  \'Start\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 10
-testRunner.And("saves screening with a note", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.And("user answers screening questions", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 11
+testRunner.And("saves screening with a note", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 12
 testRunner.Then("note is displayed below screening summary", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -100,20 +102,20 @@ testRunner.Then("note is displayed below screening summary", ((string)(null)), (
         public virtual void _02_VerifyScreeningViaPatient()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("02.Verify Screening via Patient", null, ((string[])(null)));
-#line 13
+#line 14
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 14
-testRunner.Given("\'CPT\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 15
-testRunner.And("user chooses tab \'Patient\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.Given("\'CPT\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 16
-testRunner.And("user chooses patient card", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.And("user chooses tab \'Patient\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 17
-testRunner.And("user chooses \'Screenings\' subtab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.And("user chooses patient card", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 18
-testRunner.When("user clicks on \'Conduct Screening\' button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+testRunner.And("user chooses \'Screenings\' subtab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 19
+testRunner.When("user clicks on \'Conduct Screening\' button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 20
 testRunner.Then("user able to conduct screening for a patient", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -124,24 +126,24 @@ testRunner.Then("user able to conduct screening for a patient", ((string)(null))
         public virtual void _04_VerifyScreeeningWithCodeViaPatient()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("04. Verify Screeening with Code via Patient", null, ((string[])(null)));
-#line 21
+#line 22
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 22
-testRunner.Given("\'CPT\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 23
-testRunner.And("user chooses tab \'Patient\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.Given("\'CPT\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 24
-testRunner.And("user searches for a Patient", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.And("user chooses tab \'Patient\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 25
-testRunner.And("user chooses patient card", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.And("user searches for a Patient", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 26
-testRunner.And("user chooses \'Screenings\' subtab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.And("user chooses patient card", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 27
-testRunner.When("user clicks on \'Conduct Screening\' button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+testRunner.And("user chooses \'Screenings\' subtab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 28
-testRunner.And("user chooses to complete screening with \'Get Code\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.When("user clicks on \'Conduct Screening\' button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 29
+testRunner.And("user chooses to complete screening with \'Get Code\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 30
 testRunner.Then("user able to conduct screening for a patent with code", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -152,26 +154,26 @@ testRunner.Then("user able to conduct screening for a patent with code", ((strin
         public virtual void _03_SavingAnIncompleteScreeningViaPatient()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("03. Saving an Incomplete Screening via Patient", null, ((string[])(null)));
-#line 31
+#line 32
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 32
-testRunner.Given("\'CPT\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 33
-testRunner.And("user chooses tab \'Patient\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.Given("\'CPT\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 34
-testRunner.And("user searches for a Patient", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.And("user chooses tab \'Patient\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 35
-testRunner.And("user chooses patient card", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.And("user searches for a Patient", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 36
-testRunner.And("user chooses \'Screenings\' subtab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.And("user chooses patient card", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 37
-testRunner.When("user clicks on \'Conduct Screening\' button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+testRunner.And("user chooses \'Screenings\' subtab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 38
-testRunner.And("user chooses  \'Start\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.When("user clicks on \'Conduct Screening\' button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 39
-testRunner.And("user saves screening for later", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.And("user chooses  \'Start\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 40
+testRunner.And("user saves screening for later", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 41
 testRunner.Then("user returns to the Patient\'s Page with incomplete screening", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

@@ -20,6 +20,7 @@ namespace NowPowAutomaiton.TestFeatures
     [NUnit.Framework.TestFixtureAttribute()]
     [NUnit.Framework.DescriptionAttribute("Patient")]
     [NUnit.Framework.CategoryAttribute("cpt_username")]
+    [NUnit.Framework.CategoryAttribute("smoke")]
     public partial class PatientFeature
     {
         
@@ -33,7 +34,8 @@ namespace NowPowAutomaiton.TestFeatures
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Patient", null, ProgrammingLanguage.CSharp, new string[] {
-                        "cpt_username"});
+                        "cpt_username",
+                        "smoke"});
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -76,22 +78,22 @@ namespace NowPowAutomaiton.TestFeatures
         public virtual void _01_CreatingNewProfile()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("01. Creating New Profile", null, ((string[])(null)));
-#line 5
+#line 6
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 6
-testRunner.Given("\'CPT\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 7
-testRunner.And("user chooses tab \'Patient\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.Given("\'CPT\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 8
-testRunner.And("user chooses \'Create New Profile\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.And("user chooses tab \'Patient\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 9
-testRunner.When("user navigates to patient\'s section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+testRunner.And("user chooses \'Create New Profile\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 10
-testRunner.And("user inputs \'Basic Information\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.When("user navigates to patient\'s section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 11
-testRunner.And("user chooses \'Save and Create\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.And("user inputs \'Basic Information\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 12
+testRunner.And("user chooses \'Save and Create\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 13
 testRunner.Then("New Profile is created", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -102,16 +104,16 @@ testRunner.Then("New Profile is created", ((string)(null)), ((TechTalk.SpecFlow.
         public virtual void _02_VerifyingNewPatientCard()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("02. Verifying New Patient Card", null, ((string[])(null)));
-#line 14
+#line 15
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 15
-testRunner.Given("\'CPT\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 16
-testRunner.And("user chooses tab \'Patient\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.Given("\'CPT\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 17
-testRunner.When("user inputs new patient name into \'Search\' field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+testRunner.And("user chooses tab \'Patient\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 18
+testRunner.When("user inputs new patient name into \'Search\' field", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 19
 testRunner.Then("results displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -122,18 +124,18 @@ testRunner.Then("results displayed", ((string)(null)), ((TechTalk.SpecFlow.Table
         public virtual void _03_VerifyEmailConsentToggles()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("03. Verify Email Consent Toggles", null, ((string[])(null)));
-#line 20
+#line 21
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 21
-testRunner.Given("\'CPT\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 22
-testRunner.And("user chooses tab \'Patient\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.Given("\'CPT\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 23
-testRunner.And("user chooses patient card", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.And("user chooses tab \'Patient\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 24
-testRunner.When("user switches toggle \'On\' and \'Off\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+testRunner.And("user chooses patient card", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 25
+testRunner.When("user switches toggle \'On\' and \'Off\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 26
 testRunner.Then("patient confirms email configuration", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -144,18 +146,18 @@ testRunner.Then("patient confirms email configuration", ((string)(null)), ((Tech
         public virtual void _04_SendingEmailNudgeViaPatientPage()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("04. Sending Email Nudge via Patient Page", null, ((string[])(null)));
-#line 27
+#line 28
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 28
-testRunner.Given("\'CPT\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 29
-testRunner.And("user chooses tab \'Patient\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.Given("\'CPT\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 30
-testRunner.And("user chooses patient card", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.And("user chooses tab \'Patient\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 31
-testRunner.When("user sends email nudge with an attachment", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+testRunner.And("user chooses patient card", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 32
+testRunner.When("user sends email nudge with an attachment", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 33
 testRunner.Then("new interaction is displayed under patient engagement", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

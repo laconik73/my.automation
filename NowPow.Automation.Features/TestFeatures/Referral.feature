@@ -1,4 +1,5 @@
 ﻿@cpt_username
+@smoke
 
 Feature:  Referral
 

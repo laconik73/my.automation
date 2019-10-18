@@ -20,6 +20,7 @@ namespace NowPowAutomaiton.TestFeatures
     [NUnit.Framework.TestFixtureAttribute()]
     [NUnit.Framework.DescriptionAttribute("Erx")]
     [NUnit.Framework.CategoryAttribute("cpt_username")]
+    [NUnit.Framework.CategoryAttribute("smoke")]
     public partial class ErxFeature
     {
         
@@ -33,7 +34,8 @@ namespace NowPowAutomaiton.TestFeatures
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Erx", null, ProgrammingLanguage.CSharp, new string[] {
-                        "cpt_username"});
+                        "cpt_username",
+                        "smoke"});
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -76,22 +78,22 @@ namespace NowPowAutomaiton.TestFeatures
         public virtual void _01_ViewingERxFromPatientCard()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("01.Viewing eRx from Patient Card", null, ((string[])(null)));
-#line 4
+#line 5
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 5
-testRunner.Given("\'CPT\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 6
-testRunner.And("user chooses tab \'Patient\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.Given("\'CPT\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 7
-testRunner.And("user chooses patient card", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.And("user chooses tab \'Patient\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 8
-testRunner.When("user chooses \'View eRx\' button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+testRunner.And("user chooses patient card", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 9
-testRunner.Then("referred services are displayed under patient \'eRx\' code", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+testRunner.When("user chooses \'View eRx\' button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 10
-testRunner.And("user chooses \'Back to Patient\' button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.Then("referred services are displayed under patient \'eRx\' code", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 11
+testRunner.And("user chooses \'Back to Patient\' button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 12
 testRunner.Then("user is back on \'Overview\' patient card", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -102,22 +104,22 @@ testRunner.Then("user is back on \'Overview\' patient card", ((string)(null)), (
         public virtual void _02_VerifyBuildingNewERxButtonViaPatientCard()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("02. Verify Building New eRx button via Patient Card", null, ((string[])(null)));
-#line 13
+#line 14
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 14
-testRunner.Given("\'CPT\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 15
-testRunner.And("user chooses tab \'Patient\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.Given("\'CPT\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 16
-testRunner.And("user chooses patient card", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.And("user chooses tab \'Patient\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 17
-testRunner.When("user selects button \'Build New eRx\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+testRunner.And("user chooses patient card", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 18
-testRunner.Then("\'eRx Landing\' displays \'centered pannel\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+testRunner.When("user selects button \'Build New eRx\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 19
-testRunner.And("user chooses \'Back to Patient\' button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.Then("\'eRx Landing\' displays \'centered pannel\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 20
+testRunner.And("user chooses \'Back to Patient\' button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 21
 testRunner.Then("user is back on \'Overview\' patient card", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -128,22 +130,22 @@ testRunner.Then("user is back on \'Overview\' patient card", ((string)(null)), (
         public virtual void _03_CreatingAutomaticERxViaPatientProfile()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("03. Creating Automatic eRx via Patient Profile", null, ((string[])(null)));
-#line 22
+#line 23
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 23
-testRunner.Given("\'CPT\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 24
-testRunner.And("user chooses tab \'Patient\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.Given("\'CPT\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 25
-testRunner.And("user chooses patient card", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.And("user chooses tab \'Patient\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 26
-testRunner.When("user makes a choice to \'Edit Profile\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+testRunner.And("user chooses patient card", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 27
-testRunner.And("user inputs address into \'Contact Information\' section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.When("user makes a choice to \'Edit Profile\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 28
-testRunner.And("user adds condition into \'Conditions\' section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.And("user inputs address into \'Contact Information\' section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 29
+testRunner.And("user adds condition into \'Conditions\' section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 30
 testRunner.Then("automatic eRx is generated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -154,18 +156,18 @@ testRunner.Then("automatic eRx is generated", ((string)(null)), ((TechTalk.SpecF
         public virtual void _05_VerifyCardToppersActivation()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("05. Verify card toppers activation", null, ((string[])(null)));
-#line 41
+#line 42
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 42
-testRunner.Given("\'CPT\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 43
-testRunner.And("user chooses \'eRx\' tab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.Given("\'CPT\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 44
-testRunner.And("\'eRx Landing\' displays \'centered pannel\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.And("user chooses \'eRx\' tab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 45
-testRunner.When("user inputs address into the \'Location\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+testRunner.And("\'eRx Landing\' displays \'centered pannel\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 46
+testRunner.When("user inputs address into the \'Location\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 47
 testRunner.Then("card toppers \'Service Categories\' and \'Conditions\' are activated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -176,20 +178,20 @@ testRunner.Then("card toppers \'Service Categories\' and \'Conditions\' are acti
         public virtual void _06_ViewingERxFromERxPage()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("06. Viewing eRx from eRx Page", null, ((string[])(null)));
-#line 49
+#line 50
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 50
-testRunner.Given("\'CPT\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 51
-testRunner.And("user chooses \'eRx\' tab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.Given("\'CPT\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 52
-testRunner.And("\'eRx Landing\' displays \'centered pannel\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.And("user chooses \'eRx\' tab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 53
-testRunner.When("user chooses to \'View Existing HealtheRx\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+testRunner.And("\'eRx Landing\' displays \'centered pannel\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 54
-testRunner.And("user inputs \'HealtheRx\' code", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.When("user chooses to \'View Existing HealtheRx\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 55
+testRunner.And("user inputs \'HealtheRx\' code", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 56
 testRunner.Then("displayed eRx code matches the inputted \'HealtheRx\' code", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -200,22 +202,22 @@ testRunner.Then("displayed eRx code matches the inputted \'HealtheRx\' code", ((
         public virtual void _07_BuildNewERxViaPatientCard()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("07. Build New eRx via Patient Card", null, ((string[])(null)));
-#line 57
+#line 58
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 58
-testRunner.Given("\'CPT\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 59
-testRunner.And("user chooses tab \'Patient\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.Given("\'CPT\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 60
-testRunner.And("user chooses patient card", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.And("user chooses tab \'Patient\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 61
-testRunner.When("user selects button \'Build New eRx\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+testRunner.And("user chooses patient card", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 62
-testRunner.And("user selects \'Conditions\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.When("user selects button \'Build New eRx\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 63
-testRunner.And("user makes selections from \'Add Filters\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.And("user selects \'Conditions\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 64
+testRunner.And("user makes selections from \'Add Filters\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 65
 testRunner.Then("\'HealtheRx\' is generated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -226,24 +228,24 @@ testRunner.Then("\'HealtheRx\' is generated", ((string)(null)), ((TechTalk.SpecF
         public virtual void _08_AddingAServiceOnAnErx()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("08.Adding a Service on an Erx", null, ((string[])(null)));
-#line 66
+#line 67
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 67
-testRunner.Given("\'CPT\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 68
-testRunner.And("user chooses tab \'Patient\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.Given("\'CPT\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 69
-testRunner.And("user chooses patient card", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.And("user chooses tab \'Patient\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 70
-testRunner.When("user chooses \'View eRx\' button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+testRunner.And("user chooses patient card", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 71
-testRunner.And("user chooses to \'Edit\' eRx", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.When("user chooses \'View eRx\' button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 72
-testRunner.And("user chooses \'Add\' service", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.And("user chooses to \'Edit\' eRx", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 73
-testRunner.And("user selects a service", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.And("user chooses \'Add\' service", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 74
+testRunner.And("user selects a service", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 75
 testRunner.Then("new service saved on an Erx", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -254,22 +256,22 @@ testRunner.Then("new service saved on an Erx", ((string)(null)), ((TechTalk.Spec
         public virtual void _09_DeletingAServiceOnAnErx()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("09. Deleting a Service on an Erx", null, ((string[])(null)));
-#line 76
+#line 77
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 77
-testRunner.Given("\'CPT\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 78
-testRunner.And("user chooses tab \'Patient\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.Given("\'CPT\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 79
-testRunner.And("user chooses patient card", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.And("user chooses tab \'Patient\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 80
-testRunner.When("user chooses \'View eRx\' button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+testRunner.And("user chooses patient card", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 81
-testRunner.And("user chooses to \'Edit\' eRx", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.When("user chooses \'View eRx\' button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 82
-testRunner.And("user removes services from an Erx", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.And("user chooses to \'Edit\' eRx", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 83
+testRunner.And("user removes services from an Erx", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 84
 testRunner.Then("service is removed from an Erx", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -280,20 +282,20 @@ testRunner.Then("service is removed from an Erx", ((string)(null)), ((TechTalk.S
         public virtual void _11_SendingEmailNudgeViaERxPage()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("11.Sending Email Nudge via eRx Page", null, ((string[])(null)));
-#line 95
+#line 96
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 96
-testRunner.Given("\'CPT\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 97
-testRunner.And("user chooses tab \'Patient\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.Given("\'CPT\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 98
-testRunner.And("user chooses patient card", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.And("user chooses tab \'Patient\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 99
-testRunner.When("user chooses \'View eRx\' button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+testRunner.And("user chooses patient card", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 100
-testRunner.And("user sends nudge", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.When("user chooses \'View eRx\' button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 101
+testRunner.And("user sends nudge", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 102
 testRunner.Then("email nudge is sent", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

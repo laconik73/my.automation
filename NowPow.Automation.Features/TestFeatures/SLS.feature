@@ -1,4 +1,4 @@
-﻿
+﻿@smoke
 @sls_username
 Feature: SLS
 

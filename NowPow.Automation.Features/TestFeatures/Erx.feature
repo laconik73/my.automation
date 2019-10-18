@@ -1,4 +1,5 @@
 ﻿@cpt_username
+@smoke
 Feature: Erx
 
 Scenario:01.Viewing eRx from Patient Card

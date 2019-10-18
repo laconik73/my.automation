@@ -20,6 +20,7 @@ namespace NowPowAutomaiton.TestFeatures
     [NUnit.Framework.TestFixtureAttribute()]
     [NUnit.Framework.DescriptionAttribute("Service")]
     [NUnit.Framework.CategoryAttribute("cpt_username")]
+    [NUnit.Framework.CategoryAttribute("smoke")]
     public partial class ServiceFeature
     {
         
@@ -33,7 +34,8 @@ namespace NowPowAutomaiton.TestFeatures
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Service", null, ProgrammingLanguage.CSharp, new string[] {
-                        "cpt_username"});
+                        "cpt_username",
+                        "smoke"});
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -76,20 +78,20 @@ namespace NowPowAutomaiton.TestFeatures
         public virtual void _01_MakingServiceReferral()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("01.  Making Service Referral", null, ((string[])(null)));
-#line 5
+#line 6
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 6
-   testRunner.Given("\'CPT\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 7
-   testRunner.When("user chooses tab \'Services\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+   testRunner.Given("\'CPT\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 8
-   testRunner.And("user  chooses  \'Favorite Services\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+   testRunner.When("user chooses tab \'Services\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 9
-   testRunner.And("user click on button \'Refer\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+   testRunner.And("user  chooses  \'Favorite Services\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 10
-   testRunner.And("user refers patient information with a note", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+   testRunner.And("user click on button \'Refer\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 11
+   testRunner.And("user refers patient information with a note", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 12
    testRunner.Then("referral is made", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

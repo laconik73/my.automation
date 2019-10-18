@@ -1,4 +1,5 @@
 ﻿@cpt_username
+@coordinated
 
 Feature:  Coordinated Referrals
 

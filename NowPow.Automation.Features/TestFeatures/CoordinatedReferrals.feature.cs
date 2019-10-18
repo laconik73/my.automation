@@ -20,6 +20,7 @@ namespace NowPowAutomaiton.TestFeatures
     [NUnit.Framework.TestFixtureAttribute()]
     [NUnit.Framework.DescriptionAttribute("Coordinated Referrals")]
     [NUnit.Framework.CategoryAttribute("cpt_username")]
+    [NUnit.Framework.CategoryAttribute("coordinated")]
     public partial class CoordinatedReferralsFeature
     {
         
@@ -33,7 +34,8 @@ namespace NowPowAutomaiton.TestFeatures
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
             TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Coordinated Referrals", null, ProgrammingLanguage.CSharp, new string[] {
-                        "cpt_username"});
+                        "cpt_username",
+                        "coordinated"});
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -76,20 +78,20 @@ namespace NowPowAutomaiton.TestFeatures
         public virtual void _01_SendingReferralViaServices()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("01.  Sending Referral via Services", null, ((string[])(null)));
-#line 5
+#line 6
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 6
-   testRunner.Given("\'CPT\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 7
-   testRunner.When("user chooses tab \'Services\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+   testRunner.Given("\'CPT\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 8
-   testRunner.And("user searches for the organization in coordinated network", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+   testRunner.When("user chooses tab \'Services\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 9
-   testRunner.And("user click on button \'Refer\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+   testRunner.And("user searches for the organization in coordinated network", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 10
-   testRunner.And("user refers patient information with a note", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+   testRunner.And("user click on button \'Refer\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 11
+   testRunner.And("user refers patient information with a note", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 12
    testRunner.Then("referral is made", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -100,28 +102,28 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void _02_VerifyErrorMessageDisplayForReferralSender()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("02. Verify error message display for Referral Sender", null, ((string[])(null)));
-#line 13
+#line 14
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 14
-testRunner.Given("\'CPT\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 15
- testRunner.And("user chooses tab \'Patient\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+testRunner.Given("\'CPT\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 16
- testRunner.And("user searches for a Patient", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("user chooses tab \'Patient\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 17
- testRunner.And("user chooses patient card", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("user searches for a Patient", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 18
- testRunner.And("user chooses subtab \'Referrals\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("user chooses patient card", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 19
- testRunner.When("user chooses button \'Add Referral\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("user chooses subtab \'Referrals\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 20
-    testRunner.And("user makes referral", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.When("user chooses button \'Add Referral\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 21
- testRunner.And("user opens Edit Referral modal", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+    testRunner.And("user makes referral", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 22
- testRunner.And("user accepts referal", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("user opens Edit Referral modal", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 23
+ testRunner.And("user accepts referal", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 24
  testRunner.Then("\'error\' message is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
