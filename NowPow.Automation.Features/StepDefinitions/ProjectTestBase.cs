@@ -109,8 +109,8 @@
             featureContext["DriverContext"] = this.DriverContext;
 
             SetWebDriver(DriverContext.Driver);
-            //DriverContext.Driver.Manage().Window.Maximize();
-            
+            DriverContext.Driver.Manage().Window.Maximize();
+
 
         }
 
