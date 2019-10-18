@@ -27,6 +27,7 @@ namespace NowPow.Automation.Features.StepDefinitions
         SeleneElement servicesTab;
         SeleneElement adminTab;
         SeleneElement hamburgerIcon = S("#hamburger-icon");
+        SeleneElement expandedNav = S(".inset-nav");
         SeleneElement notificationIcon = S("#nav-item-notifications");
         private bool? _menuIsCollapsed = null;
 
@@ -35,13 +36,9 @@ namespace NowPow.Automation.Features.StepDefinitions
             get
             {
                 if (!_menuIsCollapsed.HasValue)
-                    _menuIsCollapsed = notificationIcon.GetAttribute("class").Contains("collapsed-menu");
+                    _menuIsCollapsed = expandedNav.Size.Width < 75;
 
                 return _menuIsCollapsed.Value;
-            }
-            set
-            {
-                _menuIsCollapsed = value;
             }
         }
 
