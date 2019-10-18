@@ -17,7 +17,7 @@ namespace Nowpow.Automation.Features.StepDefinitions
         SeleneElement referButton = S("#btn-refer");
         SeleneElement servicesSearch = S("#services-search-query");
         SeleneElement searchButton = S("#btn-search");
-        SeleneElement serviceTitle = S("a[href*='services'][data-name*='Davis']");
+        SeleneElement serviceTitle = S("a[href*='services'][data-name*='Moore']");
 
         public ServicePage(DriverContext driverContext) : base(driverContext)
         {
@@ -61,7 +61,7 @@ namespace Nowpow.Automation.Features.StepDefinitions
             var newWindow = Driver.SwitchTo().Window(newWindowHandle);
 
             // verify popup window title
-            string expectedNewWindowTitle = "Davis Park Health - North | NowPow";
+            string expectedNewWindowTitle = "Moore Park Health - North | NowPow";
             Assert.AreEqual(expectedNewWindowTitle, newWindow.Title);
             return new ServicePage(DriverContext);
         }

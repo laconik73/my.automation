@@ -40,7 +40,7 @@ namespace Nowpow.Automation.Features.StepDefinitions
         SeleneElement conditionCheckbox = S("div.col-xs-1");     
         SeleneElement updateButton = S("#btn-add");
         SeleneElement saveButton = S("#update");
-        SeleneElement rowEntryInfo = S("div.col-xs-11.row.entry-info");
+        SeleneElement acceptanceInfo = S("div.col-xs.info.acceptance");
 
 
 
@@ -322,7 +322,7 @@ namespace Nowpow.Automation.Features.StepDefinitions
         }
         internal EditReferralModal OpenEditReferral()
         {
-            rowEntryInfo.Click();
+            acceptanceInfo.Click();
             return new EditReferralModal(DriverContext);
         }
         internal PatientPage VerifyStatusDisplay()

@@ -6,6 +6,7 @@ using Ocaramba;
 using TechTalk.SpecFlow;
 using static NSelene.Selene;
 using OpenQA.Selenium;
+using NSelene;
 
 namespace Nowpow.Automation.Features.StepDefinitions
 {
@@ -73,20 +74,33 @@ namespace Nowpow.Automation.Features.StepDefinitions
                 .EnterNote(note)
                 .Save();
         }
+        [When(@"user accepts referal")]
+        public void WhenUserAcceptsReferal()
+        {
+            var modal = new EditReferralModal(driverContext);
+            modal.SelectAcceptanceStatus("Accepted")
+                .Save();
+        }
+
         [Then(@"referral info should be saved")]
         public void ThenReferralInfoShouldBeSaved()
         {
             new PatientPage(driverContext).VerifyStatusDisplay();
         }
+       
+        
         [When(@"user makes referral")]
         public void WhenUserMakesReferral()
         {
             new PatientPage(driverContext).ClickMakeReferal();
-           
+
             var modal = new AddReferralModal(driverContext);
-               modal .SelectReferralRow()
-                .Send();
+            modal.SelectCheckbox2()
+                 .Send(); ;
         }
+
+
+
         [Then(@"referral is sent")]
         public void ThenReferralIsSent()
         {
@@ -119,5 +133,15 @@ namespace Nowpow.Automation.Features.StepDefinitions
                 return false;
             }
         }
+        [Then(@"'(.*)' message is displayed")]
+        public void ThenMessageIsDisplayed(string errorMessage)
+        {
+            new EditReferralModal(driverContext);
+            SeleneElement actualMessage = S("div.error-area");
+            Assert.IsTrue(actualMessage.Displayed);
+        }
+        
+
+
     }
 }

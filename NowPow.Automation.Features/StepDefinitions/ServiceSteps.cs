@@ -44,7 +44,7 @@ namespace Nowpow.Automation.Features.StepDefinitions
         public void WhenUserSearchesForTheOrganizationInCoordinatedNetwork()
         {
             new ServicePage(driverContext)
-                .SearchServices("davis")
+                .SearchServices("moore")
                 .Submit()
                 .ClickServiceLink();
         }

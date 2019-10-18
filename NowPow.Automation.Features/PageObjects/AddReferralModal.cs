@@ -11,7 +11,7 @@ namespace Nowpow.Automation.Features.PageObjects
     internal class AddReferralModal : ProjectPageBase
     { 
         SeleneElement inputTextbox = S("#notes");
-        SeleneElement restrictionCheckbox = S("#referralRow");
+        SeleneElement restrictionCheckbox = S("#restrictionsCheckBox");
         SeleneElement consentCheckbox = S("#referralRow.col-xs-8");
         SeleneElement sendButton = S("#btn-add.btn-modal");
         SeleneElement addDocumentButton = S(".btn.btn-attach-document");
@@ -59,15 +59,7 @@ namespace Nowpow.Automation.Features.PageObjects
             return new ProfilePage(DriverContext);
         }
 
-        internal AddReferralModal SelectReferralRow()
-        {
-            WaitForNot(smallSpinner, Be.InDom);
-            WaitFor(S("#restrictionsCheckBox"),Be.Visible)
-                .Hover()
-                .Click();
-            return this;           
-                       
-        }
+        
     }
 }
 
