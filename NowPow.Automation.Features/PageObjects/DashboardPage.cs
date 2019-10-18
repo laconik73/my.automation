@@ -48,13 +48,6 @@ namespace NowPow.Automation.Features.StepDefinitions
         public DashboardPage(DriverContext driverContext) : base(driverContext)
         {
             DriverContext.Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1);
-            adminTab = MenuIsCollapsed ? S("#navbar-collapse #nav-item-admin") : S(".inset-nav #nav-item-admin");
-            erxTab = MenuIsCollapsed ? S("#navbar-collapse #nav-item-erx") : S(".inset-nav #nav-item-erx");
-            patientTab = MenuIsCollapsed ? S("#navbar-collapse #nav-item-patients") : S(".inset-nav #nav-item-patients");
-            referralsReceivedTab = MenuIsCollapsed ? S("#navbar-collapse #nav-item-referrals-received") : S(".inset-nav #nav-item-referrals-received");
-            referralsSentTab = MenuIsCollapsed ? S("#navbar-collapse #nav-item-referrals-sent") : S(".inset-nav #nav-item-referrals-sent");
-            screeningsTab = MenuIsCollapsed ? S("#navbar-collapse #nav-item-screenings") : S(".inset-nav #nav-item-screenings");
-            servicesTab = MenuIsCollapsed ? S("#navbar-collapse #nav-item-services") : S(".inset-nav #nav-item-services");
         }
 
         //To click on first patient card from LandingPage/DashboardPage
@@ -103,6 +96,7 @@ namespace NowPow.Automation.Features.StepDefinitions
         //Verify Patient tab
         internal PatientPage OpenPatient(string tabName)
         {
+            patientTab = MenuIsCollapsed ? S("#navbar-collapse #nav-item-patients") : S(".inset-nav #nav-item-patients");
             ClickNavigationLink(patientTab);
             WaitFor(S("#count-top"), Be.Visible);
             return new PatientPage(DriverContext);
@@ -111,6 +105,7 @@ namespace NowPow.Automation.Features.StepDefinitions
         //Verify Referrals tab
         internal ReferralsSentPage OpenReferrals(string tabName)
         {
+            referralsSentTab = MenuIsCollapsed ? S("#navbar-collapse #nav-item-referrals-sent") : S(".inset-nav #nav-item-referrals-sent");
             ClickNavigationLink(referralsSentTab);
             WaitFor(S("#main-header>div>h2"), Be.Visible);
             return new ReferralsSentPage(DriverContext);
@@ -119,6 +114,7 @@ namespace NowPow.Automation.Features.StepDefinitions
         //Verify Screening Tab
         internal ScreeningPage OpenScreenings(string tabName)
         {
+            screeningsTab = MenuIsCollapsed ? S("#navbar-collapse #nav-item-screenings") : S(".inset-nav #nav-item-screenings");
             ClickNavigationLink(screeningsTab);
             WaitFor(S(".col-xs-12.row.card-white > div:nth-child(1)"), Be.Visible);
             return new ScreeningPage(DriverContext);
@@ -127,6 +123,7 @@ namespace NowPow.Automation.Features.StepDefinitions
         //Verify eRx tab
         internal ErxPage OpenErx(string tabName)
         {
+            erxTab = MenuIsCollapsed ? S("#navbar-collapse #nav-item-erx") : S(".inset-nav #nav-item-erx");
             ClickNavigationLink(erxTab);
             return new ErxPage(DriverContext);
         }
@@ -134,6 +131,7 @@ namespace NowPow.Automation.Features.StepDefinitions
         //Verify Services tab
         internal ServicePage OpenServices(string tabName)
         {
+            servicesTab = MenuIsCollapsed ? S("#navbar-collapse #nav-item-services") : S(".inset-nav #nav-item-services");
             ClickNavigationLink(servicesTab);
             return new ServicePage(DriverContext);
         }
