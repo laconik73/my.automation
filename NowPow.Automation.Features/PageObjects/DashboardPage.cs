@@ -19,19 +19,34 @@ namespace NowPow.Automation.Features.StepDefinitions
         SeleneElement addNeedButton = S("#btn-addNeed");
         SeleneElement takeActionButton = S("#btn-takeAction");
         SeleneElement addInteraction = S(By.XPath("//a[contains(text(),'Add Interaction')]"));
-        SeleneElement patientTab = S("[data-link='private/patients']");
-        SeleneElement referralsTab = S("[data-link='private/referrals/sent']");        
-        SeleneElement screeningsTab = S("[data-link='private/screenings']");     
-        SeleneElement erxTab = S("[data-link='private/eRX']");      
-        SeleneElement servicesTab = S("[data-link='private/services']");
-        SeleneElement adminTab = S("[data-link='private/admin/dataanalytics']");
-        SeleneElement hamburgerIcon = S(".navbar-toggle.collapse.in");
+        SeleneElement patientTab;
+        SeleneElement referralsReceivedTab;
+        SeleneElement referralsSentTab;
+        SeleneElement screeningsTab;     
+        SeleneElement erxTab;      
+        SeleneElement servicesTab;
+        SeleneElement adminTab;
+        SeleneElement hamburgerIcon = S("#hamburger-icon");
+        SeleneElement expandedNav = S(".inset-nav");
+        SeleneElement notificationIcon = S("#nav-item-notifications");
+        private bool? _menuIsCollapsed = null;
+
+        bool MenuIsCollapsed
+        {
+            get
+            {
+                if (!_menuIsCollapsed.HasValue)
+                    _menuIsCollapsed = expandedNav.Size.Width < 75;
+
+                return _menuIsCollapsed.Value;
+            }
+        }
 
         public DashboardPage(DriverContext driverContext) : base(driverContext)
         {
             DriverContext.Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1);
-        }   
-        
+        }
+
         //To click on first patient card from LandingPage/DashboardPage
         internal DashboardPage ChoosePatientCard()
         {
@@ -78,6 +93,7 @@ namespace NowPow.Automation.Features.StepDefinitions
         //Verify Patient tab
         internal PatientPage OpenPatient(string tabName)
         {
+            patientTab = MenuIsCollapsed ? S("#navbar-collapse #nav-item-patients") : S(".inset-nav #nav-item-patients");
             ClickNavigationLink(patientTab);
             WaitFor(S("#count-top"), Be.Visible);
             return new PatientPage(DriverContext);
@@ -86,7 +102,8 @@ namespace NowPow.Automation.Features.StepDefinitions
         //Verify Referrals tab
         internal ReferralsSentPage OpenReferrals(string tabName)
         {
-            ClickNavigationLink(referralsTab);
+            referralsSentTab = MenuIsCollapsed ? S("#navbar-collapse #nav-item-referrals-sent") : S(".inset-nav #nav-item-referrals-sent");
+            ClickNavigationLink(referralsSentTab);
             WaitFor(S("#main-header>div>h2"), Be.Visible);
             return new ReferralsSentPage(DriverContext);
         }
@@ -94,6 +111,7 @@ namespace NowPow.Automation.Features.StepDefinitions
         //Verify Screening Tab
         internal ScreeningPage OpenScreenings(string tabName)
         {
+            screeningsTab = MenuIsCollapsed ? S("#navbar-collapse #nav-item-screenings") : S(".inset-nav #nav-item-screenings");
             ClickNavigationLink(screeningsTab);
             WaitFor(S(".col-xs-12.row.card-white > div:nth-child(1)"), Be.Visible);
             return new ScreeningPage(DriverContext);
@@ -102,6 +120,7 @@ namespace NowPow.Automation.Features.StepDefinitions
         //Verify eRx tab
         internal ErxPage OpenErx(string tabName)
         {
+            erxTab = MenuIsCollapsed ? S("#navbar-collapse #nav-item-erx") : S(".inset-nav #nav-item-erx");
             ClickNavigationLink(erxTab);
             return new ErxPage(DriverContext);
         }
@@ -109,14 +128,19 @@ namespace NowPow.Automation.Features.StepDefinitions
         //Verify Services tab
         internal ServicePage OpenServices(string tabName)
         {
+            servicesTab = MenuIsCollapsed ? S("#navbar-collapse #nav-item-services") : S(".inset-nav #nav-item-services");
             ClickNavigationLink(servicesTab);
             return new ServicePage(DriverContext);
         }
 
         internal void ClickNavigationLink(SeleneElement navElement)
         {
-            WaitFor(hamburgerIcon, Be.Visible);
-            hamburgerIcon.Click();
+            if (MenuIsCollapsed)
+            {
+                WaitFor(hamburgerIcon, Be.Visible);
+                hamburgerIcon.Click();
+            }
+
             WaitFor(navElement, Be.Visible);
             navElement.Click();
         }
