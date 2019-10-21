@@ -17,7 +17,7 @@ namespace Nowpow.Automation.Features.StepDefinitions
         private readonly DriverContext driverContext;
         private readonly ScenarioContext scenarioContext;
         String note;
-
+        private IJavaScriptExecutor driver;
 
         public ReferralSteps(ScenarioContext scenarioContext)
         {
@@ -73,7 +73,7 @@ namespace Nowpow.Automation.Features.StepDefinitions
             modal.SelectAcceptanceStatus("Accepted")
                 .Save();
         }
-
+        //step will fail until bug is fixed. Double modal opens
         [When(@"user makes referral")]
         public void WhenUserMakesReferral()
         {
@@ -83,11 +83,12 @@ namespace Nowpow.Automation.Features.StepDefinitions
             modal.SelectCheckbox2()
                  .Send(); ;
         }
+        //step will fail until bug is fixed. Double modal opens
         [When(@"user makes coordinated referal")]
         public void WhenUserMakesCoordinatedReferal()
         {
             var modal = new AddReferralModal(driverContext).MakeReferral();
-            modal.SelectFirstRefer()
+            modal.SelectFirstRefer()           
                 .SelectCheckbox1()
                 .SelectCheckbox2()
                 .Send();

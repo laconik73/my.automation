@@ -40,7 +40,7 @@ namespace Nowpow.Automation.Features.StepDefinitions
         SeleneElement conditionCheckbox = S("div.col-xs-1");     
         SeleneElement updateButton = S("#btn-add");
         SeleneElement saveButton = S("#update");
-        SeleneElement acceptanceInfo = S("div.col-xs.info.acceptance");
+        SeleneElement acceptanceInfo = S("div.col-xs-2.info.acceptance");
                
         public SeleneCollection AllDropDownList { get; private set; }
 
@@ -295,6 +295,7 @@ namespace Nowpow.Automation.Features.StepDefinitions
         }
         internal PatientPage Submit()
         {
+            WaitForNot(spinner, Be.InDom);
             searchButton.Click();
             return new PatientPage(DriverContext);
         }

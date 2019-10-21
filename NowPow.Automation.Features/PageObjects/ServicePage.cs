@@ -61,7 +61,7 @@ namespace Nowpow.Automation.Features.StepDefinitions
             var newWindow = Driver.SwitchTo().Window(newWindowHandle);
 
             // verify popup window title
-            string expectedNewWindowTitle = "Henry D Moore Dental Concepts | NowPow";
+            string expectedNewWindowTitle = "Moore Park Health - North | NowPow";
             Assert.AreEqual(expectedNewWindowTitle, newWindow.Title);
             return new ServicePage(DriverContext);
         }

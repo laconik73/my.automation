@@ -31,9 +31,7 @@ Then automatic eRx is generated
 
 
 Scenario:04. Generating Automatic eRx via Patient Card
-Given 'CPT' user is logged in
-And user chooses tab 'Patient'
-And user searches for a Patient
+Given 'CPT2' user is logged in
 And user chooses patient card
 When user navigates to 'Generate Automatic eRx'  
 Then user is able to 'Add New' or 'Save' eRx

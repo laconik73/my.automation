@@ -259,7 +259,7 @@ namespace Nowpow.Automation.Features.PageObjects
         internal ErxPage SelectResult()
         {
             WaitFor(S("#expand-3"), Be.Visible).Click();
-            WaitFor(S(By.XPath("//label[contains(text(),'Dental care - General')]")), Be.Visible)
+            WaitFor(S("#category3 div"), Be.Visible)
                  .Hover()
                  .Click();
             return this;

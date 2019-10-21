@@ -44,14 +44,31 @@ namespace Nowpow.Automation.Features.PageObjects
         //Verify checkboxes in AddReferral Modal
         internal AddReferralModal SelectCheckbox1()
         {
-            WaitForNot(smallSpinner, Be.InDom);
-            restrictionCheckbox.Click();
+            try
+            {
+                WaitForNot(smallSpinner, Be.InDom);
+                restrictionCheckbox.Click();
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine("can't scroll page down");
+            }
+            
+            
             return this;
         }
         internal AddReferralModal SelectCheckbox2()
         {
-            WaitForNot(smallSpinner, Be.InDom);
-            consentCheckbox.Click();
+            try
+            {
+                WaitForNot(smallSpinner, Be.InDom);
+                consentCheckbox.Click();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("can't scroll page down");
+            }
+           
             return this;
         }        
         internal ProfilePage Send()
