@@ -30,15 +30,15 @@ And user adds condition into 'Conditions' section
 Then automatic eRx is generated
 
 
-#Scenario:04. Generating Automatic eRx via Patient Card
-#Given 'CPT' user is logged in
-#And user chooses tab 'Patient'
-#And user searches for a Patient
-#And user chooses patient card
-#When user navigates to 'Generate Automatic eRx'  
-#Then user is able to 'Add New' or 'Save' eRx
-#And user chooses 'Back to Patient' button
-#Then user is back on 'Overview' patient card
+Scenario:04. Generating Automatic eRx via Patient Card
+Given 'CPT' user is logged in
+And user chooses tab 'Patient'
+And user searches for a Patient
+And user chooses patient card
+When user navigates to 'Generate Automatic eRx'  
+Then user is able to 'Add New' or 'Save' eRx
+And user chooses 'Back to Patient' button
+Then user is back on 'Overview' patient card
 
 Scenario:05. Verify card toppers activation
 Given 'CPT' user is logged in
@@ -84,15 +84,15 @@ And user chooses to 'Edit' eRx
 And user removes services from an Erx
 Then service is removed from an Erx
 
-#Scenario: 10.Creating an Erx via Service Categories
-#Given 'CPT' user is logged in
-#And user chooses 'eRx' tab
-#And 'eRx Landing' displays 'centered pannel'
-#When user inputs address into the 'Location' 
-#And card toppers 'Service Categories' and 'Conditions' are activated
-#And user selects 'Service Categories' card topper
-#And user makes selections from 'Add Filters'
-#Then 'HealtheRx' is generated
+Scenario: 10.Creating an Erx via Service Categories
+Given 'CPT' user is logged in
+And user chooses 'eRx' tab
+And 'eRx Landing' displays 'centered pannel'
+When user inputs address into the 'Location' 
+And card toppers 'Service Categories' and 'Conditions' are activated
+And user selects 'Service Categories' card topper
+And user makes selections from 'Add Filters'
+Then 'HealtheRx' is generated
 
 Scenario: 11.Sending Email Nudge via eRx Page
 Given 'CPT' user is logged in

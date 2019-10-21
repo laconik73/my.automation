@@ -152,6 +152,34 @@ testRunner.Then("automatic eRx is generated", ((string)(null)), ((TechTalk.SpecF
         }
         
         [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("04. Generating Automatic eRx via Patient Card")]
+        public virtual void _04_GeneratingAutomaticERxViaPatientCard()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("04. Generating Automatic eRx via Patient Card", null, ((string[])(null)));
+#line 33
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 34
+testRunner.Given("\'CPT\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 35
+testRunner.And("user chooses tab \'Patient\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 36
+testRunner.And("user searches for a Patient", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 37
+testRunner.And("user chooses patient card", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 38
+testRunner.When("user navigates to \'Generate Automatic eRx\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 39
+testRunner.Then("user is able to \'Add New\' or \'Save\' eRx", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 40
+testRunner.And("user chooses \'Back to Patient\' button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 41
+testRunner.Then("user is back on \'Overview\' patient card", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("05. Verify card toppers activation")]
         public virtual void _05_VerifyCardToppersActivation()
         {
@@ -273,6 +301,34 @@ testRunner.And("user chooses to \'Edit\' eRx", ((string)(null)), ((TechTalk.Spec
 testRunner.And("user removes services from an Erx", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 85
 testRunner.Then("service is removed from an Erx", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("10.Creating an Erx via Service Categories")]
+        public virtual void _10_CreatingAnErxViaServiceCategories()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("10.Creating an Erx via Service Categories", null, ((string[])(null)));
+#line 87
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 88
+testRunner.Given("\'CPT\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 89
+testRunner.And("user chooses \'eRx\' tab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 90
+testRunner.And("\'eRx Landing\' displays \'centered pannel\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 91
+testRunner.When("user inputs address into the \'Location\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 92
+testRunner.And("card toppers \'Service Categories\' and \'Conditions\' are activated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 93
+testRunner.And("user selects \'Service Categories\' card topper", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 94
+testRunner.And("user makes selections from \'Add Filters\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 95
+testRunner.Then("\'HealtheRx\' is generated", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
