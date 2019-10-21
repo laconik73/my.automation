@@ -26,8 +26,9 @@ namespace Nowpow.Automation.Features.StepDefinitions
         }
         internal EditReferralModal SelectAcceptanceStatus(string acceptanceName)
         {
-            WaitForNot(S("#editReferralModal"), Be.Visible);
+            
             acceptanceStatusContainer.Click();
+            WaitForNot(S(".modal.modal-card.fade.in"), Be.Selected);
             S(By.XPath("//span[contains(text(),'Accepted')]")).Click();
 
             return this;

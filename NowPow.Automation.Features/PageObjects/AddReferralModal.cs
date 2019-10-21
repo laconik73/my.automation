@@ -50,6 +50,7 @@ namespace Nowpow.Automation.Features.PageObjects
         }
         internal AddReferralModal SelectCheckbox2()
         {
+            WaitForNot(smallSpinner, Be.InDom);
             consentCheckbox.Click();
             return this;
         }        

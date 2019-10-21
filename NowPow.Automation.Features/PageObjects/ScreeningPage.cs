@@ -84,7 +84,7 @@ namespace NowPow.Automation.Features.StepDefinitions
         {
             S("#get-code").Click();
             String expectedSN = S("#divPatientName").GetText();
-            String actualSN = "NowPow Screening Code for Ronald Abbott:";
+            String actualSN = "NowPow Screening Code for Sophie Arnold:";
             Assert.AreEqual(expectedSN, actualSN);
 
             return new ScreeningPage(DriverContext);

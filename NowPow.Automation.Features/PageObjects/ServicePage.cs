@@ -43,7 +43,7 @@ namespace Nowpow.Automation.Features.StepDefinitions
 
         internal ServicePage SearchServices(string coordinatedOrgName)
         {
-            servicesSearch.SendKeys(coordinatedOrgName);
+            servicesSearch.Hover().SendKeys(coordinatedOrgName);
             return this;
         }
 
@@ -61,7 +61,7 @@ namespace Nowpow.Automation.Features.StepDefinitions
             var newWindow = Driver.SwitchTo().Window(newWindowHandle);
 
             // verify popup window title
-            string expectedNewWindowTitle = "Moore Park Health - North | NowPow";
+            string expectedNewWindowTitle = "Henry D Moore Dental Concepts | NowPow";
             Assert.AreEqual(expectedNewWindowTitle, newWindow.Title);
             return new ServicePage(DriverContext);
         }

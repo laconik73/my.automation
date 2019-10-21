@@ -51,19 +51,11 @@ namespace Nowpow.Automation.Features.StepDefinitions
                 .SelectCheckbox2()
                 .Send();
         }
-        [Then(@"new referral is listed")]
-        public void ThenNewReferralIsListed()
-        {
-            var ReferralListed = new ProfilePage(driverContext);
-            Assert.AreNotEqual(ReferralListed.Displayed, "referral was not listed");       
-            
-        }
         [When(@"user opens Edit Referral modal")]
         public void WhenUserOpensEditReferralModal()
         {
             new PatientPage(driverContext).OpenEditReferral();
         }
-
         [When(@"user edits opened referral info")]
         public void WhenUserEditsOpenedReferralInfo()
         {
@@ -82,13 +74,6 @@ namespace Nowpow.Automation.Features.StepDefinitions
                 .Save();
         }
 
-        [Then(@"referral info should be saved")]
-        public void ThenReferralInfoShouldBeSaved()
-        {
-            new PatientPage(driverContext).VerifyStatusDisplay();
-        }
-       
-        
         [When(@"user makes referral")]
         public void WhenUserMakesReferral()
         {
@@ -98,9 +83,30 @@ namespace Nowpow.Automation.Features.StepDefinitions
             modal.SelectCheckbox2()
                  .Send(); ;
         }
+        [When(@"user makes coordinated referal")]
+        public void WhenUserMakesCoordinatedReferal()
+        {
+            var modal = new AddReferralModal(driverContext).MakeReferral();
+            modal.SelectFirstRefer()
+                .SelectCheckbox1()
+                .SelectCheckbox2()
+                .Send();
+        }
 
-
-
+        [Then(@"new referral is listed")]
+        public void ThenNewReferralIsListed()
+        {
+            var ReferralListed = new ProfilePage(driverContext);
+            Assert.AreNotEqual(ReferralListed.Displayed, "referral was not listed");       
+            
+        }     
+              
+        [Then(@"referral info should be saved")]
+        public void ThenReferralInfoShouldBeSaved()
+        {
+            new PatientPage(driverContext).VerifyStatusDisplay();
+        }    
+        
         [Then(@"referral is sent")]
         public void ThenReferralIsSent()
         {
@@ -139,8 +145,7 @@ namespace Nowpow.Automation.Features.StepDefinitions
             new EditReferralModal(driverContext);
             SeleneElement actualMessage = S("div.error-area");
             Assert.IsTrue(actualMessage.Displayed);
-        }
-        
+        }     
 
 
     }

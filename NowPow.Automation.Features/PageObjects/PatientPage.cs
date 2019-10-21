@@ -26,24 +26,22 @@ namespace Nowpow.Automation.Features.StepDefinitions
         SeleneElement statusFilterButton = S("button[data-id='statusFilterOptions']");
         SeleneElement viewErxButton = S(".row.col-xs.erx-name");
         SeleneElement patientHeader = S(".patient-header");
-        SeleneElement buildNewErxButton = S("button[id='eRx-new']");
+        SeleneElement buildNewErxButton = S("button[id='eRx-new']");      
         SeleneElement generateAutomaticErx = S("button[id='eRx-new-automatic']");
-        SeleneElement editProfileButton = S("#editpatient");
-        SeleneElement contactInformationDrawer = S("#contactinformation-drawer.open-drawer");
+        SeleneElement editProfileButton = S("#editpatient");      
+        SeleneElement contactInformationDrawer = S("#contactinformation-drawer.open-drawer");        
         SeleneElement addressInput = S("input[id='streetAddress']");
         SeleneElement cityInput = S("input[id='city']");        
-        SeleneElement zipcodeInput = S("input[id='postalCode']");        
+        SeleneElement zipcodeInput = S("input[id='postalCode']");     
         SeleneElement conditionsDrawer = S("#conditions-drawer.open-drawer");
         SeleneElement addConditionButton = S("#addcondition");
-        SeleneElement conditionsInput = S("#conditions-search-query");
+        SeleneElement conditionsInput = S("#conditions-search-query");     
         SeleneElement searchButton = S("#btn-search");
         SeleneElement conditionCheckbox = S("div.col-xs-1");     
         SeleneElement updateButton = S("#btn-add");
         SeleneElement saveButton = S("#update");
         SeleneElement acceptanceInfo = S("div.col-xs.info.acceptance");
-
-
-
+               
         public SeleneCollection AllDropDownList { get; private set; }
 
         public PatientPage(DriverContext driverContext) : base(driverContext)
@@ -55,7 +53,13 @@ namespace Nowpow.Automation.Features.StepDefinitions
         {
             S(By.Id("referrals")).Click();
             return new PatientPage(DriverContext);
-        }       
+        }
+        //Open "Documents" subtab
+        internal PatientPage OpenDocuments(string subtabName)
+        {
+            S(By.Id("documents")).Click();
+            return new PatientPage(DriverContext);
+        }
 
 
         //Make a refferal via PatientPage
@@ -127,7 +131,7 @@ namespace Nowpow.Automation.Features.StepDefinitions
             S(By.XPath("//span[@class='text' and contains(text(),'" + dropdownTitle + "')]")).Click();
 
             return new PatientPage(DriverContext);
-        }        
+        }
 
         //To check any or all options from dropdown menu in Referrals: My Referrals, Archived and etc.
         internal PatientPage StatusOption(string statusOption, string dropdownTitle)
@@ -345,6 +349,32 @@ namespace Nowpow.Automation.Features.StepDefinitions
         {
             S("#btn-nudge").Click();
             return new SendNudgeModal(DriverContext);
+        }
+        internal UploadDocumentModal ClickUploadDocument(string button)
+        {
+            WaitForNot(smallSpinner, Be.InDom);
+            S("#btn-add-document").Click();
+            return new UploadDocumentModal(DriverContext);
+        }
+        internal PatientPage TakeAction()
+        {
+            S("#btn-takeAction").Click();
+            return new PatientPage(DriverContext);
+        }
+        internal PatientPage Delete()
+        {
+            S(By.LinkText("Delete")).Click();
+            return new PatientPage(DriverContext);
+        }
+        internal PatientPage Download()
+        {
+            S(By.LinkText("Download")).Click();
+            return new PatientPage(DriverContext);
+        }
+        internal PatientPage Notes()
+        {
+            S(By.LinkText("Notes")).Click();
+            return new PatientPage(DriverContext);
         }
     } 
 }

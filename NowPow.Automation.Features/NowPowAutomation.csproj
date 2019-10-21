@@ -208,12 +208,15 @@
     <Compile Include="PageObjects\SearchForServicesModal.cs" />
     <Compile Include="PageObjects\SendNudgeModal.cs" />
     <Compile Include="PageObjects\SLSOrganizationPage.cs" />
+    <Compile Include="PageObjects\UploadDocumentModal.cs" />
     <Compile Include="ProjectBaseConfiguration.cs" />
     <Compile Include="ProjectPageBase.cs" />
     <Compile Include="ProjectTestBase.cs" />
     <Compile Include="PageObjects\BackgroundPage.cs" />
+    <Compile Include="StepDefinitions\DocumentsSteps.cs" />
     <Compile Include="StepDefinitions\ErxSteps.cs" />
     <Compile Include="PageObjects\FoodPage.cs" />
+    <Compile Include="StepDefinitions\NotesModal.cs" />
     <Compile Include="StepDefinitions\ReferralFilterOptionSteps.cs" />
     <Compile Include="StepDefinitions\ReferralSteps.cs" />
     <Compile Include="StepDefinitions\ProjectTestBase.cs" />
