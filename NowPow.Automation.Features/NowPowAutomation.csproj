@@ -210,9 +210,9 @@
     <Compile Include="StepDefinitions\DocumentsSteps.cs" />
     <Compile Include="StepDefinitions\ErxSteps.cs" />
     <Compile Include="PageObjects\FoodPage.cs" />
-    <Compile Include="StepDefinitions\NotesModal.cs" />
+    <Compile Include="PageObjects\NotesModal.cs" />
     <Compile Include="StepDefinitions\ReferralFilterOptionSteps.cs" />
-    <Compile Include="StepDefinitions\ReferralsReceivedPage.cs" />
+    <Compile Include="PageObjects\ReferralsReceivedPage.cs" />
     <Compile Include="StepDefinitions\ReferralSteps.cs" />
     <Compile Include="StepDefinitions\ProjectTestBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
