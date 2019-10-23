@@ -6,6 +6,7 @@ using NowPow.Automation.PageObjects;
 using NSelene;
 using Ocaramba;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using System;
 using static NSelene.Selene;
 
@@ -46,7 +47,7 @@ namespace Nowpow.Automation.Features.StepDefinitions
 
         public PatientPage(DriverContext driverContext) : base(driverContext)
         {
-            
+            DriverContext.Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
         }
         //Open "Referral" subtab 
         internal PatientPage OpenReferral(string subtabName)
@@ -107,14 +108,15 @@ namespace Nowpow.Automation.Features.StepDefinitions
         {
             saveandcreateButton.Click();
             return new ProfilePage(DriverContext);
-        }      
+        }       
 
         //Search and verify new patient card created
         internal ProfilePage View()
         {
             WaitFor(S("#results-area"), Be.Visible);
             return new ProfilePage(DriverContext);
-        }
+        }     
+               
         //To choose any option from dropdown menu in "Referrals": My Referrals or any organization
         internal PatientPage FilterOption(string filterOption, string dropdownTitle)
         {
@@ -131,8 +133,8 @@ namespace Nowpow.Automation.Features.StepDefinitions
             S(By.XPath("//span[@class='text' and contains(text(),'" + dropdownTitle + "')]")).Click();
 
             return new PatientPage(DriverContext);
-        }
-
+        }     
+               
         //To check any or all options from dropdown menu in Referrals: My Referrals, Archived and etc.
         internal PatientPage StatusOption(string statusOption, string dropdownTitle)
         {
@@ -147,20 +149,22 @@ namespace Nowpow.Automation.Features.StepDefinitions
             S(By.XPath("//span[@class='text' and contains(text(), '" + dropdownTitle + "')]")).Click();
 
             return new PatientPage(DriverContext);
-        }
+        }      
+        
         //View Erx from Patient Page 
         internal ErxPage OpenViewErx()
         {
             viewErxButton.Click();
             return new ErxPage(DriverContext);
-        }
+        }       
+               
         //Verify "Back to Patient" button
         internal PatientPage VerifyPatientCard(string subtabName)
         {
             WaitFor(patientHeader, Be.Visible);
             Assert.IsTrue(true);
             return this;
-        }
+        }        
         internal ErxPage BuildNewErx()
         {         
             buildNewErxButton.Click();            
@@ -176,7 +180,8 @@ namespace Nowpow.Automation.Features.StepDefinitions
         {
             contactInformationDrawer.Click();
             return this;
-        }
+        }        
+
         internal PatientPage InputAddress(string address)
         {
             addressInput.Clear();
@@ -197,7 +202,8 @@ namespace Nowpow.Automation.Features.StepDefinitions
             S("button[data-id='stateId']").Click();
             S(By.XPath("//span[@class='text'][contains(text(),'IL')]")).Click();                   
             return this;
-        }
+        }        
+
         internal PatientPage InputZipCode(string zipCode)
         {
             WaitFor(zipcodeInput, Be.Visible);
@@ -210,11 +216,8 @@ namespace Nowpow.Automation.Features.StepDefinitions
             WaitFor(S("button[data-id='countryCode']"), Be.Visible);
             S("button[data-id='countryCode']").Click();
             S(By.XPath("//li[@class='selected']//span[@class='text'][contains(text(),'United States')]")).Click();
-            //SelectElement c = new SelectElement(S(By.Id("countryCode")));
-            //c.SelectByValue("US");
-
             return this;
-        }
+        }        
 
         internal PatientPage OpenConditions(string conditions)
         {
@@ -377,5 +380,78 @@ namespace Nowpow.Automation.Features.StepDefinitions
             S(By.LinkText("Notes")).Click();
             return new PatientPage(DriverContext);
         }
-    } 
+        internal PatientPage InputMobileNumber()
+        {
+            S("#mobileNumber").Clear().SendKeys("3125554466");
+            return this;
+        }
+        internal PatientPage InputHomeNumber()
+        {
+            S("#homePhoneNumber").Clear().SendKeys("7738889977");
+            return this;
+        }
+        internal PatientPage InputEmail()
+        {
+            S("#emailAddresses").Clear().SendKeys("user@nowpow.com");
+            return this;
+        }
+      
+        internal PatientPage OpenDemographics(string demographics)
+        {
+            S("#demographics-drawer.open-drawer").Click();
+            return this;
+        }
+        internal PatientPage SelectRace()
+        {
+
+            WaitFor(S("[data-id='raceId']"), Be.Visible).Click();
+            SeleneElement raceDropDown = S("#raceId");            
+            SelectElement SelectRace = new SelectElement(raceDropDown);
+            SelectRace.SelectByIndex(1);
+            return this;
+        }
+        internal PatientPage SelectEthnicity()
+        {
+            WaitFor(S("[data-id='ethnicityId']"), Be.Visible).Click();
+            SeleneElement ethnicityDropDown = S("#ethnicityId");
+            SelectElement SelectEthnicity = new SelectElement(ethnicityDropDown);
+            SelectEthnicity.SelectByText("Asian");
+            return this;
+        }
+        internal PatientPage InputMrn(string mrn)
+        {
+            S("#mrn").Clear().SendKeys(mrn);
+            return this;
+        }
+        internal PatientPage SelectGenderType()
+        {
+            WaitFor(S("[data-id='genderId']"), Be.Visible).Click();
+            SeleneElement genderDropDown = S("#genderId");            
+            SelectElement SelectGender = new SelectElement(genderDropDown);
+            SelectGender.SelectByText("Female");
+            return this;
+        }
+        internal PatientPage SelectPreferredLanguage()
+        {
+            WaitFor(S("[data-id='preferredLanguageId']"), Be.Visible).Click();
+            SeleneElement languageDropDown = S("#preferredLanguageId");
+            SelectElement SelectLanguage = new SelectElement(languageDropDown);
+            SelectLanguage.SelectByValue("1");
+            return this;
+        }
+        internal PatientPage SearchByMrn(string mrn)
+        {
+            S("#services-search-query").SendKeys("12345678");
+            S("#btn-search").Click();
+            return new PatientPage(DriverContext);
+        }
+        internal PatientPage InputInvalidPatientName(string invalidName)
+        {
+            S("#services-search-query").SendKeys(invalidName);
+            S("#btn-search").Click();
+            return new PatientPage(DriverContext);
+        }
+
+
+    }
 }

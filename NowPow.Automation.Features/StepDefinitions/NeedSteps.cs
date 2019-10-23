@@ -62,8 +62,7 @@ namespace NowPow.Automation.Features.StepDefinitions
             DateTime.Now.Ticks.ToString();
             var modal = new DashboardPage(driverContext).AddInteraction();
             modal.ChooseInteraction()
-                .ChooseDuration()
-                .Save();
+                  .Save();
         }
         [When(@"user expands Need card's details")]
         public void WhenUserExpandsNeedCardSDetails()

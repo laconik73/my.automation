@@ -13,15 +13,23 @@ namespace Nowpow.Automation.Features.StepDefinitions
     internal class ScreeningErxPage : ProjectPageBase
     {
         private static readonly NLog.Logger Logger = LogManager.GetCurrentClassLogger();
+        SeleneElement generateErxButton = S("#generate-erx");
         SeleneElement editFiltersButton = S("#btn-toFilters");
         SeleneElement languageFilter = S("button[data-id='languages']");
         SeleneElement hoursFilter = S("button[data-id='hours']");
         SeleneElement addServiceButton = S("#btn-add-service");
-        SeleneElement addFavoritesButton = S("#add-favorites");
+        SeleneElement searchProvidersButton = S("#search-providers");
         SeleneElement saveErxScreening = S("#save-screening");
+        
         public ScreeningErxPage(DriverContext driverContext) : base(driverContext)
         {
             
+        }          
+
+        internal ScreeningErxPage GenerateErx()
+        {
+            generateErxButton.Click();
+            return new ScreeningErxPage(DriverContext);
         }
 
         internal ScreeningErxPage EditFilters()
@@ -33,7 +41,6 @@ namespace Nowpow.Automation.Features.StepDefinitions
 
         internal ScreeningErxPage SelectLanguage()
         {
-
             languageFilter.Click();
             S(By.XPath("//span[contains(text(),'Spanish')]")).Click();
             return this;
@@ -58,30 +65,18 @@ namespace Nowpow.Automation.Features.StepDefinitions
             return new ScreeningErxPage(DriverContext);
         }
 
-        internal ScreeningErxPage AddFavorites()
+        internal SearchForServicesModal SearchForService()
         {
-            addFavoritesButton.Click();
-            return new ScreeningErxPage(DriverContext);
-        }
-        internal ScreeningErxPage SelectFirstFavorite()
-        {
-            WaitForNot(smallSpinner, Be.Visible);
-            S(".col-xs-1").Click();
-            return new ScreeningErxPage(DriverContext);
-        }
-        internal ScreeningErxPage Update()
-        {
-            S("#btn-add").Click();
-            return new ScreeningErxPage(DriverContext);
+            searchProvidersButton.Click();
+            return new SearchForServicesModal(DriverContext);
         }
 
-        internal ScreeningErxPage SaveErx()
+        internal ScreeningErxPage SaveErxToScreening()
         {
             WaitForNot(S(".modal-backdrop.fade"), Be.InDom);
             saveErxScreening.Click();
             return new ScreeningErxPage(DriverContext);
         }
-
         
     }
 }

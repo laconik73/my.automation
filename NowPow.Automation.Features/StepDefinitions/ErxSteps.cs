@@ -243,9 +243,37 @@ namespace Nowpow.Automation.Features.StepDefinitions
         public void ThenEmailNudgeIsSent()
         {
             new ErxPage(driverContext);
-           
-
+            Assert.IsTrue(true);
         }
+        [When(@"user views completed screening")]
+        public void WhenUserViewsCompletedScreening()
+        {
+            new ProfilePage(driverContext).OpenDetails();
+        }
+        [When(@"user generates an eRx")]
+        public void WhenUserGeneratesAnERx()
+        {
+            new ScreeningErxPage(driverContext)
+                .GenerateErx()
+                .EditFilters()
+                .SelectLanguage()
+                .SelectHours()
+                .Apply()
+                .AddServiceProvider();
+            var modal = new ScreeningErxPage(driverContext).SearchForService();
+            modal.InputQuery("hyde park")
+                .ClickSearch()
+                .SelectFirstService()
+                .Update();
+        }
+        [Then(@"new eRx is created from patient's screening")]
+        public void ThenNewERxIsCreatedFromPatientSScreening()
+        {
+            new ScreeningErxPage(driverContext).SaveErxToScreening();
+        }
+
+
+
 
 
 

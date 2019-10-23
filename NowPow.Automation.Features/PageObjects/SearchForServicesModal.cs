@@ -1,6 +1,7 @@
 ﻿using System;
 using NLog;
 using Nowpow.Automation.Features.PageObjects;
+using Nowpow.Automation.Features.StepDefinitions;
 using NowPow.Automation.Features.StepDefinitions;
 using NowPow.Automation.PageObjects;
 using NSelene;
@@ -18,39 +19,37 @@ namespace NowPow.Automation.Features.StepDefinitions
         SeleneElement searchButton = S("#btn-search");
         SeleneElement updateButton = S("#btn-add");
 
+
         public SearchForServicesModal(DriverContext driverContext) : base(driverContext)
         {
             DriverContext.Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(2);
         }
-
-        internal SearchForServicesModal OpenSearchForServices()
-        {
-            return this;
-        }
+        
         internal SearchForServicesModal InputQuery(string query)
         {
             WaitForNot(S("#spinnerSmall"), Be.InDom);
             inputService.Hover().SendKeys(query);
             return this;
         }
-        internal SearchForServicesModal Search()
+        internal SearchForServicesModal ClickSearch()
         {
             searchButton.Click();
             return this;
         }
-        internal SearchForServicesModal SelectFirstResult()
+
+        internal SearchForServicesModal SelectFirstService()
         {
-            WaitForNot(S("#spinnerSmall"), Be.InDom);
-            WaitFor(S(".provider-container"), Be.Visible);
-            S(By.CssSelector("div.col-xs-1")).Click();
+            
+            S("div.col-xs-1").Click();
             return this;
         }
-        internal ScreeningPage Update()
+
+        internal ScreeningErxPage Update()
         {
             updateButton.Click();
-            return new ScreeningPage(DriverContext); 
+            return new ScreeningErxPage(DriverContext); 
         }
 
-        
+       
     }
 }

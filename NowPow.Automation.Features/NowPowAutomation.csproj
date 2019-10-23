@@ -212,6 +212,7 @@
     <Compile Include="PageObjects\FoodPage.cs" />
     <Compile Include="StepDefinitions\NotesModal.cs" />
     <Compile Include="StepDefinitions\ReferralFilterOptionSteps.cs" />
+    <Compile Include="StepDefinitions\ReferralsReceivedPage.cs" />
     <Compile Include="StepDefinitions\ReferralSteps.cs" />
     <Compile Include="StepDefinitions\ProjectTestBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -253,16 +254,19 @@
       <DependentUpon>App.config</DependentUpon>
       <IsTransformFile>true</IsTransformFile>
     </None>
+    <None Include="Regression\Erx.feature" />
+    <None Include="Regression\Patient.feature" />
+    <None Include="Regression\Referral.feature" />
     <None Include="specflow.json" />
     <None Include="TestData\ImportPatient.xlsx" />
-    <None Include="TestFeatures\CoordinatedReferrals.feature" />
-    <None Include="TestFeatures\SLS.feature" />
-    <None Include="TestFeatures\Patient.feature" />
-    <None Include="TestFeatures\Referral.feature" />
-    <None Include="TestFeatures\ReferralFilterOption.feature" />
-    <None Include="TestFeatures\Screenings.feature" />
-    <None Include="TestFeatures\Service.feature" />
-    <None Include="TestFeatures\Erx.feature" />
+    <None Include="Smoke\CoordinatedReferrals.feature" />
+    <None Include="Smoke\SLS.feature" />
+    <None Include="Smoke\Patient.feature" />
+    <None Include="Smoke\Referral.feature" />
+    <None Include="Smoke\ReferralFilterOption.feature" />
+    <None Include="Smoke\Screenings.feature" />
+    <None Include="Smoke\Service.feature" />
+    <None Include="Smoke\Erx.feature" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -272,7 +276,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
-    <None Include="TestFeatures\Needs.feature" />
+    <None Include="Smoke\Needs.feature" />
   </ItemGroup>
   <ItemGroup />
   <Choose>

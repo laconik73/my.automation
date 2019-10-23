@@ -5,7 +5,8 @@ using static NSelene.Selene;
 using Ocaramba;
 using NowPow.Automation.PageObjects;
 using Nowpow.Automation.Features.PageObjects;
-
+using Nowpow.Automation.Features.StepDefinitions;
+using System.Linq;
 
 namespace NowPow.Automation.Features.StepDefinitions
 
@@ -17,6 +18,9 @@ namespace NowPow.Automation.Features.StepDefinitions
         SeleneElement needsButton = S("#needs");
         SeleneElement referralsButton = S("#referrals");
         SeleneElement searchTextbox = S("#services-search-query");
+        SeleneElement addInteractionButton = S("#add-interaction");
+        SeleneElement nowpowLogo = S("#nav-home");
+        SeleneElement screeningSummary = S("a[href*='summary']");
 
         public bool Displayed { get; internal set; }
 
@@ -44,8 +48,30 @@ namespace NowPow.Automation.Features.StepDefinitions
             searchTextbox.SendKeys("sabina");
             return new ProfilePage(DriverContext);
         }
-        
-               
+
+        internal AddInteractionModal AddInteraction()
+        {
+            addInteractionButton.Click();
+            return new AddInteractionModal(DriverContext);
+        }
+
+        internal DashboardPage ClickOnNowPow(string logo)
+        {
+            WaitForNot(S(".modal.modal-card.fade.in"), Be.InDom);
+            nowpowLogo.Click();
+            return new DashboardPage(DriverContext);
+        }
+
+        internal ScreeningErxPage OpenDetails()
+        {
+            screeningSummary.Click();
+
+            //switching to popup window 
+            string newWindowHandle = Driver.WindowHandles.Last();
+            var newWindow = Driver.SwitchTo().Window(newWindowHandle);
+
+            return new ScreeningErxPage(DriverContext);
+        }
     }
 }
 

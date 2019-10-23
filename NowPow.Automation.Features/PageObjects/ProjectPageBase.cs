@@ -14,8 +14,8 @@
         {
             this.DriverContext = driverContext;
             this.Driver = driverContext.Driver;
-            Driver.Manage().Window.Size = new System.Drawing.Size(1680, 1050);
-            //Driver.Manage().Window.Maximize();
+            //Driver.Manage().Window.Size = new System.Drawing.Size(1680, 1050);
+            Driver.Manage().Window.Maximize();
         }
         protected IWebDriver Driver { get; set; }
         public DriverContext DriverContext { get; set; }

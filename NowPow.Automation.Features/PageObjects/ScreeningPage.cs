@@ -76,9 +76,8 @@ namespace NowPow.Automation.Features.StepDefinitions
             Assert.AreEqual(actualMessage, expectedMessage);               
             
             return new ScreeningErxPage(DriverContext);
-        }         
-          
-              
+        }       
+                      
         
         internal ScreeningPage GetCode(string code)
         {

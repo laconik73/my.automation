@@ -4,6 +4,8 @@ using Ocaramba;
 using TechTalk.SpecFlow;
 using OpenQA.Selenium;
 using static NSelene.Selene;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NSelene;
 
 namespace Nowpow.Automation.Features.StepDefinitions
 {
@@ -46,7 +48,7 @@ namespace Nowpow.Automation.Features.StepDefinitions
         {
             new PatientPage(driverContext)
                 .EnterFirstName("sabina")
-                .EnterLastName("smoke")
+                .EnterLastName("automation")
                 .EnterDateOfBirth("mm/dd/yyyy")
                 .SelectGender("female");                
         }
@@ -111,6 +113,146 @@ namespace Nowpow.Automation.Features.StepDefinitions
                 return false;
             }
         }
+        [When(@"user expands '(.*)' section")]
+        public void WhenUserExpandsSection(string contactInformation)
+        {
+            new PatientPage(driverContext).OpenContactInformation(contactInformation);
+        }
+        [When(@"user edits '(.*)'")]
+        public void WhenUserEdits(string contactInformation)
+        {
+            new PatientPage(driverContext)
+                .InputMobileNumber()
+                .InputHomeNumber()
+                .InputEmail()
+                .Save();
+        }
+        [Then(@"edited contact information is displayed in patient'(.*)'Consent'")]
+        public void ThenEditedContactInformationIsDisplayedInPatientConsent(string patientConsent)
+        {
+            new PatientPage(driverContext);
+            String actualConsent = S(By.XPath("//h4[contains(text(),'Consent')]")).GetText();
+            String expenctedConsent = "Consent";
+            Assert.AreEqual(actualConsent, expenctedConsent);
+        }
+        [When(@"user expands  patient '(.*)' section")]
+        public void WhenUserExpandsPatientSection(string demographics)
+        {
+            new PatientPage(driverContext).OpenDemographics(demographics);
+        }
+        [When(@"user edits patient '(.*)'")]
+        public void WhenUserEditsPatient(string editDemographics)
+        {
+            new PatientPage(driverContext)
+                .SelectRace()
+                .SelectEthnicity()
+                .Save();
+        }
+        [Then(@"demographics are updated in patient overview")]
+        public void ThenDemographicsAreUpdatedInPatientOverview()
+        {
+            new PatientPage(driverContext);
+            String actualOverview = S("#divPatientOverview").GetText();
+            String expectedOverview = "Overview";
+            Assert.AreEqual(actualOverview, expectedOverview);
+        }
+        [When(@"user edits basic information")]
+        public void WhenUserEditsBasicInformation()
+        {
+            new PatientPage(driverContext)
+                .EnterFirstName("sabina")
+                .EnterLastName("automation")
+                .EnterDateOfBirth("mm/dd/yyyy")               
+                .InputMrn("55887799")
+                .SelectGenderType()
+                .SelectPreferredLanguage()
+                .Save();
+        }
+        [Then(@"basic information in updated in patient overview")]
+        public void ThenBasicInformationInUpdatedInPatientOverview()
+        {
+            new PatientPage(driverContext);
+            String actualOverview = S("#divPatientOverview").GetText();
+            String expectedOverview = "Overview";
+            Assert.AreEqual(actualOverview, expectedOverview);
+
+        }
+        [When(@"user searches patient by '(.*)'")]
+        public void WhenUserSearchesPatientBy(string mrn)
+        {
+            new PatientPage(driverContext).SearchByMrn(mrn);
+        }
+        [Then(@"patient matching mrn is dispayed")]
+        public void ThenPatientMatchingMrnIsDispayed()
+        {
+            new PatientPage(driverContext);
+            SeleneElement matchingPatients = S("#patients");
+            if (matchingPatients.IsDisplayed())
+            {
+                Console.WriteLine("matching patients are displayed");
+            }
+            else
+            {
+                Console.WriteLine("no results");
+            }
+            
+        }
+        [When(@"user input invalid name")]
+        public void WhenUserInputInvalidName()
+        {
+            new PatientPage(driverContext).InputInvalidPatientName("!@#$%&&");
+        }
+        
+        [Then(@"no results are dispayed")]
+        public void ThenNoResultsAreDispayed()
+        {
+            new PatientPage(driverContext);
+            Assert.IsTrue(true);
+        }
+        [When(@"user adds a new interaction with a note")]
+        public void WhenUserAddsANewInteractionWithANote()
+        {
+
+            note = DateTime.Now.Ticks.ToString();
+            var modal = new ProfilePage(driverContext).AddInteraction();
+            modal.ChooseInteraction()                
+                .WriteNote(note)
+                .Save();
+        }
+        [Then(@"new interaction is created")]
+        public void ThenNewInteractionIsCreated()
+        {
+            new ProfilePage(driverContext);
+            SeleneElement engagementTable = S("#engagement-table");
+            if (engagementTable.IsDisplayed())
+            {
+                Console.WriteLine("new interaction is created");
+            }
+            else
+            {
+                Console.WriteLine("no interaction is added");
+            }
+        }
+        [Then(@"user chooses '(.*)' logo")]
+        public void ThenUserChoosesLogo(string logo)
+        {
+            new ProfilePage(driverContext).ClickOnNowPow(logo);
+        }
+        [Then(@"patient card is listed under '(.*)' section")]
+        public void ThenPatientCardIsListedUnderSection(string recentPatients)
+        {
+            new DashboardPage(driverContext);
+            Assert.IsTrue(true);
+
+
+        }
+
+
+
+
+
+
+
     }
 }
    

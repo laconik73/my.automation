@@ -146,8 +146,51 @@ namespace Nowpow.Automation.Features.StepDefinitions
             new EditReferralModal(driverContext);
             SeleneElement actualMessage = S("div.error-area");
             Assert.IsTrue(actualMessage.Displayed);
-        }     
+        }
+        [When(@"user sends a message to a referral taker")]
+        public void WhenUserSendsAMessageToAReferralTaker()
+        {
+            DateTime.Now.Ticks.ToString();
+            new ReferralsSentPage(driverContext)
+                .ClickMessage()
+                .WriteMessage("automation")
+                .SendMessage();
+        }
+        [Then(@"message is sent")]
+        public void ThenMessageIsSent()
+        {
+            new ReferralsSentPage(driverContext);
+            Assert.IsTrue(true);
+        }
+        
+        [Then(@"user navigates back to patient's referral")]
+        public void ThenUserNavigatesBackToPatientSReferral()
+        {
+            new ReferralsSentPage(driverContext).NavigateBack();
+        }
+        [Then(@"all patient referrals are displayed")]
+        public void ThenAllPatientReferralsAreDisplayed()
+        {
+            new ReferralsSentPage(driverContext);
+            String actualReferrals = S(By.XPath("//h3[contains(text(),'Referrals')]")).GetText();
+            String expectedReferrals = "Referrals";
+            Assert.AreEqual(actualReferrals, expectedReferrals);
 
+        }
+        [Given(@"user on '(.*)' page")]
+        public void GivenUserOnPage(string subNav)
+        {
+            new ReferralsReceivedPage(driverContext).OpenTaskView(subNav);
+        }
+        [When(@"user sends a message to a referral maker")]
+        public void WhenUserSendsAMessageToAReferralMaker()
+        {
+            DateTime.Now.Ticks.ToString();
+            new ReferralsReceivedPage(driverContext)
+                .ClickMessage()
+                .WriteMessage("automation")
+                .SendMessage();
+        }
 
     }
 }

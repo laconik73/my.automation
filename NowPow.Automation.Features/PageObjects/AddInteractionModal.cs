@@ -9,7 +9,7 @@ namespace NowPow.Automation.Features.StepDefinitions
 {
     internal class AddInteractionModal : ProjectPageBase
     {
-        SeleneElement typeButton = S("[data-id='type']");
+        SeleneElement notes = S("#notes");
         public AddInteractionModal(DriverContext driverContext) : base(driverContext)
         {
             DriverContext.Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1);
@@ -34,6 +34,12 @@ namespace NowPow.Automation.Features.StepDefinitions
         {
             S("#btn-add").Click();
             return new DashboardPage(DriverContext);
+        }
+
+        internal AddInteractionModal WriteNote(string note)
+        {
+            notes.SendKeys(note);
+            return this;
         }
     }
         

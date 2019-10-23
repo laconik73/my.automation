@@ -10,17 +10,23 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Nowpow.Automation.Features.PageObjects
 {
     internal class ReferralsSentPage : ProjectPageBase
-    { 
+    {
         private static readonly NLog.Logger Logger = LogManager.GetCurrentClassLogger();
-        SeleneElement inputMessage = S("#new-message");
-        SeleneElement referralMessage = S(".col-xs-12.message");
+        SeleneElement referralMessage = S("div[class*='message']");
+        SeleneElement inputMessage = S("#new-message");        
         SeleneElement sendButton = S("#send-button");
         SeleneElement backButton = S("span#back-link");
-        internal static bool isDisplayed;
+        
 
         public ReferralsSentPage(DriverContext driverContext) : base(driverContext)
         {
             DriverContext.Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1);
+        }
+
+        internal ReferralsSentPage ClickMessage()
+        {
+            referralMessage.Click();
+            return new ReferralsSentPage(DriverContext);
         }
 
         internal ReferralsSentPage WriteMessage(string note)
@@ -29,40 +35,21 @@ namespace Nowpow.Automation.Features.PageObjects
             return this;
         }
 
-        internal ReferralsSentPage DisplayMessage()
+        internal ReferralsSentPage SendMessage()
         {
-            WaitFor(S("#message-card-content"), Be.Visible);
+            WaitForNot(spinner, Be.InDom);
+            sendButton.Click();
             return this;
         }
 
-        internal ReferralsSentPage OpenMessage(string serviceMessage)
+        internal ReferralsSentPage NavigateBack()
         {
-            referralMessage.Hover().Click();
-            return new ReferralsSentPage(DriverContext);
-        }
-
-        internal ReferralsSentPage SendMessage()
-        {
-            sendButton.Click();
-            return new ReferralsSentPage(DriverContext);
-
-        }
-
-        internal ReferralsSentPage GoBack()
-        {
-            backButton.Hover().Click();
-            return new ReferralsSentPage(DriverContext);
-        }
-
-        internal ReferralsSentPage VerifyPage()
-        {
-            String expectedPage = S(By.XPath("//div[@class='col-xs-2']")).GetText();
-            String actualPage = "Referrals";
-            Assert.AreEqual(expectedPage, actualPage);
+            backButton.Click();
             return new ReferralsSentPage(DriverContext);
         }
     }
-  }
+}
+  
 
     
 
