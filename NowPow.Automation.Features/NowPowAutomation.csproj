@@ -255,6 +255,7 @@
       <IsTransformFile>true</IsTransformFile>
     </None>
     <None Include="Regression\Erx.feature" />
+    <None Include="Regression\Login.feature" />
     <None Include="Regression\Patient.feature" />
     <None Include="Regression\Referral.feature" />
     <None Include="specflow.json" />
