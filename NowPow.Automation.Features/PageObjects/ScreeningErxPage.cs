@@ -31,10 +31,10 @@ namespace Nowpow.Automation.Features.StepDefinitions
             generateErxButton.Click();
             return new ScreeningErxPage(DriverContext);
         }
-
+        //possible bug has not been fixed yet. Fails on this steps.
         internal ScreeningErxPage EditFilters()
         {
-            WaitForNot(spinner, Be.InDom);
+            WaitForNot(spinner, Be.InDom);            
             editFiltersButton.Click();
             return new ScreeningErxPage(DriverContext);
         }

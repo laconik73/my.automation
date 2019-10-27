@@ -7,6 +7,8 @@ using NowPow.Automation.PageObjects;
 using Nowpow.Automation.Features.PageObjects;
 using Nowpow.Automation.Features.StepDefinitions;
 using System.Linq;
+using OpenQA.Selenium;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace NowPow.Automation.Features.StepDefinitions
 
@@ -21,6 +23,8 @@ namespace NowPow.Automation.Features.StepDefinitions
         SeleneElement addInteractionButton = S("#add-interaction");
         SeleneElement nowpowLogo = S("#nav-home");
         SeleneElement screeningSummary = S("a[href*='summary']");
+        SeleneElement conductScreeningButton = S("#btn-conduct-screening");       
+        SeleneElement takeActionButton = S("#btn-takeAction");
 
         public bool Displayed { get; internal set; }
 
@@ -71,6 +75,19 @@ namespace NowPow.Automation.Features.StepDefinitions
             var newWindow = Driver.SwitchTo().Window(newWindowHandle);
 
             return new ScreeningErxPage(DriverContext);
+        }
+
+        internal ScreeningPage ConductScreening(string button)
+        {
+            WaitForNot(smallSpinner, Be.InDom);
+            conductScreeningButton.Click();
+            return new ScreeningPage(DriverContext);
+        }
+
+        internal ProfilePage OpenTakeAction()
+        {
+           takeActionButton.Click();
+            return this;
         }
     }
 }

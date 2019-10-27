@@ -187,6 +187,7 @@
     <Compile Include="Helpers\WordHelper.cs" />
     <Compile Include="PageObjects\AddInteractionModal.cs" />
     <Compile Include="PageObjects\AddNeedModal.cs" />
+    <Compile Include="PageObjects\AnalyticsPage.cs" />
     <Compile Include="PageObjects\AppointmentReminderModal.cs" />
     <Compile Include="PageObjects\EditReferralModal.cs" />
     <Compile Include="PageObjects\ErxPage.cs" />
@@ -207,6 +208,7 @@
     <Compile Include="ProjectPageBase.cs" />
     <Compile Include="ProjectTestBase.cs" />
     <Compile Include="PageObjects\BackgroundPage.cs" />
+    <Compile Include="StepDefinitions\AnalyticsSteps.cs" />
     <Compile Include="StepDefinitions\DocumentsSteps.cs" />
     <Compile Include="StepDefinitions\ErxSteps.cs" />
     <Compile Include="PageObjects\FoodPage.cs" />
@@ -254,10 +256,12 @@
       <DependentUpon>App.config</DependentUpon>
       <IsTransformFile>true</IsTransformFile>
     </None>
+    <None Include="Regression\Analytics.feature" />
     <None Include="Regression\Erx.feature" />
     <None Include="Regression\Login.feature" />
     <None Include="Regression\Patient.feature" />
     <None Include="Regression\Referral.feature" />
+    <None Include="Regression\Screening.feature" />
     <None Include="specflow.json" />
     <None Include="TestData\ImportPatient.xlsx" />
     <None Include="Smoke\CoordinatedReferrals.feature" />

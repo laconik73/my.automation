@@ -22,9 +22,9 @@ namespace NowPow.Automation.Features.StepDefinitions
         SeleneElement patientTab = S("[data-link*='patients'][type]");        
         SeleneElement referralsTab = S("#referralsMenu");
         SeleneElement screeningsTab = S("[data-link*='screenings'][type]");     
-        SeleneElement erxTab = S("[data-link*='eRX'][type]");      
+        SeleneElement erxTab = S("[data-link*='eRX'][type]");       
         SeleneElement servicesTab = S("[data-link*='services'][type]");
-        SeleneElement adminTab = S("#analyticsTabBtn");
+        SeleneElement analyticsTab = S("a[id='analyticsTabBtn'][type]");
         SeleneElement hamburgerIcon = S("#hamburger-icon");
         SeleneElement expandedNav = S(".inset-nav");
         SeleneElement notificationIcon = S("#nav-item-notifications");
@@ -148,6 +148,13 @@ namespace NowPow.Automation.Features.StepDefinitions
             WaitFor(navElement, Be.Visible);
             navElement.Click();
         }
+        internal AnalyticsPage OpenAnalytics(string tabName)
+        {
+            analyticsTab.Click();            
+            return new AnalyticsPage(DriverContext);
+        }
+
+
     }
 }
 
