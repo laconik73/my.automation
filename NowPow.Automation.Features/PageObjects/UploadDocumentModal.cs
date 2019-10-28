@@ -9,6 +9,7 @@ using AutoItX3Lib;
 using System.Threading;
 using System.Diagnostics;
 using Microsoft.JScript;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Nowpow.Automation.Features.StepDefinitions
 {
@@ -18,6 +19,7 @@ namespace Nowpow.Automation.Features.StepDefinitions
 
         SeleneElement chooseFile = S("#btn-choose-file");
         SeleneElement uploadButton = S("#btn-add");
+        SeleneElement cancelButton = S("#btn-cancel");
 
         public UploadDocumentModal(DriverContext driverContext) : base(driverContext)
         {
@@ -41,6 +43,33 @@ namespace Nowpow.Automation.Features.StepDefinitions
         {
             uploadButton.Click();
             return new PatientPage(DriverContext);
-        }        
+        }
+
+        internal UploadDocumentModal ChooseOneFile()
+        {
+
+            chooseFile.Click();
+            Thread.Sleep(1000);
+            //AutoIT= Handles Windows that do not belong to browser.
+            AutoItX3 autoIt = new AutoItX3();
+            autoIt.WinActivate("Open");
+            autoIt.Send("C:\\Users\\sabina.dovlati\\Desktop\\ScaleTestDocs\\Scale.docx");
+            Thread.Sleep(1000);
+            autoIt.Send(@"{ENTER}");
+            Thread.Sleep(1000);
+            return this;
+        }
+
+        internal UploadDocumentModal EnableUpload(string button)
+        {
+            Assert.IsTrue(uploadButton.Enabled);
+            return this;
+        }
+
+        internal PatientPage ClickCancel(string button)
+        {
+            cancelButton.Click();
+            return new PatientPage(DriverContext);
+        }
     }
 }

@@ -10,6 +10,9 @@ using static NSelene.Selene;
 using OpenQA.Selenium;
 using Nowpow.Automation.Features.PageObjects;
 using NowPow.Automation.Features.StepDefinitions;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
 
 namespace Nowpow.Automation.Features.PageObjects
 {
@@ -98,7 +101,7 @@ namespace Nowpow.Automation.Features.PageObjects
         //Input address location into search field on eRx landing Page
         internal ErxPage InputAddress(string address)
         {
-            addressInput.SendKeys(address);
+            addressInput.Clear().SendKeys(address);
             return this;
         }
         //Submit button for search field on eRx page
@@ -271,6 +274,44 @@ namespace Nowpow.Automation.Features.PageObjects
             S("#btn-nudge").Click();
             return new SendNudgeModal(DriverContext);
         }
+
+        internal ErxPage ClickConditions()
+        {
+            conditonsButton.Click();
+            return new ErxPage(DriverContext);
+        }
+
+        internal ErxPage SelectFinancialAssistance()
+        {
+            S(By.XPath("//label[contains(text(),'Financial Assistance')]"))
+                .Hover()
+                .Click();   
+             return this; 
+        }
+
+        internal ErxPage SelectFoodInsecurity()
+        {
+            S(By.XPath("//label[contains(text(),'Food Insecurity (Adults)')]"))
+                .Hover()
+                .Click();
+            return this;
+        }
+        
+        internal MakeReferralModal MakeReferral()
+        {
+            try
+            {
+                S("button[class*='btn-send-referral']").Hover().Click();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("test failed");
+            }
+            
+            return new MakeReferralModal(DriverContext);
+        }
+
+        
     }
 }
           

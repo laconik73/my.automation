@@ -107,7 +107,100 @@ namespace Nowpow.Automation.Features.StepDefinitions
             }            
             
         }
+        [When(@"user chooses one file to upload")]
+        public void WhenUserChoosesOneFileToUpload()
+        {
+            new UploadDocumentModal(driverContext).ChooseOneFile();
+        }
+        [Then(@"'(.*)' button is enabled")]
+        public void ThenButtonIsEnabled(string button)
+        {
+            new UploadDocumentModal(driverContext).EnableUpload(button);
+            
+        }
+        [Then(@"a user chooses '(.*)' button")]
+        public void ThenAUserChoosesButton(string button)
+        {
+            new UploadDocumentModal(driverContext).ClickCancel(button);
+        }
+        [Then(@"modal is closed")]
+        public void ThenModalIsClosed()
+        {
+            new PatientPage(driverContext);
+            Assert.IsTrue(S(By.XPath("//h3[contains(text(),'Documents')]")).Displayed);
+        }
+        [Then(@"user clicks on '(.*)' again")]
+        public void ThenUserClicksOnAgain(string button)
+        {
+            new PatientPage(driverContext).ClickUploadDocument(button);
+        }
+        [Then(@"any data entered on the previous modal is cleared")]
+        public void ThenAnyDataEnteredOnThePreviousModalIsCleared()
+        {
+            new UploadDocumentModal(driverContext);
+            String fileName = S(By.XPath("//label[@class='file-name']")).GetText();
+            String expectedFileName = "NO FILE CHOSEN";
+            Assert.AreEqual(fileName, expectedFileName);
+        }
+        [When(@"user is on Patient'(.*)'Overview' page")]
+        public void WhenUserIsOnPatientOverviewPage(string subtabName)
+        {
+            new ProfilePage(driverContext);
+            
+        }
+        [Then(@"'(.*)' subtab is displayed")]
+        public void ThenSubtabIsDisplayed(string subtabName)
+        {
+            new ProfilePage(driverContext);
+            bool subtabDocuments = Verify("#documents");
+            Console.WriteLine("Documents subtab is displayed");
 
+        }
+
+        private bool Verify(string subtabName)
+        {
+            try
+            {
+                bool isDocumentsDisplayed = S("#documents").Displayed;
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+        [When(@"user refers a service")]
+        public void WhenUserRefersAService()
+        {
+            new ProfilePage(driverContext).SendTrackedReferral();
+        }
+        [When(@"user adds document")]
+        public void WhenUserAddsDocument()
+        {
+            new MakeReferralModal(driverContext).AddDocument();
+        }
+        [When(@"user adds another document")]
+        public void WhenUserAddsAnotherDocument()
+        {
+            new MakeReferralModal(driverContext).AddAnotherDocument();
+        }
+        [Then(@"the files display as separate lines")]
+        public void ThenTheFilesDisplayAsSeparateLines()
+        {
+            new MakeReferralModal(driverContext);
+            Assert.IsTrue(S(By.XPath("//div[@class='attached-documents']")).Displayed);            
+        }
+        [When(@"user deletes a document")]
+        public void WhenUserDeletesADocument()
+        {
+            new MakeReferralModal(driverContext).ClickDeleteIcon();
+        }
+        [Then(@"document is removed")]
+        public void ThenDocumentIsRemoved()
+        {
+            new MakeReferralModal(driverContext);
+            Assert.IsTrue(S(By.XPath("//div[@class='attached-documents']")).Displayed);
+        }
 
 
 
@@ -115,5 +208,6 @@ namespace Nowpow.Automation.Features.StepDefinitions
 
 
     }
+
 }
 

@@ -25,6 +25,7 @@ namespace NowPow.Automation.Features.StepDefinitions
         SeleneElement screeningSummary = S("a[href*='summary']");
         SeleneElement conductScreeningButton = S("#btn-conduct-screening");       
         SeleneElement takeActionButton = S("#btn-takeAction");
+        SeleneElement sendReferralButton = S("button[class*='btn-send-tracked-referral']");
 
         public bool Displayed { get; internal set; }
 
@@ -88,7 +89,13 @@ namespace NowPow.Automation.Features.StepDefinitions
         {
            takeActionButton.Click();
             return this;
-        }        
+        }
+
+        internal MakeReferralModal SendTrackedReferral()
+        {
+            sendReferralButton.Click();
+            return new MakeReferralModal(DriverContext);
+        }
     }
 }
 

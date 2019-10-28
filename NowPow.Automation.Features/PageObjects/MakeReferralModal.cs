@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Threading;
+using AutoItX3Lib;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NLog;
+using Nowpow.Automation.Features.PageObjects;
 using NowPow.Automation.PageObjects;
 using NSelene;
 using Ocaramba;
@@ -16,6 +19,9 @@ namespace Nowpow.Automation.Features.StepDefinitions
         SeleneElement inputTextbox = S("#notes");
         SeleneElement referralRow = S("#referralRow.col-xs-8");
         SeleneElement sendButton = S("#btn-add.btn-modal");
+        SeleneElement addDocumentButton = S("button[class*='btn-attach-document']");
+        SeleneElement deleteIcon = S(".btn-delete-document");
+
 
         public static bool Displayed { get; internal set; }
 
@@ -57,6 +63,61 @@ namespace Nowpow.Automation.Features.StepDefinitions
         {
             sendButton.Click();
             return new ServicePage(DriverContext);
+        }
+
+        internal MakeReferralModal AddDocument()
+        {
+            WaitForNot(smallSpinner, Be.InDom);
+            addDocumentButton.Click();
+            Thread.Sleep(1000);
+            //AutoIT= Handles Windows that do not belong to browser.
+            AutoItX3 autoIt = new AutoItX3();
+            autoIt.WinActivate("Open");
+            autoIt.Send("C:\\Users\\sabina.dovlati\\Desktop\\ScaleTestDocs\\Scale.docx");
+            Thread.Sleep(1000);
+            autoIt.Send(@"{ENTER}");
+            Thread.Sleep(1000);
+            return this;
+        }
+
+        internal MakeReferralModal AddAnotherDocument()
+        {
+            addDocumentButton.Click();
+            Thread.Sleep(1000);
+            //AutoIT= Handles Windows that do not belong to browser.
+            AutoItX3 autoIt = new AutoItX3();
+            autoIt.WinActivate("Open");
+            autoIt.Send("C:\\Users\\sabina.dovlati\\Desktop\\Scale.pdf");
+            Thread.Sleep(1000);
+            autoIt.Send(@"{ENTER}");
+            Thread.Sleep(1000);
+            return this;
+        }
+
+        internal MakeReferralModal ClickDeleteIcon()
+        {            
+            try
+            {                
+                deleteIcon.Click();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("test failed");
+            }
+
+            return this;
+        }
+
+        internal MakeReferralModal SelectCheckbox1()
+        {
+            S("#referralRow.col-xs-8").Click();
+            return this;
+        }
+
+        internal ErxPage SendCoordinatedReferral()
+        {
+            S("#btn-add").Click();
+            return new ErxPage(DriverContext);
         }
     }
 }
