@@ -88,7 +88,7 @@ namespace NowPow.Automation.Features.StepDefinitions
         {
            takeActionButton.Click();
             return this;
-        }
+        }        
     }
 }
 

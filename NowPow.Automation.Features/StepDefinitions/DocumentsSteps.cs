@@ -88,6 +88,28 @@ namespace Nowpow.Automation.Features.StepDefinitions
             String expectedModalTitle = "Notes";
             Assert.AreEqual(actualModalTitle, expectedModalTitle);
         }
+        [When(@"user uploads file")]
+        public void WhenUserUploadsFile()
+        {
+            new UploadDocumentModal(driverContext)
+                .ChooseFile()
+                .Upload();
+        }
+       
+        [Then(@"file is uploaded as '(.*)' and increases by '(.*)' unit")]
+        public void ThenFileIsUploadedAsAndIncreasesByUnit(string duplicateName, int n)
+        {
+            new PatientPage(driverContext);
+            
+            if(duplicateName == "Scale" + n)
+            {
+                Assert.IsTrue(S(By.XPath("//tr[@class='odd']")).IsDisplayed());
+            }            
+            
+        }
+
+
+
 
 
 
