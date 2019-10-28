@@ -26,7 +26,7 @@ namespace NowPow.Automation.Features.StepDefinitions
         SeleneElement conductScreeningButton = S("#btn-conduct-screening");       
         SeleneElement takeActionButton = S("#btn-takeAction");
         SeleneElement sendReferralButton = S("button[class*='btn-send-tracked-referral']");
-
+        SeleneElement favoritesIcon = S("#favorites-icon-subtab");
         public bool Displayed { get; internal set; }
 
         public ProfilePage(DriverContext driverContext) : base(driverContext)
@@ -95,6 +95,13 @@ namespace NowPow.Automation.Features.StepDefinitions
         {
             sendReferralButton.Click();
             return new MakeReferralModal(DriverContext);
+        }
+
+        internal ProfilePage ClickOnFavorites(string subtabIcon)
+        {
+            WaitForNot(smallSpinner, Be.InDom);
+            favoritesIcon.Click();
+            return new ProfilePage(DriverContext);
         }
     }
 }

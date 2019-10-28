@@ -4,6 +4,7 @@ using AutoItX3Lib;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NLog;
 using Nowpow.Automation.Features.PageObjects;
+using NowPow.Automation.Features.StepDefinitions;
 using NowPow.Automation.PageObjects;
 using NSelene;
 using Ocaramba;
@@ -21,6 +22,7 @@ namespace Nowpow.Automation.Features.StepDefinitions
         SeleneElement sendButton = S("#btn-add.btn-modal");
         SeleneElement addDocumentButton = S("button[class*='btn-attach-document']");
         SeleneElement deleteIcon = S(".btn-delete-document");
+        SeleneElement restrictionCheckbox = S("#restrictionsCheckBox");
 
 
         public static bool Displayed { get; internal set; }
@@ -118,6 +120,24 @@ namespace Nowpow.Automation.Features.StepDefinitions
         {
             S("#btn-add").Click();
             return new ErxPage(DriverContext);
+        }
+
+        internal MakeReferralModal SelectRestrictionCheckBox()
+        {
+            restrictionCheckbox.Click();
+            return this;
+        }
+
+        internal MakeReferralModal SelectConsentCheckBox()
+        {
+            referralRow.Click();
+            return this;
+        }
+
+        internal ProfilePage SendButton()
+        {
+            S("#btn-add").Click();
+            return new ProfilePage(DriverContext);
         }
     }
 }

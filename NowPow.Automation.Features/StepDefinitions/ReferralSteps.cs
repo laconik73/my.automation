@@ -191,6 +191,21 @@ namespace Nowpow.Automation.Features.StepDefinitions
                 .WriteMessage("automation")
                 .SendMessage();
         }
+        [When(@"user selects icon '(.*)'")]
+        public void WhenUserSelectsIcon(string subtabIcon)
+        {
+            new ProfilePage(driverContext).ClickOnFavorites(subtabIcon);
+        }
+        [When(@"user sends referral")]
+        public void WhenUserSendsReferral()
+        {
+            new MakeReferralModal(driverContext)
+                .SelectRestrictionCheckBox()
+                .SelectConsentCheckBox()
+                .SendButton();
+        }
+
+
 
     }
 }

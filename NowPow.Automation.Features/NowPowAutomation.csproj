@@ -276,6 +276,7 @@
     <None Include="Smoke\Screenings.feature" />
     <None Include="Smoke\Service.feature" />
     <None Include="Smoke\Erx.feature" />
+    <None Include="UAT\Referral.feature" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
