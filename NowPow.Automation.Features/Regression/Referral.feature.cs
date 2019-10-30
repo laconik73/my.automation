@@ -132,13 +132,9 @@ this.ScenarioInitialize(scenarioInfo);
 #line 23
 testRunner.Given("\'CPT3\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 24
-testRunner.And("user chooses tab \'Patient\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 25
 testRunner.And("user chooses patient card", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 26
-testRunner.When("user selects button \'Build New eRx\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 27
-testRunner.And("user adds condition", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 25
+testRunner.When("user chooses \'View eRx\' button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 28
 testRunner.And("user makes coordinated referral", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 29

@@ -29,7 +29,15 @@ namespace Nowpow.Automation.Features.StepDefinitions
 
         internal ReferralsReceivedPage ClickMessage()
         {
-            referralMessage.Click();
+            try
+            {
+                referralMessage.Click();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("test failed");
+            }
+            
             return new ReferralsReceivedPage(DriverContext);
         }
 

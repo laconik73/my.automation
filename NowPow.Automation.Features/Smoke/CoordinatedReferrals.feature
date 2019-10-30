@@ -23,14 +23,14 @@ Scenario:01.  Sending Referral via Services
 #	And user accepts referal
 #	Then 'error' message is displayed
 
-Scenario:05. Delete Document from Patient Documents page
+Scenario: 03.Verify " Upload Document" modal display
 Given 'CPT3' user is logged in
 	And user chooses tab 'Patient'
 	And user searches for a Patient
 	And user chooses patient card
 	And user chooses a subtab 'Documents'
-	When user chooses 'Delete' action
-	Then document is removed from patient's documents
+	When user clicks on 'Upload Document' 
+	Then 'Upload Document' modal pops up
 
 Scenario:04. Verify "Take Action" actions to "download"
 Given 'CPT3' user is logged in
@@ -41,14 +41,14 @@ Given 'CPT3' user is logged in
 	When user clicks 'Download' action
 	Then file is downloaded
 
-Scenario: 03.Verify " Upload Document" modal display
+Scenario:05. Delete Document from Patient Documents page
 Given 'CPT3' user is logged in
 	And user chooses tab 'Patient'
 	And user searches for a Patient
 	And user chooses patient card
 	And user chooses a subtab 'Documents'
-	When user clicks on 'Upload Document' 
-	Then 'Upload Document' modal pops up
+	When user chooses 'Delete' action
+	Then document is removed from patient's documents
 
 Scenario: 06. Verify "Notes" modal
 Given 'CPT3' user is logged in

@@ -201,6 +201,18 @@ namespace Nowpow.Automation.Features.StepDefinitions
             new MakeReferralModal(driverContext);
             Assert.IsTrue(S(By.XPath("//div[@class='attached-documents']")).Displayed);
         }
+        [When(@"user proceeds with '(.*)'")]
+        public void WhenUserProceedsWith(string deleteButton)
+        {
+            new PatientPage(driverContext).ProceedWithDelete();
+        }
+        [Then(@"document is deleted")]
+        public void ThenDocumentIsDeleted()
+        {
+            Assert.IsTrue(S(By.XPath("//h4[contains(text(),'There are currently no documents uploaded to this')]")).Displayed);
+        }
+
+
 
 
 

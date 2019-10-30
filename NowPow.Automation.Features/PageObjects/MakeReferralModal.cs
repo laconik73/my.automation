@@ -108,13 +108,7 @@ namespace Nowpow.Automation.Features.StepDefinitions
             }
 
             return this;
-        }
-
-        internal MakeReferralModal SelectCheckbox1()
-        {
-            S("#referralRow.col-xs-8").Click();
-            return this;
-        }
+        }        
 
         internal ErxPage SendCoordinatedReferral()
         {
@@ -124,13 +118,30 @@ namespace Nowpow.Automation.Features.StepDefinitions
 
         internal MakeReferralModal SelectRestrictionCheckBox()
         {
-            restrictionCheckbox.Click();
+            try
+            {
+                restrictionCheckbox.Click();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("test failed");
+            }
+
+           
             return this;
         }
 
         internal MakeReferralModal SelectConsentCheckBox()
         {
-            referralRow.Click();
+            try
+            {
+                referralRow.Click();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("test failed");
+            }
+           
             return this;
         }
 

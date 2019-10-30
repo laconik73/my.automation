@@ -96,10 +96,10 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("05. Delete Document from Patient Documents page")]
-        public virtual void _05_DeleteDocumentFromPatientDocumentsPage()
+        [NUnit.Framework.DescriptionAttribute("03.Verify \" Upload Document\" modal display")]
+        public virtual void _03_VerifyUploadDocumentModalDisplay()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("05. Delete Document from Patient Documents page", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("03.Verify \" Upload Document\" modal display", null, ((string[])(null)));
 #line 26
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
@@ -114,9 +114,9 @@ testRunner.Given("\'CPT3\' user is logged in", ((string)(null)), ((TechTalk.Spec
 #line 31
  testRunner.And("user chooses a subtab \'Documents\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 32
- testRunner.When("user chooses \'Delete\' action", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("user clicks on \'Upload Document\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 33
- testRunner.Then("document is removed from patient\'s documents", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("\'Upload Document\' modal pops up", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
@@ -148,10 +148,10 @@ testRunner.Given("\'CPT3\' user is logged in", ((string)(null)), ((TechTalk.Spec
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("03.Verify \" Upload Document\" modal display")]
-        public virtual void _03_VerifyUploadDocumentModalDisplay()
+        [NUnit.Framework.DescriptionAttribute("05. Delete Document from Patient Documents page")]
+        public virtual void _05_DeleteDocumentFromPatientDocumentsPage()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("03.Verify \" Upload Document\" modal display", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("05. Delete Document from Patient Documents page", null, ((string[])(null)));
 #line 44
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
@@ -166,9 +166,9 @@ testRunner.Given("\'CPT3\' user is logged in", ((string)(null)), ((TechTalk.Spec
 #line 49
  testRunner.And("user chooses a subtab \'Documents\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 50
- testRunner.When("user clicks on \'Upload Document\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("user chooses \'Delete\' action", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 51
- testRunner.Then("\'Upload Document\' modal pops up", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("document is removed from patient\'s documents", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

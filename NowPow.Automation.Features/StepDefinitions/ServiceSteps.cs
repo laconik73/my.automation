@@ -5,6 +5,8 @@ using TechTalk.SpecFlow;
 using OpenQA.Selenium;
 using static NSelene.Selene;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Nowpow.Automation.Features.StepDefinitions
 {
@@ -51,8 +53,8 @@ namespace Nowpow.Automation.Features.StepDefinitions
         [When(@"user click on button '(.*)'")]
         public void WhenUserClickOnButton(string Refer)
         {
-             new ServicePage(driverContext).Refer();
-           
+            new ServicePage(driverContext).Refer();
+
         }
 
         [When(@"user refers patient information with a note")]
@@ -114,14 +116,44 @@ namespace Nowpow.Automation.Features.StepDefinitions
             new ServicePage(driverContext);
             Assert.IsTrue(S("#query-results-text").IsDisplayed());
         }
+        [When(@"user favorites the service")]
+        public void WhenUserFavoritesTheService()
+        {
+            new ServicePage(driverContext).FavoriteTheService();
+            
+        }
+        [Then(@"service is favorited and added")]
+        public void ThenServiceIsFavoritedAndAdded()
+        {
+            new ServicePage(driverContext);
 
+            IList<IWebElement> contents = SS(".content");
+            contents.Count();
+            Console.WriteLine(contents.Count());
+        }
+        [Then(@"user unfavorites the service")]
+        public void ThenUserUnfavoritesTheService()
+        {
+            new ServicePage(driverContext)
+              .OpenServices()
+              .UnfavoriteTheService();
+        }
+               
+        [Then(@"service is unfavorited and removed")]
+        public void ThenServiceIsUnfavoritedAndRemoved()
+        {
+            new ServicePage(driverContext);
+            if(SS(".content").Equals("Manus Dental is no longer your favorite"))
+            {
+                Assert.IsTrue(S(By.LinkText("Dynamic Dental Services")).Displayed);
+            }
+            else
+            {
+                Assert.IsTrue(S(By.LinkText("Manus Dental Hyde Park")).Displayed);
+            }         
+                  
 
-
-
-
-
-
-
+        }
     }
 }
 

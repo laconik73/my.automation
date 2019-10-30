@@ -13,7 +13,16 @@ Given 'CPT3' user is logged in
 	And user uploads file
 	Then file is uploaded as 'Duplicate Name' and increases by '1' unit
 
-Scenario: 02. Verify "Upload Document" modal features
+Scenario: 02.Delete document from Patient Document Page
+Given 'CPT3' user is logged in
+	And user chooses tab 'Patient'
+	And user chooses patient card
+	And user chooses a subtab 'Documents'
+	When user chooses 'Delete' action
+	And user proceeds with 'Delete'	
+	Then document is deleted
+
+Scenario: 03. Verify "Upload Document" modal features
 Given 'CPT3' user is logged in
 	And user chooses tab 'Patient'
 	And user chooses patient card
@@ -26,7 +35,7 @@ Given 'CPT3' user is logged in
 	And user clicks on 'Upload Document' again
 	Then any data entered on the previous modal is cleared
 
-Scenario: 03. Verify "Add Document" button
+Scenario: 04. Verify "Add Document" button
 Given 'CPT3' user is logged in
 	And user chooses tab 'Patient'
 	And user chooses patient card
@@ -37,7 +46,7 @@ Given 'CPT3' user is logged in
 	And user adds another document
 	Then the files display as separate lines
 
-Scenario:04. Remove files from "Make Referral" modal
+Scenario:05. Remove files from "Make Referral" modal
 Given 'CPT3' user is logged in
 	And user chooses tab 'Patient'
 	And user chooses patient card

@@ -18,16 +18,21 @@ namespace NowPow.Automation.Features.StepDefinitions
 
         internal AddInteractionModal ChooseInteraction()
         {
-            S("button[title='Select Interaction Type']").Click();
-            S(".bootstrap-select.open a").Click();
+            S("button[data-id='type']").Click();
+            S(".btn-group.bootstrap-select.open a").Click();
             return this;
         }
 
         internal AddInteractionModal ChooseDuration()
         {
-            S("button[title='Select Duration']").Click();
-            S(".bootstrap-select.open a").Click();
+            S("button[data-id='durationType']").Click();
+            S(".btn-group.bootstrap-select.open a").Click();
             return this; 
+        }
+        internal AddInteractionModal WriteNote(string note)
+        {
+            notes.SendKeys(note);
+            return this;
         }
 
         internal DashboardPage Save()
@@ -36,11 +41,7 @@ namespace NowPow.Automation.Features.StepDefinitions
             return new DashboardPage(DriverContext);
         }
 
-        internal AddInteractionModal WriteNote(string note)
-        {
-            notes.SendKeys(note);
-            return this;
-        }
+        
     }
         
 }

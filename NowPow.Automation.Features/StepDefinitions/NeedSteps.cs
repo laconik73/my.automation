@@ -58,10 +58,10 @@ namespace NowPow.Automation.Features.StepDefinitions
         public void WhenUserAddsANewInteractionToAnExistingNeeds()
         {
             new DashboardPage(driverContext).TakeAction();
-                
-            DateTime.Now.Ticks.ToString();
+              
             var modal = new DashboardPage(driverContext).AddInteraction();
             modal.ChooseInteraction()
+                .ChooseDuration()
                   .Save();
         }
         [When(@"user expands Need card's details")]

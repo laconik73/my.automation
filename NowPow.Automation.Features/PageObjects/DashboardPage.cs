@@ -84,7 +84,7 @@ namespace NowPow.Automation.Features.StepDefinitions
 
         internal DashboardPage OpenDrawer()
         {
-            WaitForNot(S(".modal-backdrop.fade"), Be.Visible);
+            WaitForNot(S(".modal-backdrop.fade"), Be.InDom);
             WaitFor(S("#drawer-809"), Be.Visible).Click();
             return new DashboardPage(DriverContext);
         }

@@ -29,7 +29,8 @@ namespace Nowpow.Automation.Features.StepDefinitions
         SeleneElement radiusDropdown = S(By.XPath("//span[@class='filter-option pull-left'][contains(text(),'10 miles')]"));
         SeleneElement inputZipCode = S(By.XPath("//input[@placeholder='Enter your address']"));
         SeleneElement updateResultsButton = S("#address-lookup-submit");
-        SeleneElement sortDropdwon = S("div.btn-group:nth-child(3)");
+        SeleneElement sortDropdown = S("div.btn-group:nth-child(3)");
+       
 
         public ServicePage(DriverContext driverContext) : base(driverContext)
         {
@@ -109,12 +110,14 @@ namespace Nowpow.Automation.Features.StepDefinitions
             distanceLink.Click();
             return this;
         }
+        
         internal ServicePage SelectRadius()
         {
             radiusDropdown.Click();
             S(By.XPath("//span[contains(text(),'25 miles')]")).Click();
             return this;
-        }
+        }        
+
         internal ServicePage ChangeZipCode(string zipCode)
         {
             inputZipCode.Hover().Clear().SendKeys(zipCode);
@@ -128,32 +131,49 @@ namespace Nowpow.Automation.Features.StepDefinitions
         internal ServicePage SortOptions(string relevance)
         {
             WaitForNot(spinner, Be.InDom);
-            sortDropdwon.Click();
+            sortDropdown.Click();
             S(By.XPath("//span[contains(text(),'Distance')]")).Click();
 
             WaitForNot(spinner, Be.InDom);
-            sortDropdwon.Click();
+            sortDropdown.Click();
             S(By.XPath("//span[contains(text(),'Name')]")).Click();
 
             WaitForNot(spinner, Be.InDom);
-            sortDropdwon.Click();
+           sortDropdown.Click();
             S(By.XPath("//span[contains(text(),'Preferred')]")).Click();
 
             WaitForNot(spinner, Be.InDom);
-            sortDropdwon.Click();
+            sortDropdown.Click();
             S(By.XPath("//span[contains(text(),'Recently Added')]")).Click();
 
             WaitForNot(spinner, Be.InDom);
-            sortDropdwon.Click();
+            sortDropdown.Click();
             S(By.XPath("//span[contains(text(),'Ratings')]")).Click();
 
             WaitForNot(spinner, Be.InDom);
-            sortDropdwon.Click();
-            S(By.XPath("//span[contains(text(),'Tracked Referrals')]")).Click();
-            
+            sortDropdown.Click();
+            S(By.XPath("//span[contains(text(),'Tracked Referrals')]")).Click();            
 
             return this;
         }
+        internal ServicePage FavoriteTheService()
+        {
+            S("#services-container div:nth-child(1) button").Click();
+            S("#services-container div:nth-child(2) button").Click();
+            return this;
+        }
+        internal ServicePage OpenServices()
+        {
+            S("a[data-link*='services'][type]").Click();
+            return new ServicePage(DriverContext);
+        }
 
-    }      
+        internal ServicePage UnfavoriteTheService()
+        {
+            WaitForNot(smallSpinner, Be.InDom);
+            S("div[class*='btn-favorite']").Click();
+            return new ServicePage(DriverContext);
+        }
+
+    }
 }

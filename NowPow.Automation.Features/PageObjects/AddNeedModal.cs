@@ -3,6 +3,7 @@ using static NSelene.Selene;
 using Ocaramba;
 using NowPow.Automation.PageObjects;
 using System;
+using OpenQA.Selenium;
 
 namespace NowPow.Automation.Features.StepDefinitions
 {
@@ -19,25 +20,24 @@ namespace NowPow.Automation.Features.StepDefinitions
         //Adding needs with a note
         internal AddNeedModal SelectFirstNeed()
         {
-            WaitFor(S("[data-id='selNeed']"), Be.Visible);
-            S("[data-id='selNeed']").Click();
-            S(".bootstrap-select.open a").Click();    
+           S("button[data-id='selNeed']").Click();
+            S(".btn-group.bootstrap-select.open a").Click();  
             return this; 
         }
         
         internal AddNeedModal SelectInteractionType()
            
         {
-            S("[data-id='selNeedIdentifiedThru']").Click();
-            S(".bootstrap-select.open a").Click();
+            S("button[data-id='selNeedIdentifiedThru']").Click();
+            S(".btn-group.bootstrap-select.open a").Click();
             return this;
             
         }
 
         internal AddNeedModal SelectDuration()
         {
-            S("[data-id='durationType']").Click();
-            S(".bootstrap-select.open a").Click();
+            S("button[data-id='durationType']").Click();
+            S(".btn-group.bootstrap-select.open a").Click();
             return this;
         }
 

@@ -191,7 +191,7 @@ namespace Nowpow.Automation.Features.PageObjects
         internal ErxPage SelectHours()
         {
             hoursFilter.Click();
-            S(By.XPath("//span[contains(text(),'Open Evenings (5pm - midnight)')]")).Click();
+            S(By.XPath("//span[contains(text(),'24 Hours')]")).Click();
             return this;
         }
 
@@ -203,7 +203,7 @@ namespace Nowpow.Automation.Features.PageObjects
 
         internal ErxPage Save(string newErxCode)
         {
-            WaitForNot(spinner, Be.InDom);
+            WaitForNot(spinner, Be.InDOM);
             WaitFor(saveButton, Be.Visible).Click();
             return new ErxPage(DriverContext);
         }
@@ -261,10 +261,8 @@ namespace Nowpow.Automation.Features.PageObjects
         }
         internal ErxPage SelectResult()
         {
-            WaitFor(S("#expand-3"), Be.Visible).Click();
-            WaitFor(S("#category3 div"), Be.Visible)
-                 .Hover()
-                 .Click();
+            WaitFor(S("#expand-3"), Be.Visible).Hover().Click();
+            WaitFor(S("#category3 div"), Be.Visible).Hover().Click();
             return this;
         }
 

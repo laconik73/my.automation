@@ -287,7 +287,8 @@ namespace Nowpow.Automation.Features.StepDefinitions
         public void WhenUserMakesCoordinatedReferral()
         {
            var modal = new ErxPage(driverContext).MakeReferral();
-            modal.SelectCheckbox1()                
+            modal.SelectRestrictionCheckBox()
+                .SelectConsentCheckBox()
                 .SendCoordinatedReferral();
         }
         [Then(@"service marked as '(.*)'")]
