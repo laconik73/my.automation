@@ -35,7 +35,7 @@ namespace Nowpow.Automation.Features.StepDefinitions
         internal ScreeningErxPage EditFilters()
         {
             WaitForNot(spinner, Be.InDom);            
-            editFiltersButton.Click();
+            editFiltersButton.Hover().Click();
             return new ScreeningErxPage(DriverContext);
         }
 
@@ -72,9 +72,8 @@ namespace Nowpow.Automation.Features.StepDefinitions
         }
 
         internal ScreeningErxPage SaveErxToScreening()
-        {
-            WaitForNot(S(".modal-backdrop.fade"), Be.InDom);
-            saveErxScreening.Click();
+        {            
+            saveErxScreening.Hover().Click();
             return new ScreeningErxPage(DriverContext);
         }
         

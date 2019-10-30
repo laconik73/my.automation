@@ -74,7 +74,53 @@ namespace Nowpow.Automation.Features.StepDefinitions
             string actualReferral = "Service Offerings";
             Assert.AreEqual(expectedReferral, actualReferral);
         }
-        
+        [When(@"user searches for a '(.*)'")]
+        public void WhenUserSearchesForA(string serviceType)
+        {
+            new ServicePage(driverContext)
+                .InputServiceType("dental")
+                .Submit();
+        }
+        [When(@"user applies filters")]
+        public void WhenUserAppliesFilters()
+        {
+            new ServicePage(driverContext)
+                .OpenFilters()
+                .SelectFeeStructure()
+                .ApplyFilters();
+        }
+        [When(@"user changes radius")]
+        public void WhenUserChangesRadius()
+        {
+            new ServicePage(driverContext)
+                .ChangeRadius()
+                .SelectRadius();
+        }
+        [When(@"user changes zip code")]
+        public void WhenUserChangesZipCode()
+        {
+            new ServicePage(driverContext)
+                .ChangeZipCode("60618")
+                .UpdateResults();
+        }
+        [When(@"user changes '(.*)' options")]
+        public void WhenUserChangesOptions(string relevance)
+        {
+            new ServicePage(driverContext).SortOptions(relevance);
+        }
+        [Then(@"the search results are updated")]
+        public void ThenTheSearchResultsAreUpdated()
+        {
+            new ServicePage(driverContext);
+            Assert.IsTrue(S("#query-results-text").IsDisplayed());
+        }
+
+
+
+
+
+
+
 
     }
 }

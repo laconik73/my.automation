@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Nowpow.Automation.Features.StepDefinitions;
+using Nowpow.Automation.Features.PageObjects;
 using NLog;
-using NowPow.Automation.Features.StepDefinitions;
 using NowPow.Automation.PageObjects;
 using NSelene;
 using Ocaramba;
+using OpenQA.Selenium.Support.UI;
 using static NSelene.Selene;
+using OpenQA.Selenium;
+using System.Threading;
 
 namespace Nowpow.Automation.Features.StepDefinitions
 {
@@ -18,6 +22,14 @@ namespace Nowpow.Automation.Features.StepDefinitions
         SeleneElement servicesSearch = S("#services-search-query");
         SeleneElement searchButton = S("#btn-search");
         SeleneElement serviceTitle = S("a[href*='services'][data-name*='Moore']");
+        SeleneElement showFilters = S("#btn-show-filter");
+        SeleneElement feeStructure = S("div.btn-group:nth-child(2)");
+        SeleneElement applyFiltersButton = S("#filtersForResults");
+        SeleneElement distanceLink = S("#distance-link");
+        SeleneElement radiusDropdown = S(By.XPath("//span[@class='filter-option pull-left'][contains(text(),'10 miles')]"));
+        SeleneElement inputZipCode = S(By.XPath("//input[@placeholder='Enter your address']"));
+        SeleneElement updateResultsButton = S("#address-lookup-submit");
+        SeleneElement sortDropdwon = S("div.btn-group:nth-child(3)");
 
         public ServicePage(DriverContext driverContext) : base(driverContext)
         {
@@ -65,5 +77,83 @@ namespace Nowpow.Automation.Features.StepDefinitions
             Assert.AreEqual(expectedNewWindowTitle, newWindow.Title);
             return new ServicePage(DriverContext);
         }
+
+        internal ServicePage InputServiceType(string serviceType)
+        {
+            servicesSearch.Hover().SendKeys(serviceType);
+            return this;
+        }       
+
+        internal ServicePage OpenFilters()
+        {
+            showFilters.Click();
+            return this;
+        }       
+
+        internal ServicePage SelectFeeStructure()
+        {
+            feeStructure.Click();
+            S(By.XPath("//span[@class='text'][contains(text(),'Self Pay')]")).Hover().Click();
+            return this;
+        }      
+
+       
+        internal ServicePage ApplyFilters()
+        {
+            applyFiltersButton.Click();
+            return this;
+        }
+        internal ServicePage ChangeRadius()
+        {
+            WaitForNot(spinner, Be.InDom);
+            distanceLink.Click();
+            return this;
+        }
+        internal ServicePage SelectRadius()
+        {
+            radiusDropdown.Click();
+            S(By.XPath("//span[contains(text(),'25 miles')]")).Click();
+            return this;
+        }
+        internal ServicePage ChangeZipCode(string zipCode)
+        {
+            inputZipCode.Hover().Clear().SendKeys(zipCode);
+            return this;
+        }
+        internal ServicePage UpdateResults()
+        {
+            updateResultsButton.Click();
+            return this;
+        }
+        internal ServicePage SortOptions(string relevance)
+        {
+            WaitForNot(spinner, Be.InDom);
+            sortDropdwon.Click();
+            S(By.XPath("//span[contains(text(),'Distance')]")).Click();
+
+            WaitForNot(spinner, Be.InDom);
+            sortDropdwon.Click();
+            S(By.XPath("//span[contains(text(),'Name')]")).Click();
+
+            WaitForNot(spinner, Be.InDom);
+            sortDropdwon.Click();
+            S(By.XPath("//span[contains(text(),'Preferred')]")).Click();
+
+            WaitForNot(spinner, Be.InDom);
+            sortDropdwon.Click();
+            S(By.XPath("//span[contains(text(),'Recently Added')]")).Click();
+
+            WaitForNot(spinner, Be.InDom);
+            sortDropdwon.Click();
+            S(By.XPath("//span[contains(text(),'Ratings')]")).Click();
+
+            WaitForNot(spinner, Be.InDom);
+            sortDropdwon.Click();
+            S(By.XPath("//span[contains(text(),'Tracked Referrals')]")).Click();
+            
+
+            return this;
+        }
+
     }      
 }

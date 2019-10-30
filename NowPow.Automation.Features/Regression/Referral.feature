@@ -22,7 +22,6 @@ Scenario:02. Sending message to Referral Maker via Task View page
 Scenario: 03. Send Coordinated Referral via eRx
 Given 'CPT3' user is logged in
 And user chooses tab 'Patient'
-And user searches for a Patient
 And user chooses patient card
 When user selects button 'Build New eRx'
 And user adds condition 

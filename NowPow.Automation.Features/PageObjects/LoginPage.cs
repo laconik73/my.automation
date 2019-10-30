@@ -81,7 +81,7 @@ namespace NowPow.Automation.Features.StepDefinitions
             driver.FindElement(By.Id("inputPassword")).SendKeys("Test1234");
             driver.FindElementById("btn-signin").Click();
 
-            Thread.Sleep(5000);
+            Thread.Sleep(10000);
             driver.FindElement(By.CssSelector("Body")).SendKeys(Keys.Control + 'w');
             driver.Close();
 

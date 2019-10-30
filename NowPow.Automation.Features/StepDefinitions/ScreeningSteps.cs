@@ -107,7 +107,7 @@ namespace Nowpow.Automation.Features.StepDefinitions
         public void GivenUserSearchesForAPatient()
         {
             new PatientPage(driverContext)
-                .SearchPatient("sheldon Rhodes")
+                .SearchPatient("sophie arnold")
                  .Submit();
         }
 

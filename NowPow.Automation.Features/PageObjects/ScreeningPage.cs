@@ -4,15 +4,12 @@ using NowPow.Automation.PageObjects;
 using static NSelene.Selene;
 using Ocaramba;
 using Nowpow.Automation.Features.StepDefinitions;
-using Nowpow.Automation.Features.PageObjects;
 using OpenQA.Selenium;
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OpenQA.Selenium.Chrome;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
+
 
 namespace NowPow.Automation.Features.StepDefinitions
 {

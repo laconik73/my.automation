@@ -1,8 +1,7 @@
 ﻿using System;
+using System.Threading;
 using NLog;
-using Nowpow.Automation.Features.PageObjects;
 using Nowpow.Automation.Features.StepDefinitions;
-using NowPow.Automation.Features.StepDefinitions;
 using NowPow.Automation.PageObjects;
 using NSelene;
 using Ocaramba;
@@ -40,13 +39,14 @@ namespace NowPow.Automation.Features.StepDefinitions
         internal SearchForServicesModal SelectFirstService()
         {
             
-            S("div.col-xs-1").Click();
+            S("div.provider.row:nth-child(1) div.col-xs-1").Hover().Click();          
             return this;
         }
 
         internal ScreeningErxPage Update()
         {
             updateButton.Click();
+            Thread.Sleep(1000);
             return new ScreeningErxPage(DriverContext); 
         }
 

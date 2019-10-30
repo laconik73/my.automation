@@ -261,7 +261,7 @@ namespace Nowpow.Automation.Features.StepDefinitions
                 .Apply()
                 .AddServiceProvider();
             var modal = new ScreeningErxPage(driverContext).SearchForService();
-            modal.InputQuery("hyde park")
+            modal.InputQuery("dental")
                 .ClickSearch()
                 .SelectFirstService()
                 .Update();
