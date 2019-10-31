@@ -12,7 +12,6 @@ Scenario: 01.Adding a patient Need with a note
 	When a user adds a new Needs with a note
 	Then new note is added
 
-
 Scenario:02. Adding a patient Need Interaction
 	Given 'CPT' user is logged in
 	And user chooses tab 'Patient'

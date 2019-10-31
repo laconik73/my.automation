@@ -209,8 +209,26 @@ namespace Nowpow.Automation.Features.StepDefinitions
         [Then(@"document is deleted")]
         public void ThenDocumentIsDeleted()
         {
+            new PatientPage(driverContext);
             Assert.IsTrue(S(By.XPath("//h4[contains(text(),'There are currently no documents uploaded to this')]")).Displayed);
         }
+        [When(@"user uploads a virus document")]
+        public void WhenUserUploadsAVirusDocument()
+        {
+            new UploadDocumentModal(driverContext)
+                .ChooseVirusFile()
+                .Upload();
+        }
+
+        [Then(@"'(.*)' message  with a link is displayed")]
+        public void ThenMessageWithALinkIsDisplayed(string errorMessage)
+        {
+            new UploadDocumentModal(driverContext);
+            Assert.IsTrue(S("#error-message").Displayed);
+        }
+
+
+
 
 
 

@@ -6,6 +6,7 @@ using System;
 using static NSelene.Selene;
 using OpenQA.Selenium;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Nowpow.Automation.Features.StepDefinitions;
 
 namespace Nowpow.Automation.Features.PageObjects
 {
@@ -16,6 +17,7 @@ namespace Nowpow.Automation.Features.PageObjects
         SeleneElement inputMessage = S("#new-message");        
         SeleneElement sendButton = S("#send-button");
         SeleneElement backButton = S("span#back-link");
+        SeleneElement referralStatus = S(By.XPath("//span[@class='referral-icon-label'][contains(text(),'New')]"));
         
 
         public ReferralsSentPage(DriverContext driverContext) : base(driverContext)
@@ -46,6 +48,13 @@ namespace Nowpow.Automation.Features.PageObjects
         {
             backButton.Click();
             return new ReferralsSentPage(DriverContext);
+        }
+
+        internal EditReferralModal ChooseStatus(string statusNew)
+        {
+            WaitForNot(S(".modal.modal-card.fade.in"), Be.InDom);
+            referralStatus.Click();
+            return new EditReferralModal(DriverContext);
         }
     }
 }

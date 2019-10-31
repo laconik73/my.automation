@@ -93,6 +93,20 @@ namespace Nowpow.Automation.Features.StepDefinitions
                 .SelectCheckbox2()
                 .Send();
         }
+        [When(@"user clicks on status '(.*)'")]
+        public void WhenUserClicksOnStatus(string statusNew)
+        {
+            new ReferralsSentPage(driverContext).ChooseStatus(statusNew);
+        }
+        [When(@"user accepts referal sent")]
+        public void WhenUserAcceptsReferalSent()
+        {
+            new EditReferralModal(driverContext)
+                .SelectAcceptanceStatus("Accepted")
+                .SaveStatus();
+        }
+
+
 
         [Then(@"new referral is listed")]
         public void ThenNewReferralIsListed()
@@ -144,8 +158,9 @@ namespace Nowpow.Automation.Features.StepDefinitions
         public void ThenMessageIsDisplayed(string errorMessage)
         {
             new EditReferralModal(driverContext);
-            SeleneElement actualMessage = S("div.error-area");
-            Assert.IsTrue(actualMessage.Displayed);
+            Assert.IsTrue(S(By.XPath("//h4[contains(text(),'Only the Referral Receiver is allowed to accept th')]")).Displayed);
+
+
         }
         [When(@"user sends a message to a referral taker")]
         public void WhenUserSendsAMessageToAReferralTaker()

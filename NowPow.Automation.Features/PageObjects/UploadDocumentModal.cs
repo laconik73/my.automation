@@ -71,5 +71,19 @@ namespace Nowpow.Automation.Features.StepDefinitions
             cancelButton.Click();
             return new PatientPage(DriverContext);
         }
+
+        internal UploadDocumentModal ChooseVirusFile()
+        {
+            chooseFile.Click();
+            Thread.Sleep(1000);
+            //AutoIT= Handles Windows that do not belong to browser.
+            AutoItX3 autoIt = new AutoItX3();
+            autoIt.WinActivate("Open");
+            autoIt.Send("Tanya add your path here");
+            Thread.Sleep(1000);
+            autoIt.Send(@"{ENTER}");
+            Thread.Sleep(1000);
+            return this;
+        }
     }
 }
