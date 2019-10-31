@@ -219,6 +219,13 @@ namespace Nowpow.Automation.Features.StepDefinitions
                 .ChooseVirusFile()
                 .Upload();
         }
+        [When(@"user adds virus document")]
+        public void WhenUserAddsVirusDocument()
+        {
+            new MakeReferralModal(driverContext)
+                .ChooseVirusFile()
+                .SendButton();                
+        }
 
         [Then(@"'(.*)' message  with a link is displayed")]
         public void ThenMessageWithALinkIsDisplayed(string errorMessage)
@@ -226,16 +233,12 @@ namespace Nowpow.Automation.Features.StepDefinitions
             new UploadDocumentModal(driverContext);
             Assert.IsTrue(S("#error-message").Displayed);
         }
-
-
-
-
-
-
-
-
-
-
+        [Then(@"referral is not created")]
+        public void ThenReferralIsNotCreated()
+        {
+            new MakeReferralModal(driverContext);
+            Assert.IsTrue(S("#error-message").Displayed);
+        }
 
     }
 

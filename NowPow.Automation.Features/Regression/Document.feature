@@ -58,6 +58,16 @@ Given 'CPT3' user is logged in
 	And user deletes a document
 	Then document is removed
 
+#Scenario: 06. Upload Virus Document (Tanya's machine)
+#Given 'CPT3' user is logged in
+#	And user chooses tab 'Patient'
+#	And user chooses patient card
+#	And user chooses subtab 'Referrals'
+#	When user chooses button 'Add Referral'
+#	And user refers a service
+#	And user adds virus document
+#	Then referral is not created
+
 
 
 

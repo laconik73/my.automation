@@ -64,14 +64,14 @@ Given 'CPT3' user is logged in
 	When user is on Patient's 'Overview' page
 	Then 'Documents' subtab is displayed
 
-Scenario:08. Error message display for virus document (Tanya's machine)
-Given 'CPT3' user is logged in
-	And user chooses tab 'Patient'
-	And user chooses patient card
-	And user chooses a subtab 'Documents'
-	When user clicks on 'Upload Document' 
-	And user uploads a virus document
-	Then 'error' message  with a link is displayed
+#Scenario:08. Error message display for virus document (Tanya's machine)
+#Given 'CPT3' user is logged in
+#	And user chooses tab 'Patient'
+#	And user chooses patient card
+#	And user chooses a subtab 'Documents'
+#	When user clicks on 'Upload Document' 
+#	And user uploads a virus document
+#	Then 'error' message  with a link is displayed
 
 
 
