@@ -4,26 +4,27 @@ using NowPow.Automation.PageObjects;
 using static NSelene.Selene;
 using Ocaramba;
 using Nowpow.Automation.Features.StepDefinitions;
-using Nowpow.Automation.Features.PageObjects;
 using OpenQA.Selenium;
 using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
+using System.Linq;
+
 
 namespace NowPow.Automation.Features.StepDefinitions
 {
     internal class ScreeningPage : ProjectPageBase
     { 
         private static readonly NLog.Logger Logger = LogManager.GetCurrentClassLogger();
+        
         SeleneElement startButton = S(".btn.btn-primary");
         SeleneElement radioButton1 = S("input[id='question-2-answer-1']");
         SeleneElement radioButton2 = S("input[id='question-5-answer-6']");
         SeleneElement radioButton3 = S("input[id='question-6-answer-9']");
         SeleneElement nextButton = S("#next.btn");        
         SeleneElement saveButton = S("#save.btn.btn-next");
-        SeleneElement generateErxButton = S("#generate-erx");    
-           
-                       
-            
+        SeleneElement generateErxButton = S("#generate-erx");
+        
 
         public ScreeningPage(DriverContext driverContext) : base(driverContext)
         {
@@ -105,7 +106,31 @@ namespace NowPow.Automation.Features.StepDefinitions
             S("#btn-confirm").Click();
             return new PatientPage(DriverContext);
         }
+        internal ScreeningPage StartButton()
+        {
+            S(".btn.btn-primary").Click();
+            return new ScreeningPage(DriverContext);
+        }
+        internal ScreeningPage SelectFirstSection()
+        {
+            IList<IWebElement> radioButton = SS("input[type='radio']");
+            int iSize = radioButton.Count;
+            for (int i=0; i<iSize; i++)
+            {
+                String Value = radioButton.ElementAt(i).GetAttribute("value");
+                if (Value.Equals("Mordor"))
+                {
+                    WaitForNot(S(".answer"), Be.Selected);
+                    radioButton.ElementAt(i).Click();
+                    break;
+                }
+            }
+           
+                       
+            return new ScreeningPage(DriverContext);
+        }
 
+        
     }    
        
 }

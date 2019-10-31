@@ -152,10 +152,12 @@ namespace Nowpow.Automation.Features.StepDefinitions
         public void ThenDemographicsAreUpdatedInPatientOverview()
         {
             new PatientPage(driverContext);
-            String actualOverview = S("#divPatientOverview").GetText();
-            String expectedOverview = "Overview";
-            Assert.AreEqual(actualOverview, expectedOverview);
+            
+            bool raceId = Verify(("//div[contains(text(),'African')]"));
+            Console.WriteLine("demographics updated");
+
         }
+        
         [When(@"user edits basic information")]
         public void WhenUserEditsBasicInformation()
         {

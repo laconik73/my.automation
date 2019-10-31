@@ -10,6 +10,9 @@ using static NSelene.Selene;
 using OpenQA.Selenium;
 using Nowpow.Automation.Features.PageObjects;
 using NowPow.Automation.Features.StepDefinitions;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
 
 namespace Nowpow.Automation.Features.PageObjects
 {
@@ -98,7 +101,7 @@ namespace Nowpow.Automation.Features.PageObjects
         //Input address location into search field on eRx landing Page
         internal ErxPage InputAddress(string address)
         {
-            addressInput.SendKeys(address);
+            addressInput.Clear().SendKeys(address);
             return this;
         }
         //Submit button for search field on eRx page
@@ -188,7 +191,7 @@ namespace Nowpow.Automation.Features.PageObjects
         internal ErxPage SelectHours()
         {
             hoursFilter.Click();
-            S(By.XPath("//span[contains(text(),'Open Evenings (5pm - midnight)')]")).Click();
+            S(By.XPath("//span[contains(text(),'24 Hours')]")).Click();
             return this;
         }
 
@@ -200,7 +203,7 @@ namespace Nowpow.Automation.Features.PageObjects
 
         internal ErxPage Save(string newErxCode)
         {
-            WaitForNot(spinner, Be.InDom);
+            WaitForNot(spinner, Be.InDOM);
             WaitFor(saveButton, Be.Visible).Click();
             return new ErxPage(DriverContext);
         }
@@ -258,10 +261,8 @@ namespace Nowpow.Automation.Features.PageObjects
         }
         internal ErxPage SelectResult()
         {
-            WaitFor(S("#expand-3"), Be.Visible).Click();
-            WaitFor(S("#category3 div"), Be.Visible)
-                 .Hover()
-                 .Click();
+            WaitFor(S("#expand-3"), Be.Visible).Hover().Click();
+            WaitFor(S("#category3 div"), Be.Visible).Hover().Click();
             return this;
         }
 
@@ -271,6 +272,44 @@ namespace Nowpow.Automation.Features.PageObjects
             S("#btn-nudge").Click();
             return new SendNudgeModal(DriverContext);
         }
+
+        internal ErxPage ClickConditions()
+        {
+            conditonsButton.Click();
+            return new ErxPage(DriverContext);
+        }
+
+        internal ErxPage SelectFinancialAssistance()
+        {
+            S(By.XPath("//label[contains(text(),'Financial Assistance')]"))
+                .Hover()
+                .Click();   
+             return this; 
+        }
+
+        internal ErxPage SelectFoodInsecurity()
+        {
+            S(By.XPath("//label[contains(text(),'Food Insecurity (Adults)')]"))
+                .Hover()
+                .Click();
+            return this;
+        }
+        
+        internal MakeReferralModal MakeReferral()
+        {
+            try
+            {
+                S("button[class*='btn-send-referral']").Hover().Click();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("test failed");
+            }
+            
+            return new MakeReferralModal(DriverContext);
+        }
+
+        
     }
 }
           

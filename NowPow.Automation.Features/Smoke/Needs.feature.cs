@@ -104,24 +104,24 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void _02_AddingAPatientNeedInteraction()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("02. Adding a patient Need Interaction", null, ((string[])(null)));
-#line 16
+#line 15
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 17
+#line 16
  testRunner.Given("\'CPT\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 18
+#line 17
  testRunner.And("user chooses tab \'Patient\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 19
+#line 18
  testRunner.And("user searches for a Patient", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 20
+#line 19
  testRunner.And("user chooses patient card", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 21
+#line 20
  testRunner.And("user opens subtab \'Needs\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 22
+#line 21
  testRunner.When("user adds a new interaction to an existing Needs", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 23
+#line 22
  testRunner.And("user expands Need card\'s details", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 24
+#line 23
  testRunner.Then("new interaction is added", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

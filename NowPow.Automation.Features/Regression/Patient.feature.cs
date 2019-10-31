@@ -98,6 +98,32 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("02. Editing Patient Demographics")]
+        public virtual void _02_EditingPatientDemographics()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("02. Editing Patient Demographics", null, ((string[])(null)));
+#line 14
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 15
+testRunner.Given("\'CPT\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 16
+   testRunner.And("user chooses tab \'Patient\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 17
+   testRunner.And("user chooses patient card", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 18
+   testRunner.When("user makes a choice to \'Edit Profile\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 19
+   testRunner.And("user expands  patient \'Demographics\' section", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 20
+   testRunner.And("user edits patient \'Demographics\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 21
+   testRunner.Then("demographics are updated in patient overview", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("04.Verify Patient Search by MRN")]
         public virtual void _04_VerifyPatientSearchByMRN()
         {

@@ -15,6 +15,7 @@ namespace Nowpow.Automation.Features.StepDefinitions
     {
         private readonly DriverContext driverContext;
         private readonly ScenarioContext scenarioContext;
+        private object userType;
 
         public object Driver { get; private set; }
 
@@ -58,11 +59,18 @@ namespace Nowpow.Automation.Features.StepDefinitions
             }           
             
         }
-       
+        [When(@"'(.*)' user is logged in a new window")]
+        public void WhenUserIsLoggedInANewWindow(string userType)
+        {           
+           new LoginPage(driverContext).OpenNewWindow();                    
+        }
         
+        [Then(@"'(.*)' user is logged out from first window")]
+        public void ThenUserIsLoggedOutFromFirstWindow(string userType)
+        {
+            new LoginPage(driverContext).SwitchToFirstWindow();            
+        }      
         
-
-
     }
 }
 

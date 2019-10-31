@@ -8,6 +8,7 @@ using Ocaramba;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
+using System.Threading;
 using static NSelene.Selene;
 
 namespace Nowpow.Automation.Features.StepDefinitions
@@ -202,7 +203,7 @@ namespace Nowpow.Automation.Features.StepDefinitions
             S("button[data-id='stateId']").Click();
             S(By.XPath("//span[@class='text'][contains(text(),'IL')]")).Click();                   
             return this;
-        }        
+        }    
 
         internal PatientPage InputZipCode(string zipCode)
         {
@@ -356,7 +357,8 @@ namespace Nowpow.Automation.Features.StepDefinitions
         }
         internal UploadDocumentModal ClickUploadDocument(string button)
         {
-            WaitForNot(smallSpinner, Be.InDom);
+            WaitForNot(smallSpinner, Be.InDOM);
+            Thread.Sleep(1000);
             S("#btn-add-document").Click();
             return new UploadDocumentModal(DriverContext);
         }
@@ -404,18 +406,14 @@ namespace Nowpow.Automation.Features.StepDefinitions
         internal PatientPage SelectRace()
         {
 
-            WaitFor(S("[data-id='raceId']"), Be.Visible).Click();
-            SeleneElement raceDropDown = S("#raceId");            
-            SelectElement SelectRace = new SelectElement(raceDropDown);
-            SelectRace.SelectByIndex(1);
+            WaitFor(S("button[data-id='raceId']"), Be.Visible).Click();
+            S(".bootstrap-select.open ul>li:nth-child(3)").Click();
             return this;
         }
         internal PatientPage SelectEthnicity()
         {
-            WaitFor(S("[data-id='ethnicityId']"), Be.Visible).Click();
-            SeleneElement ethnicityDropDown = S("#ethnicityId");
-            SelectElement SelectEthnicity = new SelectElement(ethnicityDropDown);
-            SelectEthnicity.SelectByText("Asian");
+            WaitFor(S("button[data-id='ethnicityId']"), Be.Visible).Click();
+            S(".bootstrap-select.open ul>li:nth-child(2)").Click();
             return this;
         }
         internal PatientPage InputMrn(string mrn)
@@ -442,6 +440,7 @@ namespace Nowpow.Automation.Features.StepDefinitions
         internal PatientPage SearchByMrn(string mrn)
         {
             S("#services-search-query").SendKeys("12345678");
+            WaitForNot(spinner, Be.InDom);
             S("#btn-search").Click();
             return new PatientPage(DriverContext);
         }
@@ -449,6 +448,11 @@ namespace Nowpow.Automation.Features.StepDefinitions
         {
             S("#services-search-query").SendKeys(invalidName);
             S("#btn-search").Click();
+            return new PatientPage(DriverContext);
+        }
+        internal PatientPage ProceedWithDelete()
+        {
+            S("#btn-add").Click();
             return new PatientPage(DriverContext);
         }
 

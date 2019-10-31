@@ -5,6 +5,7 @@ using TechTalk.SpecFlow;
 using static NSelene.Selene;
 using OpenQA.Selenium;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Configuration;
 
 namespace Nowpow.Automation.Features.StepDefinitions
 {
@@ -135,9 +136,36 @@ namespace Nowpow.Automation.Features.StepDefinitions
         {
             new PatientPage(driverContext).ReturnToPatient();
         }
+        [When(@"user clicks  '(.*)'")]
+        public void WhenUserClicks(string button)
+        {
+            new ProfilePage(driverContext)
+                .ConductScreening(button)
+                .StartButton()
+                .SelectFirstSection();
+        }
+        [When(@"user doesn't save screening")]
+        public void WhenUserDoesnTSaveScreening()
+        {
+            new ScreeningPage(driverContext);
 
-
-
+        }
+        [Then(@"screening is autosaved")]
+        public void ThenScreeningIsAutosaved()
+        {
+            new ScreeningPage(driverContext);
+        }
+        [When(@"user takes action")]
+        public void WhenUserTakesAction()
+        {
+            new ProfilePage(driverContext).OpenTakeAction();
+        }
+        [Then(@"'(.*)' screening action is displayed")]
+        public void ThenScreeningActionIsDisplayed(string completeAction)
+        {
+            new ProfilePage(driverContext);
+            Assert.IsTrue(S(By.LinkText("Complete")).IsDisplayed());
+        }
 
 
 

@@ -13,9 +13,7 @@ namespace Nowpow.Automation.Features.PageObjects
         SeleneElement inputTextbox = S("#notes");
         SeleneElement restrictionCheckbox = S("#restrictionsCheckBox");
         SeleneElement consentCheckbox = S("#referralRow.col-xs-8");
-        SeleneElement sendButton = S("#btn-add.btn-modal");
-        SeleneElement addDocumentButton = S(".btn.btn-attach-document");
-        SeleneElement filePicker = S("input[id='file-picker'][type='file']");
+        SeleneElement sendButton = S("#btn-add.btn-modal");       
         private IJavaScriptExecutor driver;
 
         public AddReferralModal(DriverContext driverContext) : base(driverContext)

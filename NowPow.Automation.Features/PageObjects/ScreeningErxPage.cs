@@ -31,11 +31,11 @@ namespace Nowpow.Automation.Features.StepDefinitions
             generateErxButton.Click();
             return new ScreeningErxPage(DriverContext);
         }
-
+        //possible bug has not been fixed yet. Fails on this steps.
         internal ScreeningErxPage EditFilters()
         {
-            WaitForNot(spinner, Be.InDom);
-            editFiltersButton.Click();
+            WaitForNot(spinner, Be.InDom);            
+            editFiltersButton.Hover().Click();
             return new ScreeningErxPage(DriverContext);
         }
 
@@ -72,9 +72,8 @@ namespace Nowpow.Automation.Features.StepDefinitions
         }
 
         internal ScreeningErxPage SaveErxToScreening()
-        {
-            WaitForNot(S(".modal-backdrop.fade"), Be.InDom);
-            saveErxScreening.Click();
+        {            
+            saveErxScreening.Hover().Click();
             return new ScreeningErxPage(DriverContext);
         }
         

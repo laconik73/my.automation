@@ -261,7 +261,7 @@ namespace Nowpow.Automation.Features.StepDefinitions
                 .Apply()
                 .AddServiceProvider();
             var modal = new ScreeningErxPage(driverContext).SearchForService();
-            modal.InputQuery("hyde park")
+            modal.InputQuery("dental")
                 .ClickSearch()
                 .SelectFirstService()
                 .Update();
@@ -271,6 +271,37 @@ namespace Nowpow.Automation.Features.StepDefinitions
         {
             new ScreeningErxPage(driverContext).SaveErxToScreening();
         }
+        [When(@"user adds condition")]
+        public void WhenUserAddsCondition()
+        {
+            new ErxPage(driverContext)
+                 .ClickConditions()
+                 .SelectFinancialAssistance()
+                 .SelectFoodInsecurity()
+                 .Next()
+                 .SelectLanguage()
+                 .SelectHours()
+                 .GenerateHealtheRx();
+        }
+        [When(@"user makes coordinated referral")]
+        public void WhenUserMakesCoordinatedReferral()
+        {
+           var modal = new ErxPage(driverContext).MakeReferral();
+            modal.SelectRestrictionCheckBox()
+                .SelectConsentCheckBox()
+                .SendCoordinatedReferral();
+        }
+        [Then(@"service marked as '(.*)'")]
+        public void ThenServiceMarkedAs(string icon)
+        {
+            new ErxPage(driverContext);
+            String refSent = S(By.XPath("//div[@class='referral-sent-text'][contains(text(),'Referral Sent')]")).GetText();
+            String expected = "Referral Sent";
+            Assert.AreEqual(refSent, expected);
+        }
+
+
+
 
 
 

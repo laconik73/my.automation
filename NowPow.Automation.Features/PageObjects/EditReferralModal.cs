@@ -14,7 +14,7 @@ namespace Nowpow.Automation.Features.StepDefinitions
     {
         private static readonly NLog.Logger Logger = LogManager.GetCurrentClassLogger();
 
-        SeleneElement acceptanceStatusContainer = S("[data-id='acceptanceStatus']");
+        SeleneElement acceptanceStatus = S("#acceptanceStatusContainer");
         SeleneElement contactStatusContainer = S("[data-id='contactStatus']");
         SeleneElement saveButton = S("#btn-save");
         
@@ -26,11 +26,8 @@ namespace Nowpow.Automation.Features.StepDefinitions
         }
         internal EditReferralModal SelectAcceptanceStatus(string acceptanceName)
         {
-            
-            acceptanceStatusContainer.Click();
-            WaitForNot(S(".modal.modal-card.fade.in"), Be.Selected);
-            S(By.XPath("//span[contains(text(),'Accepted')]")).Click();
-
+            acceptanceStatus.Click();
+            WaitFor(S(By.XPath("//span[contains(text(),'Accepted')]")), Be.InDom).Click();     
             return this;
         }
 
@@ -56,6 +53,10 @@ namespace Nowpow.Automation.Features.StepDefinitions
             return new PatientPage(DriverContext);
         }
 
-       
+        internal EditReferralModal SaveStatus()
+        {
+            saveButton.Click();
+            return this;
+        }
     }
 }
