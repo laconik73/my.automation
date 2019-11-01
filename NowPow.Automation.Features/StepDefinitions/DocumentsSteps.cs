@@ -7,6 +7,7 @@ using TechTalk.SpecFlow;
 using static NSelene.Selene;
 using OpenQA.Selenium;
 using NSelene;
+using System.Threading;
 
 namespace Nowpow.Automation.Features.StepDefinitions
 {
@@ -16,6 +17,7 @@ namespace Nowpow.Automation.Features.StepDefinitions
         private readonly DriverContext driverContext;
         private readonly ScenarioContext scenarioContext;
         private string query;
+        private string note;
 
         public DocumentsSteps(ScenarioContext scenarioContext)
         {
@@ -218,27 +220,56 @@ namespace Nowpow.Automation.Features.StepDefinitions
             new UploadDocumentModal(driverContext)
                 .ChooseVirusFile()
                 .Upload();
+        }        
+
+        [Then(@"'(.*)' message  with a link is displayed")]
+        public void ThenMessageWithALinkIsDisplayed(string errorMessage)
+        {
+            new UploadDocumentModal(driverContext);
+
+            String actualMessage = S(By.XPath("//div[@class='error-area row center-xs']")).GetText();
+            Console.WriteLine(actualMessage);         
+
+            Thread.Sleep(3000);
+             Assert.IsTrue(S(By.XPath("//div[@class='error-area row center-xs']")).Displayed);
         }
         [When(@"user adds virus document")]
         public void WhenUserAddsVirusDocument()
         {
             new MakeReferralModal(driverContext)
                 .ChooseVirusFile()
-                .SendButton();                
-        }
-
-        [Then(@"'(.*)' message  with a link is displayed")]
-        public void ThenMessageWithALinkIsDisplayed(string errorMessage)
-        {
-            new UploadDocumentModal(driverContext);
-            Assert.IsTrue(S("#error-message").Displayed);
+                .SelectRestrictionCheckBox()
+                .SelectConsentCheckBox()
+                .SendButton();
         }
         [Then(@"referral is not created")]
         public void ThenReferralIsNotCreated()
         {
             new MakeReferralModal(driverContext);
-            Assert.IsTrue(S("#error-message").Displayed);
+            String redMessage = S(By.XPath("//span[@class='virus-error-message']")).GetText();
+            Console.WriteLine(redMessage);
+            Thread.Sleep(3000);
+            this.Verify(redMessage);
+            Thread.Sleep(3000);
         }
+        [Then(@"user uploads file with a note")]
+        public void ThenUserUploadsFileWithANote()
+        {
+            note = DateTime.Now.Ticks.ToString();
+            new UploadDocumentModal(driverContext)
+                 .ChooseFile()
+                 .InputDocumentNotes(note)
+                 .Upload();
+        }
+        [Then(@"fie is successfully uploaded and note is displayed")]
+        public void ThenFieIsSuccessfullyUploadedAndNoteIsDisplayed()
+        {
+            new ProfilePage(driverContext);
+            Assert.IsTrue(S("tbody.documents-table-body tr td:nth-child(4)").Displayed);
+
+        }
+
+
 
     }
 

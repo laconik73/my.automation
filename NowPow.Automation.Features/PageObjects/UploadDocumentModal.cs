@@ -20,6 +20,7 @@ namespace Nowpow.Automation.Features.StepDefinitions
         SeleneElement chooseFile = S("#btn-choose-file");
         SeleneElement uploadButton = S("#btn-add");
         SeleneElement cancelButton = S("#btn-cancel");
+        SeleneElement documentNote = S("#document-notes");
 
         public UploadDocumentModal(DriverContext driverContext) : base(driverContext)
         {
@@ -79,10 +80,16 @@ namespace Nowpow.Automation.Features.StepDefinitions
             //AutoIT= Handles Windows that do not belong to browser.
             AutoItX3 autoIt = new AutoItX3();
             autoIt.WinActivate("Open");
-            autoIt.Send("Tanya add your path here");
+            autoIt.Send("C:\\Users\\sabina.dovlati\\Desktop\\eicar.txt");
             Thread.Sleep(1000);
             autoIt.Send(@"{ENTER}");
             Thread.Sleep(1000);
+            return this;
+        }
+
+        internal UploadDocumentModal InputDocumentNotes(string note)
+        {
+            documentNote.SendKeys(note);
             return this;
         }
     }

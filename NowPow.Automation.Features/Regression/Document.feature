@@ -58,15 +58,27 @@ Given 'CPT3' user is logged in
 	And user deletes a document
 	Then document is removed
 
-#Scenario: 06. Upload Virus Document (Tanya's machine)
-#Given 'CPT3' user is logged in
-#	And user chooses tab 'Patient'
-#	And user chooses patient card
-#	And user chooses subtab 'Referrals'
-#	When user chooses button 'Add Referral'
-#	And user refers a service
-#	And user adds virus document
-#	Then referral is not created
+Scenario: 06. Upload Virus Document (Tanya's machine)
+Given 'CPT3' user is logged in
+	And user chooses tab 'Patient'
+	And user chooses patient card
+	And user chooses subtab 'Referrals'
+	When user chooses button 'Add Referral'
+	And user refers a service
+	And user adds virus document
+	Then 'error' message  with a link is displayed
+	And referral is not created
+
+Scenario:07. Scan uploaded document for malware (Tanya's machine)
+Given 'CPT3' user is logged in
+	And user chooses tab 'Patient'
+	And user chooses patient card
+	And user chooses a subtab 'Documents'
+	When user clicks on 'Upload Document' 
+	And user uploads a virus document
+	Then 'error' message  with a link is displayed
+	And user uploads file with a note
+	Then fie is successfully uploaded and note is displayed
 
 
 
