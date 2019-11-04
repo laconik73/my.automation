@@ -56,6 +56,11 @@ namespace Nowpow.Automation.Features.PageObjects
             referralStatus.Click();
             return new EditReferralModal(DriverContext);
         }
+
+        internal ReferralsSentPage OpenChevronDown()
+        {
+            return this;
+        }
     }
 }
   

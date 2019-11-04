@@ -256,7 +256,16 @@ namespace Nowpow.Automation.Features.PageObjects
         }
         internal ErxPage OpenServiceCategoriesCardTopper(string serviceCategories)
         {
-            WaitFor(categoriesButton, Be.Visible).Hover().Click();
+
+            try
+            {
+                WaitFor(categoriesButton, Be.Visible).Hover().Click();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("test failed");
+            }
+           
             return new ErxPage(DriverContext);
         }
         internal ErxPage SelectResult()

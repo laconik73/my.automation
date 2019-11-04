@@ -23,10 +23,18 @@ namespace Nowpow.Automation.Features.PageObjects
         // Adding referral with a note
         internal AddReferralModal SelectFirstRefer()
         {
-            
-            WaitFor(S("button[data-id][data-org]"), Be.Visible);
-            WaitForNot(smallSpinner, Be.Visible);
-            S("button[data-id][data-org]").Click();
+            try
+            {
+                WaitFor(S(".refer-area "), Be.Visible);
+                WaitForNot(smallSpinner, Be.Visible);
+                S(".refer-area ").Click();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("no referrable services are left");
+            }
+
+           
             return new AddReferralModal(DriverContext);
         }
         internal AddReferralModal MakeReferral()

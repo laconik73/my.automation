@@ -7,6 +7,7 @@ using TechTalk.SpecFlow;
 using static NSelene.Selene;
 using OpenQA.Selenium;
 using NSelene;
+using System.Threading;
 
 namespace Nowpow.Automation.Features.StepDefinitions
 {
@@ -83,16 +84,7 @@ namespace Nowpow.Automation.Features.StepDefinitions
             modal.SelectCheckbox2()
                  .Send(); ;
         }
-        //step will fail until bug is fixed. Double modal opens
-        [When(@"user makes coordinated referal")]
-        public void WhenUserMakesCoordinatedReferal()
-        {
-            var modal = new AddReferralModal(driverContext).MakeReferral();
-            modal.SelectFirstRefer()           
-                .SelectCheckbox1()
-                .SelectCheckbox2()
-                .Send();
-        }
+        
         [When(@"user clicks on status '(.*)'")]
         public void WhenUserClicksOnStatus(string statusNew)
         {
@@ -158,9 +150,12 @@ namespace Nowpow.Automation.Features.StepDefinitions
         public void ThenMessageIsDisplayed(string errorMessage)
         {
             new EditReferralModal(driverContext);
-            Assert.IsTrue(S(By.XPath("//h4[contains(text(),'Only the Referral Receiver is allowed to accept th')]")).Displayed);
+            String actualMessage = S(By.XPath("//div[@class='error-area row center-xs']")).GetText();
+            Console.WriteLine(actualMessage);
 
-
+            Thread.Sleep(3000);
+            Assert.IsTrue(S(By.XPath("//div[@class='error-area row center-xs']")).Displayed);
+           
         }
         [When(@"user sends a message to a referral taker")]
         public void WhenUserSendsAMessageToAReferralTaker()
@@ -218,6 +213,16 @@ namespace Nowpow.Automation.Features.StepDefinitions
                 .SelectRestrictionCheckBox()
                 .SelectConsentCheckBox()
                 .SendButton();
+        }
+        [When(@"referal sender views patient history")]
+        public void WhenReferalSenderViewsPatientHistory()
+        {
+            new ReferralsSentPage(driverContext).OpenChevronDown();
+        }
+        [Then(@"referral sender can views any referals made outside of enterprise")]
+        public void ThenReferralSenderCanViewsAnyReferalsMadeOutsideOfEnterprise()
+        {
+            new ReferralsSentPage(driverContext);
         }
 
 

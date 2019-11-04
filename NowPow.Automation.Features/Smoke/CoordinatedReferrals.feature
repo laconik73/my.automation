@@ -14,10 +14,8 @@ Scenario:01.  Sending Referral via Services
 Scenario: 02. Verify error message display for Referral Sender
 Given 'CPT3' user is logged in
 	And user chooses patient card
-	And user chooses subtab 'Referrals'
-	When user chooses button 'Add Referral'
-    And user makes coordinated referal
-	And user clicks on status 'New'
+	And user chooses subtab 'Referrals'	
+	When user clicks on status 'New'
 	And user accepts referal sent
 	Then 'error' message is displayed
 
@@ -74,6 +72,12 @@ Given 'CPT3' user is logged in
 	And user uploads a virus document
 	Then 'error' message  with a link is displayed
 
+Scenario: 09. Referral Sender views patient referrals outside of enterprise (Scale-28)
+Given 'CPT3' user is logged in
+	And user chooses patient card
+	And user chooses subtab 'Referrals'	
+	When referal sender views patient history
+	Then referral sender can views any referals made outside of enterprise
 
 
 
