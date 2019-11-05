@@ -229,6 +229,7 @@
     <Compile Include="PageObjects\ScreeningResultsModal.cs" />
     <Compile Include="PageObjects\SafetyPage.cs" />
     <Compile Include="PageObjects\ScreeningErxPage.cs" />
+    <Compile Include="StepDefinitions\SendTrackedReferralModal.cs" />
     <Compile Include="StepDefinitions\ServiceSteps.cs" />
     <Compile Include="StepDefinitions\ScreeningSteps.cs" />
     <Compile Include="PageObjects\SLSLoginPage.cs" />

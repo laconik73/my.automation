@@ -72,12 +72,23 @@ Given 'CPT3' user is logged in
 	And user uploads a virus document
 	Then 'error' message  with a link is displayed
 
-Scenario: 09. Referral Sender views patient referrals outside of enterprise (Scale-28)
+Scenario: 09. Referral Sender views patient referrals outside of enterprise 
 Given 'CPT3' user is logged in
+	And user chooses tab 'Patient'
+	And user searches for a Patient
 	And user chooses patient card
 	And user chooses subtab 'Referrals'	
 	When referal sender views patient history
 	Then referral sender can views any referals made outside of enterprise
+
+Scenario: 10.Display Referable Services in Coordinated Network
+Given 'CPT3' user is logged in
+	And user chooses tab 'Patient'	
+	And user chooses patient card
+	And user chooses subtab 'Referrals'
+	When user chooses button 'Add Referral'
+	Then modal display only referable services within the network
+
 
 
 

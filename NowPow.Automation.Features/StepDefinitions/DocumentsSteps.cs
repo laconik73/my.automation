@@ -230,8 +230,8 @@ namespace Nowpow.Automation.Features.StepDefinitions
             String actualMessage = S(By.XPath("//div[@class='error-area row center-xs']")).GetText();
             Console.WriteLine(actualMessage);         
 
-            Thread.Sleep(3000);
-             Assert.IsTrue(S(By.XPath("//div[@class='error-area row center-xs']")).Displayed);
+            Thread.Sleep(5000);
+            this.Verify(actualMessage);
         }
         [When(@"user adds virus document")]
         public void WhenUserAddsVirusDocument()
@@ -248,9 +248,8 @@ namespace Nowpow.Automation.Features.StepDefinitions
             new MakeReferralModal(driverContext);
             String redMessage = S(By.XPath("//span[@class='virus-error-message']")).GetText();
             Console.WriteLine(redMessage);
-            Thread.Sleep(3000);
-            this.Verify(redMessage);
-            Thread.Sleep(3000);
+            Thread.Sleep(5000);            
+            
         }
         [Then(@"user uploads file with a note")]
         public void ThenUserUploadsFileWithANote()

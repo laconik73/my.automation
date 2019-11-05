@@ -5,8 +5,9 @@ using Ocaramba;
 using System;
 using static NSelene.Selene;
 using OpenQA.Selenium;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Nowpow.Automation.Features.StepDefinitions;
+using System.Collections.Generic;
+
 
 namespace Nowpow.Automation.Features.PageObjects
 {
@@ -57,8 +58,24 @@ namespace Nowpow.Automation.Features.PageObjects
             return new EditReferralModal(DriverContext);
         }
 
-        internal ReferralsSentPage OpenChevronDown()
+        internal ReferralsSentPage DisplayOrganizations()
         {
+            IList<IWebElement> senders = SS("div[class*='referral-organization']");
+            IList<string> organizations = new List<string>();
+            foreach(IWebElement element in senders)
+            {
+                organizations.Add(element.ToString());
+                Console.WriteLine("Organization "+element.ToString());
+            }
+                                                         
+            IList<IWebElement> receivers = SS("div.drawer-space:nth-child(2) > div.info:nth-child(2)");
+            IList<string> coordinatedReceivers = new List<string>();
+            foreach (IWebElement element in receivers)
+            {
+                coordinatedReceivers.Add(element.ToString());
+                Console.WriteLine("Coordinated Receiver "+element.ToString());
+            }
+
             return this;
         }
     }

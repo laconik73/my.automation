@@ -274,23 +274,51 @@ testRunner.Given("\'CPT3\' user is logged in", ((string)(null)), ((TechTalk.Spec
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("09. Referral Sender views patient referrals outside of enterprise (Scale-28)")]
-        public virtual void _09_ReferralSenderViewsPatientReferralsOutsideOfEnterpriseScale_28()
+        [NUnit.Framework.DescriptionAttribute("09. Referral Sender views patient referrals outside of enterprise")]
+        public virtual void _09_ReferralSenderViewsPatientReferralsOutsideOfEnterprise()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("09. Referral Sender views patient referrals outside of enterprise (Scale-28)", null, ((string[])(null)));
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("09. Referral Sender views patient referrals outside of enterprise", null, ((string[])(null)));
 #line 75
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line 76
 testRunner.Given("\'CPT3\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 77
- testRunner.And("user chooses patient card", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("user chooses tab \'Patient\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 78
- testRunner.And("user chooses subtab \'Referrals\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.And("user searches for a Patient", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 79
- testRunner.When("referal sender views patient history", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.And("user chooses patient card", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 80
+ testRunner.And("user chooses subtab \'Referrals\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 81
+ testRunner.When("referal sender views patient history", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 82
  testRunner.Then("referral sender can views any referals made outside of enterprise", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("10.Display Referable Services in Coordinated Network")]
+        public virtual void _10_DisplayReferableServicesInCoordinatedNetwork()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("10.Display Referable Services in Coordinated Network", null, ((string[])(null)));
+#line 84
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 85
+testRunner.Given("\'CPT3\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 86
+ testRunner.And("user chooses tab \'Patient\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 87
+ testRunner.And("user chooses patient card", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 88
+ testRunner.And("user chooses subtab \'Referrals\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 89
+ testRunner.When("user chooses button \'Add Referral\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 90
+ testRunner.Then("modal display only referable services within the network", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

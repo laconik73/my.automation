@@ -217,13 +217,30 @@ namespace Nowpow.Automation.Features.StepDefinitions
         [When(@"referal sender views patient history")]
         public void WhenReferalSenderViewsPatientHistory()
         {
-            new ReferralsSentPage(driverContext).OpenChevronDown();
+            new ReferralsSentPage(driverContext).DisplayOrganizations();
         }
         [Then(@"referral sender can views any referals made outside of enterprise")]
         public void ThenReferralSenderCanViewsAnyReferalsMadeOutsideOfEnterprise()
         {
             new ReferralsSentPage(driverContext);
+            this.Verify("div[class*='referral-organization']");
+            this.Verify("div.drawer-space:nth-child(2) > div.info:nth-child(2)");
+
         }
+        [Then(@"modal display only referable services within the network")]
+        public void ThenModalDisplayOnlyReferableServicesWithinTheNetwork()
+        {
+            new SendTrackedReferralModal(driverContext).DisplayServicesWithinTheNetwork();
+            String servicesInNetwork = S("h4.service-name").GetText();
+            Console.WriteLine(servicesInNetwork.ToString());
+            String servicesInNetwork5 = S("div.provider.row:nth-child(5) div > div.row:nth-child(1) a").GetText();
+            Console.WriteLine(servicesInNetwork5.ToString());
+            String servicesInNetwork2 = S("div.provider.row:nth-child(2) div > div.row:nth-child(1) a").GetText();
+            Console.WriteLine(servicesInNetwork2.ToString());
+            String servicesInNetwork6 = S("div.provider.row:nth-child(6) div > div.row:nth-child(1) a").GetText();
+            Console.WriteLine(servicesInNetwork6.ToString());
+        }
+
 
 
 
