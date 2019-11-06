@@ -117,23 +117,27 @@
         public void SetBrowserStack()
         {
             DesiredCapabilities capabilities = new DesiredCapabilities();
-            capabilities.SetCapability("browserName", "Chrome");
-            capabilities.SetCapability("browserVersion", "76.0");
-            capabilities.SetCapability("resolution", "1920x1080");
-            Dictionary<string, object> browserstackOptions = new Dictionary<string, object>();
-            browserstackOptions.Add("os", "Windows");
-            browserstackOptions.Add("osVersion", "10");
-            browserstackOptions.Add("resolution", "1920x1080");
-            browserstackOptions.Add("local", "false");
-            browserstackOptions.Add("seleniumVersion", "3.5.2");
-            browserstackOptions.Add("userName", "semiloreajibola1");
-            browserstackOptions.Add("accessKey", "Nb5FsLPHpy9peecC1Cpw");
-            capabilities.SetCapability("bstack:options", browserstackOptions);
+            capabilities.SetCapability("browserName", "firefox");
 
-            IWebDriver dr = new RemoteWebDriver(
-              new Uri("http://hub-cloud.browserstack.com/wd/hub/"), capabilities
-            );
-            dr.Manage().Window.Maximize();
+            IWebDriver dr = new RemoteWebDriver(new Uri("http://52.165.22.223:4444/wd/hub"), capabilities);
+            //DesiredCapabilities capabilities = new DesiredCapabilities();
+            //capabilities.SetCapability("browserName", "Chrome");
+            //capabilities.SetCapability("browserVersion", "76.0");
+            //capabilities.SetCapability("resolution", "1920x1080");
+            //Dictionary<string, object> browserstackOptions = new Dictionary<string, object>();
+            //browserstackOptions.Add("os", "Windows");
+            //browserstackOptions.Add("osVersion", "10");
+            //browserstackOptions.Add("resolution", "1920x1080");
+            //browserstackOptions.Add("local", "false");
+            //browserstackOptions.Add("seleniumVersion", "3.5.2");
+            //browserstackOptions.Add("userName", "semiloreajibola1");
+            //browserstackOptions.Add("accessKey", "Nb5FsLPHpy9peecC1Cpw");
+            //capabilities.SetCapability("bstack:options", browserstackOptions);
+
+            //IWebDriver dr = new RemoteWebDriver(
+            //  new Uri("http://hub-cloud.browserstack.com/wd/hub/"), capabilities
+            //);
+            //dr.Manage().Window.Maximize();
             //dr.Navigate().GoToUrl("http://www.google.com");
         }
 
