@@ -267,8 +267,24 @@ namespace Nowpow.Automation.Features.StepDefinitions
             Assert.IsTrue(S("tbody.documents-table-body tr td:nth-child(4)").Displayed);
 
         }
+        [When(@"user  selects  '(.*)'")]
+        public void WhenUserSelects(string service)
+        {
+            new ServicePage(driverContext).SelectFavorite(service);
+        }
 
-
+        [When(@"user refers patient with virus document")]
+        public void WhenUserRefersPatientWithVirusDocument()
+        {
+            var modal = new MakeReferralModal(driverContext).MakeReferral();
+            modal.PatientMrn("johnny")
+                .SelectFirstResultMatch()                
+                .ChooseVirusFile()
+                .SelectRestrictionCheckBox()
+                .SelectConsentCheckBox()
+                .SendButton();             
+               
+        }
 
     }
 

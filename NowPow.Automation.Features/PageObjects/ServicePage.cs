@@ -11,6 +11,7 @@ using OpenQA.Selenium.Support.UI;
 using static NSelene.Selene;
 using OpenQA.Selenium;
 using System.Threading;
+using System.Collections.Generic;
 
 namespace Nowpow.Automation.Features.StepDefinitions
 {
@@ -175,5 +176,12 @@ namespace Nowpow.Automation.Features.StepDefinitions
             return new ServicePage(DriverContext);
         }
 
+        internal ServicePage SelectFavorite(string service)
+        {
+            IList<IWebElement> favorites = SS("div.favorite");
+            WaitForNot(smallSpinner, Be.InDom);
+            favorites.ElementAt(2).Click();
+            return new ServicePage(DriverContext);
+        }
     }
 }

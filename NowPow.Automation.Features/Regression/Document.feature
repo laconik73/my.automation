@@ -80,6 +80,17 @@ Given 'CPT3' user is logged in
 	And user uploads file with a note
 	Then fie is successfully uploaded and note is displayed
 
+Scenario: 08. Upload virus document via Services
+Given 'CPT3' user is logged in
+   When user chooses tab 'Services'
+   And user  selects  'Favorite Service'
+   And user click on button 'Refer'
+   And user refers patient with virus document
+	Then referral is not created
+   
+
+
+
 
 
 

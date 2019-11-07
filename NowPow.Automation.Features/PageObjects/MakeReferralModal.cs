@@ -9,6 +9,7 @@ using NowPow.Automation.PageObjects;
 using NSelene;
 using Ocaramba;
 using static NSelene.Selene;
+using OpenQA.Selenium;
 
 namespace Nowpow.Automation.Features.StepDefinitions
 {
@@ -23,6 +24,8 @@ namespace Nowpow.Automation.Features.StepDefinitions
         SeleneElement addDocumentButton = S("button[class*='btn-attach-document']");
         SeleneElement deleteIcon = S(".btn-delete-document");
         SeleneElement restrictionCheckbox = S("#restrictionsCheckBox");
+        SeleneElement patientEmail = S("#patientEmailAddress");
+        SeleneElement resultMatch = S("div.result.match.tt-suggestion.tt-selectable");
 
 
         public static bool Displayed { get; internal set; }
@@ -163,6 +166,12 @@ namespace Nowpow.Automation.Features.StepDefinitions
             Thread.Sleep(1000);
             autoIt.Send(@"{ENTER}");
             Thread.Sleep(1000);
+            return this;
+        }
+        
+        internal MakeReferralModal SelectFirstResultMatch()
+        {            
+            resultMatch.Click();
             return this;
         }
     }
