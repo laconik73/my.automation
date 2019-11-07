@@ -8,7 +8,7 @@ using Ocaramba;
 using System;
 using Nowpow.Automation.Features.PageObjects;
 using Nowpow.Automation.Features.StepDefinitions;
-
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace NowPow.Automation.Features.StepDefinitions
 {
@@ -28,6 +28,7 @@ namespace NowPow.Automation.Features.StepDefinitions
         SeleneElement hamburgerIcon = S("#hamburger-icon");
         SeleneElement expandedNav = S(".inset-nav");
         SeleneElement notificationIcon = S("#nav-item-notifications");
+        SeleneElement bellIcon = S("a[id='nav-item-notifications'][type]");
         private bool? _menuIsCollapsed = null;
 
         bool MenuIsCollapsed
@@ -154,7 +155,13 @@ namespace NowPow.Automation.Features.StepDefinitions
             return new AnalyticsPage(DriverContext);
         }
 
-
+        internal NotificationsPage OpenNotifications()
+        {           
+            bellIcon.Click();
+            String tableHeader = S("#table-header").GetText();
+            Console.WriteLine(tableHeader);
+            return new NotificationsPage(DriverContext);
+        }
     }
 }
 

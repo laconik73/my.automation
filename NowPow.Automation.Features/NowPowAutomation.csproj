@@ -216,6 +216,7 @@
     <Compile Include="StepDefinitions\ErxSteps.cs" />
     <Compile Include="PageObjects\FoodPage.cs" />
     <Compile Include="PageObjects\NotesModal.cs" />
+    <Compile Include="PageObjects\NotificationsPage.cs" />
     <Compile Include="StepDefinitions\ReferralFilterOptionSteps.cs" />
     <Compile Include="PageObjects\ReferralsReceivedPage.cs" />
     <Compile Include="StepDefinitions\ReferralSteps.cs" />

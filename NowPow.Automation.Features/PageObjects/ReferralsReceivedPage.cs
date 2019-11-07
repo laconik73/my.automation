@@ -15,6 +15,9 @@ namespace Nowpow.Automation.Features.StepDefinitions
         SeleneElement referralMessage = S(".message.right");
         SeleneElement inputMessage = S("#new-message");
         SeleneElement sendButton = S("#send-button");
+        SeleneElement patientsTab = S("a[id='nav-item-patients'][type]");
+        SeleneElement minusCircle = S("div[class*='info acceptance'] i>svg[data-icon='minus-circle']");
+
 
         public ReferralsReceivedPage(DriverContext driverContext): base(driverContext)
         {
@@ -52,6 +55,19 @@ namespace Nowpow.Automation.Features.StepDefinitions
             WaitForNot(spinner, Be.InDom);
             sendButton.Click();
             return this;
+        }
+
+        internal PatientPage OpenPatients()
+        {
+            WaitForNot(S(".modal-content"), Be.InDom);
+            patientsTab.Click();
+            return new PatientPage(DriverContext);
+        }
+
+        internal EditReferralModal ClickOnNewReferral()
+        {            
+            minusCircle.Click();
+            return new EditReferralModal(DriverContext);
         }
     }
 }

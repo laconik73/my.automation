@@ -8,6 +8,9 @@ using static NSelene.Selene;
 using OpenQA.Selenium;
 using NSelene;
 using System.Threading;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Nowpow.Automation.Features.StepDefinitions
 {
@@ -240,9 +243,88 @@ namespace Nowpow.Automation.Features.StepDefinitions
             String servicesInNetwork6 = S("div.provider.row:nth-child(6) div > div.row:nth-child(1) a").GetText();
             Console.WriteLine(servicesInNetwork6.ToString());
         }
-
-
-
+        [When(@"user does not accept new referral")]
+        public void WhenUserDoesNotAcceptNewReferral()
+        {
+            new DashboardPage(driverContext)
+                .OpenNotifications()
+                .ChooseUnreadNotification();                
+        }
+        [When(@"user searches for a new referred patient")]
+        public void WhenUserSearchesForANewReferredPatient()
+        {
+            new ReferralsReceivedPage(driverContext)
+                .OpenPatients()
+                .SearchPatient();
+        }
+        [Then(@"search results return to matching criteria")]
+        public void ThenSearchResultsReturnToMatchingCriteria()
+        {
+            new PatientPage(driverContext);
+            String errorMessage = S("#error-area").GetText();
+            Console.WriteLine(errorMessage);
+            this.Verify("#error-area");
+        }
+        [When(@"user accepts new referral")]
+        public void WhenUserAcceptsNewReferral()
+        {
+            new DashboardPage(driverContext)
+               .OpenNotifications()
+               .ChooseUnreadNotification()
+               .ClickOnNewReferral();
+            var modal = new EditReferralModal(driverContext);
+               modal.SelectAcceptanceStatus()
+               .SaveAcceptedReferral();            
+        }
+        [When(@"user searches accepted referral")]
+        public void WhenUserSearchesAcceptedReferral()
+        {
+            new ReferralsReceivedPage(driverContext)
+                .OpenPatients()
+                .SearchAcceptedReferal();
+        }
+        [Then(@"new patient is created and patient card is displayed")]
+        public void ThenNewPatientIsCreatedAndPatientCardIsDisplayed()
+        {
+            new PatientPage(driverContext);
+            this.Verify("div.patient");
+        }
+        [When(@"user changes acceptance status to '(.*)'")]
+        public void WhenUserChangesAcceptanceStatusTo(string waitlisted)
+        {
+            new EditReferralModal(driverContext)
+                .SelectWaitlisted(waitlisted)
+                .SaveStatus();
+        }
+        [Then(@"acceptance status is changed")]
+        public void ThenAcceptanceStatusIsChanged()
+        {
+            new ReferralsSentPage(driverContext);
+            this.Verify("//span[@class='referral-icon-label'][contains(text(),'Waitlist')]");
+        }
+        [When(@"user chooses patient card")]
+        public void WhenUserChoosesPatientCard()
+        {
+            new PatientPage(driverContext).OpenPatientCard();
+               
+        }
+        [When(@"user chooses subtab '(.*)'")]
+        public void WhenUserChoosesSubtab(string subtabName)
+        {
+            new PatientPage(driverContext).OpenReferral(subtabName);
+        }
+        [Then(@"user gaines access to all patient referrals")]
+        public void ThenUserGainesAccessToAllPatientReferrals()
+        {
+            new PatientPage(driverContext);
+            IList<IWebElement> chevronDown = SS(".btn-activity.open-drawer");
+            chevronDown.ElementAt(0).Click();
+            Thread.Sleep(3000);
+            chevronDown.ElementAt(1).Click();
+            Thread.Sleep(3000);
+            chevronDown.ElementAt(2).Click();
+            Thread.Sleep(3000);
+        }
 
     }
 }

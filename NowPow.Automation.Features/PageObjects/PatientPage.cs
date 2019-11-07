@@ -265,7 +265,8 @@ namespace Nowpow.Automation.Features.StepDefinitions
             WaitFor(S(By.XPath("//h2[contains(text(),'Edit Profile')]")), Be.Visible);
             saveButton.Click();
             return new PatientPage(DriverContext);
-        }
+        }       
+
         internal PatientPage DisplayGeneratedButton()
         {
             Assert.IsTrue(true);
@@ -291,7 +292,8 @@ namespace Nowpow.Automation.Features.StepDefinitions
             String actualOrg = "QA Organization - Automation Screenings";
             Assert.AreEqual(actualOrg, expectedOrg);
             return new ScreeningPage(DriverContext);
-        }
+        }       
+
         internal PatientPage SearchPatient(string query)
         {
             S("#services-search-query").SendKeys(query);
@@ -323,7 +325,8 @@ namespace Nowpow.Automation.Features.StepDefinitions
             }
             S("#emailConsent>div:nth-child(2)>div.toggle.btn").Click();
             return new PatientPage(DriverContext);
-        }
+        }        
+
         internal PatientPage ConfirmEmailConfiguration()
         {
             S("#btn-add").Click();
@@ -455,7 +458,27 @@ namespace Nowpow.Automation.Features.StepDefinitions
             S("#btn-add").Click();
             return new PatientPage(DriverContext);
         }
-
+        internal PatientPage SearchPatient()
+        {
+            S("#services-search-query").SendKeys("Putin");
+            WaitForNot(spinner, Be.InDom);
+            S("#btn-search").Click();
+            return this;
+        }
+        internal PatientPage SearchAcceptedReferal()
+        {
+            S("#services-search-query").SendKeys("ronald abbott");
+            WaitForNot(spinner, Be.InDom);
+            S("#btn-search").Click();
+            return this;
+        }
+        internal PatientPage OpenPatientCard()
+        {
+            WaitForNot(spinner, Be.InDom);
+            S("div.patient").Click();
+            return new PatientPage(DriverContext);
+        }
+        
 
     }
 }
