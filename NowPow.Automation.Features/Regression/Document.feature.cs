@@ -306,6 +306,206 @@ testRunner.Given("\'CPT3\' user is logged in", ((string)(null)), ((TechTalk.Spec
 #line hidden
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("09. Add/Remove files from Sent Referrals")]
+        public virtual void _09_AddRemoveFilesFromSentReferrals()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("09. Add/Remove files from Sent Referrals", null, ((string[])(null)));
+#line 91
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 92
+testRunner.Given("\'CPT3\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 93
+testRunner.And("user is on \'Referrals Sent\' page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 94
+testRunner.When("user is on referral with attached document", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 95
+testRunner.And("user decides to delete a document", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 96
+testRunner.Then("document is removed from Sent Referrals", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("10. Add/Remove files from Received Referrals")]
+        public virtual void _10_AddRemoveFilesFromReceivedReferrals()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("10. Add/Remove files from Received Referrals", null, ((string[])(null)));
+#line 98
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 99
+testRunner.Given("\'CPT4\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 100
+testRunner.When("user is on received referrals with attached document", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 101
+testRunner.And("user deletes document", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 102
+testRunner.Then("document is removed from Received Referrals", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("11. Add files to Sent Referrals")]
+        public virtual void _11_AddFilesToSentReferrals()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("11. Add files to Sent Referrals", null, ((string[])(null)));
+#line 104
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 105
+testRunner.Given("\'CPT3\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 106
+testRunner.And("user is on \'Referrals Sent\' page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 107
+testRunner.When("user is on referral with attached document", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 108
+testRunner.Then("file is added to Sent Referrals", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("12. Add files to Received Referrals")]
+        public virtual void _12_AddFilesToReceivedReferrals()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("12. Add files to Received Referrals", null, ((string[])(null)));
+#line 110
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 111
+testRunner.Given("\'CPT4\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 112
+testRunner.When("user is on received referrals with attached document", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 113
+testRunner.Then("file is added to Received Referrals", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("13. Remove files from Sent Referrals")]
+        public virtual void _13_RemoveFilesFromSentReferrals()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("13. Remove files from Sent Referrals", null, ((string[])(null)));
+#line 115
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 116
+testRunner.Given("\'CPT3\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 117
+testRunner.And("user is on \'Referrals Sent\' page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 118
+testRunner.When("user decides to delete a document", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 119
+testRunner.Then("document is removed from Sent Referrals", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("14. Remove files from Received Referrals")]
+        public virtual void _14_RemoveFilesFromReceivedReferrals()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("14. Remove files from Received Referrals", null, ((string[])(null)));
+#line 121
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 122
+testRunner.Given("\'CPT4\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 123
+testRunner.And("user is on Referrals Received page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 124
+testRunner.When("user deletes document", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 125
+testRunner.Then("document is removed from Received Referrals", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("15. View Shared Documents of Referrals Sent")]
+        public virtual void _15_ViewSharedDocumentsOfReferralsSent()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("15. View Shared Documents of Referrals Sent", null, ((string[])(null)));
+#line 127
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 128
+testRunner.Given("\'CPT3\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 129
+testRunner.And("user is on \'Referrals Sent\' page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 130
+testRunner.When("user views documents", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 131
+testRunner.And("user downloads document", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 132
+testRunner.Then("document is downloaded", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("16. Verify Default Documents table sorting")]
+        public virtual void _16_VerifyDefaultDocumentsTableSorting()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("16. Verify Default Documents table sorting", null, ((string[])(null)));
+#line 134
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 135
+testRunner.Given("\'CPT3\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 136
+ testRunner.And("user chooses tab \'Patient\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 137
+ testRunner.And("user chooses patient card", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 138
+ testRunner.And("user chooses a subtab \'Documents\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 139
+ testRunner.When("user clicks on \'Upload Document\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 140
+ testRunner.And("user uploads file", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 141
+ testRunner.Then("documents are sorted by Upload Date in Descending order", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 142
+ testRunner.And("user refreshes page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 143
+ testRunner.Then("documents are sorted by Upload Date in Descending order", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("17. Verify Documents table sorting")]
+        public virtual void _17_VerifyDocumentsTableSorting()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("17. Verify Documents table sorting", null, ((string[])(null)));
+#line 145
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 146
+testRunner.Given("\'CPT3\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 147
+ testRunner.And("user chooses tab \'Patient\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 148
+ testRunner.And("user chooses patient card", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 149
+ testRunner.And("user chooses a subtab \'Documents\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 150
+ testRunner.When("user clicks on \'Document Name\' column", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 151
+ testRunner.Then("documents are displayed in Ascending order", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 152
+ testRunner.And("user chooses \'Upload Date\' column", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 153
+ testRunner.Then("dates are displayed in Ascending order", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore

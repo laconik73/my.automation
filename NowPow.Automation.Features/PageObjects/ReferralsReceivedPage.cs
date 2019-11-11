@@ -17,7 +17,10 @@ namespace Nowpow.Automation.Features.StepDefinitions
         SeleneElement sendButton = S("#send-button");
         SeleneElement patientsTab = S("a[id='nav-item-patients'][type]");
         SeleneElement minusCircle = S("div[class*='info acceptance'] i>svg[data-icon='minus-circle']");
-
+        SeleneElement chevronDown = S(".btn-activity.open-drawer");
+        SeleneElement addDocumentButton = S(".btn.btn-white.attach-document");
+        SeleneElement redDeleteIcon = S(".btn-delete-document");
+        SeleneElement deleteButton = S("#btn-add");
 
         public ReferralsReceivedPage(DriverContext driverContext): base(driverContext)
         {
@@ -68,6 +71,38 @@ namespace Nowpow.Automation.Features.StepDefinitions
         {            
             minusCircle.Click();
             return new EditReferralModal(DriverContext);
+        }
+
+        internal ReferralsReceivedPage OpenChevronDown()
+        {
+            chevronDown.Click();
+            return this;
+        }
+
+        internal UploadDocumentModal AddDocument()
+        {
+            addDocumentButton.Click();
+            return new UploadDocumentModal(DriverContext);
+        }
+
+        internal ReferralsReceivedPage DeleteDocument()
+        {
+            redDeleteIcon.Click();
+            return new ReferralsReceivedPage(DriverContext);
+        }
+
+        internal ReferralsReceivedPage ProceedWithDelete()
+        {
+            try
+            {
+                deleteButton.Click();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(" test failed");
+            }
+           
+            return new ReferralsReceivedPage(DriverContext);
         }
     }
 }

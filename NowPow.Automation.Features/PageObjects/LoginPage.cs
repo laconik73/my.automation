@@ -29,7 +29,7 @@ namespace NowPow.Automation.Features.StepDefinitions
 
         public LoginPage(DriverContext driverContext) : base(driverContext)
         {
-            DriverContext.Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1);
+            DriverContext.Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
         }         
          // Pre-condition for all test cases
           
@@ -74,6 +74,8 @@ namespace NowPow.Automation.Features.StepDefinitions
             var newWindow = Driver.SwitchTo().Window(newWindowHandle);
 
             driver.Navigate().GoToUrl("https://app-staged.nowpow.com/");
+
+
 
             driver.FindElement(By.Id("inputEmail")).SendKeys("user-automation@stage.org");            
             driver.FindElementById("btn-next").Click();

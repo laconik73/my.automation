@@ -62,7 +62,8 @@ namespace Nowpow.Automation.Features.StepDefinitions
         [When(@"'(.*)' user is logged in a new window")]
         public void WhenUserIsLoggedInANewWindow(string userType)
         {           
-           new LoginPage(driverContext).OpenNewWindow();                    
+           new LoginPage(driverContext).OpenNewWindow(); 
+            
         }
         
         [Then(@"'(.*)' user is logged out from first window")]

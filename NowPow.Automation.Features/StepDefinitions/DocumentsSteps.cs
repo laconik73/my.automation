@@ -8,6 +8,9 @@ using static NSelene.Selene;
 using OpenQA.Selenium;
 using NSelene;
 using System.Threading;
+using Ocaramba.Helpers;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Nowpow.Automation.Features.StepDefinitions
 {
@@ -97,17 +100,17 @@ namespace Nowpow.Automation.Features.StepDefinitions
                 .ChooseFile()
                 .Upload();
         }
-       
+
         [Then(@"file is uploaded as '(.*)' and increases by '(.*)' unit")]
         public void ThenFileIsUploadedAsAndIncreasesByUnit(string duplicateName, int n)
         {
             new PatientPage(driverContext);
-            
-            if(duplicateName == "Scale" + n)
+
+            if (duplicateName == "Scale" + n)
             {
                 Assert.IsTrue(S(By.XPath("//tr[@class='odd']")).IsDisplayed());
-            }            
-            
+            }
+
         }
         [When(@"user chooses one file to upload")]
         public void WhenUserChoosesOneFileToUpload()
@@ -118,7 +121,7 @@ namespace Nowpow.Automation.Features.StepDefinitions
         public void ThenButtonIsEnabled(string button)
         {
             new UploadDocumentModal(driverContext).EnableUpload(button);
-            
+
         }
         [Then(@"a user chooses '(.*)' button")]
         public void ThenAUserChoosesButton(string button)
@@ -148,7 +151,7 @@ namespace Nowpow.Automation.Features.StepDefinitions
         public void WhenUserIsOnPatientOverviewPage(string subtabName)
         {
             new ProfilePage(driverContext);
-            
+
         }
         [Then(@"'(.*)' subtab is displayed")]
         public void ThenSubtabIsDisplayed(string subtabName)
@@ -190,7 +193,7 @@ namespace Nowpow.Automation.Features.StepDefinitions
         public void ThenTheFilesDisplayAsSeparateLines()
         {
             new MakeReferralModal(driverContext);
-            Assert.IsTrue(S(By.XPath("//div[@class='attached-documents']")).Displayed);            
+            Assert.IsTrue(S(By.XPath("//div[@class='attached-documents']")).Displayed);
         }
         [When(@"user deletes a document")]
         public void WhenUserDeletesADocument()
@@ -220,7 +223,7 @@ namespace Nowpow.Automation.Features.StepDefinitions
             new UploadDocumentModal(driverContext)
                 .ChooseVirusFile()
                 .Upload();
-        }        
+        }
 
         [Then(@"'(.*)' message  with a link is displayed")]
         public void ThenMessageWithALinkIsDisplayed(string errorMessage)
@@ -228,7 +231,7 @@ namespace Nowpow.Automation.Features.StepDefinitions
             new UploadDocumentModal(driverContext);
 
             String actualMessage = S(By.XPath("//div[@class='error-area row center-xs']")).GetText();
-            Console.WriteLine(actualMessage);         
+            Console.WriteLine(actualMessage);
 
             Thread.Sleep(5000);
             this.Verify(actualMessage);
@@ -248,8 +251,8 @@ namespace Nowpow.Automation.Features.StepDefinitions
             new MakeReferralModal(driverContext);
             String redMessage = S(By.XPath("//span[@class='virus-error-message']")).GetText();
             Console.WriteLine(redMessage);
-            Thread.Sleep(5000);            
-            
+            Thread.Sleep(5000);
+
         }
         [Then(@"user uploads file with a note")]
         public void ThenUserUploadsFileWithANote()
@@ -278,15 +281,182 @@ namespace Nowpow.Automation.Features.StepDefinitions
         {
             var modal = new MakeReferralModal(driverContext).MakeReferral();
             modal.PatientMrn("johnny")
-                .SelectFirstResultMatch()                
+                .SelectFirstResultMatch()
                 .ChooseVirusFile()
                 .SelectRestrictionCheckBox()
                 .SelectConsentCheckBox()
-                .SendButton();             
-               
+                .SendButton();
+
+        }
+        [Given(@"user is on '(.*)' page")]
+        public void GivenUserIsOnPage(string tabName)
+        {
+            new DashboardPage(driverContext).OpenReferralsSent();
+        }
+        [When(@"user is on referral with attached document")]
+        public void WhenUserIsOnReferralWithAttachedDocument()
+        { 
+             new ReferralsSentPage(driverContext)
+                .OpenChevronDown()
+                .AddDocument()
+                .ChooseFile()
+                .UploadToReferralSent();
+            Thread.Sleep(3000);
+            WaitForNot(S(".modal-backdrop.fade"), Be.InDom);
+        }
+        [When(@"user decides to delete a document")]
+        public void WhenUserDecidesToDeleteADocument()
+        {
+            new ReferralsSentPage(driverContext)
+                .OpenChevronDown()
+                .DeleteDocument()
+                .ProceedWithDelete();
+            Thread.Sleep(3000);
+            WaitForNot(S(".modal-backdrop.fade"), Be.InDom);
+        }
+        [Then(@"document is removed from Sent Referrals")]
+        public void ThenDocumentIsRemovedFromSentReferrals()
+        {
+            new ReferralsSentPage(driverContext).OpenChevronDown();
+           
+        }
+        [When(@"user is on received referrals with attached document")]
+        public void WhenUserIsOnReceivedReferralsWithAttachedDocument()
+        {
+            new DashboardPage(driverContext)
+                .OpenReceivedReferrals()
+                .OpenChevronDown()
+                .AddDocument()
+                .ChooseFile()
+                .UploadToReceivedReferrals();
+            Thread.Sleep(500);
+            WaitForNot(S(".modal.modal-card.fade"), Be.InDom);
+                 
+        }
+        [When(@"user deletes document")]
+        public void WhenUserDeletesDocument()
+        {
+            new ReferralsReceivedPage(driverContext)
+               .OpenChevronDown()
+               .DeleteDocument()
+               .ProceedWithDelete();
+            Thread.Sleep(500);
+            WaitForNot(S(".modal.modal-card.fade"), Be.InDom);
+
+        }
+        [Then(@"document is removed from Received Referrals")]
+        public void ThenDocumentIsRemovedFromReceivedReferrals()
+        {
+            new ReferralsReceivedPage(driverContext).OpenChevronDown();
+            
+        }
+        [Then(@"file is added to Sent Referrals")]
+        public void ThenFileIsAddedToSentReferrals()
+        {
+            new ReferralsSentPage(driverContext);
+            Assert.IsTrue(S("i.urgent.clip").Displayed);
+        }
+        [Given(@"user is on Referrals Received page")]
+        public void GivenUserIsOnReferralsReceivedPage()
+        {
+            new DashboardPage(driverContext).OpenReceivedReferrals();
         }
 
+        [Then(@"file is added to Received Referrals")]
+        public void ThenFileIsAddedToReceivedReferrals()
+        {
+            new ReferralsReceivedPage(driverContext);
+            Assert.IsTrue(S("i.urgent.clip").Displayed);
+        }
+        
+        [When(@"user views documents")]
+        public void WhenUserViewsDocuments()
+        {
+            new ReferralsSentPage(driverContext).OpenChevronDown();
+            Assert.IsTrue(S("i.urgent.clip").Displayed);
+        }
+        [When(@"user downloads document")]
+        public void WhenUserDownloadsDocument()
+        {
+            new ReferralsSentPage(driverContext).DownloadDocument();
+        }
+        [Then(@"document is downloaded")]
+        public string ThenDocumentIsDownloaded()
+        {
+            new ReferralsSentPage(driverContext);
+                    
+             var nameOfFile = FilesHelper.GetFilesOfGivenType(this.driverContext.ScreenShotFolder, FileType.Docx);
+            return nameOfFile.ToString();           
+        }        
+        
+        [Then(@"documents are sorted by Upload Date in Descending order")]
+        public void ThenDocumentsAreSortedByUploadDateInDescendingOrder()
+        {
+            new ProfilePage(driverContext);
+            DateTime dt1 = DateTime.Now;
+            DateTime dt2 = DateTime.Now + TimeSpan.FromDays(1);
+            var value = dt2.CompareTo(dt1);
+        }
+        [Then(@"user refreshes page")]
+        public void ThenUserRefreshesPage()
+        {
+            new ProfilePage(driverContext)
+                .RefreshPage()
+                .OpenDocuments();
+        }
+        [When(@"user clicks on '(.*)' column")]
+        public void WhenUserClicksOnColumn(string column)
+        {
+            new ProfilePage(driverContext).SortByDocumentName(column);
+        }
+        [Then(@"documents are displayed in Ascending order")]
+        public void ThenDocumentsAreDisplayedInAscendingOrder()
+        {
+            new ProfilePage(driverContext);
+            List<String> displayAscendingNames = new List<string>();
+            IReadOnlyList<IWebElement> cells = SS("td.padLeft30");
+            foreach(IWebElement cell in cells)
+            {
+                displayAscendingNames.Add(cell.Text);
+            }
+            List<String> displayNamesSorted = new List<string>(displayAscendingNames);
+            displayNamesSorted.Sort();
+            Console.WriteLine(displayAscendingNames.SequenceEqual(displayNamesSorted));
+            
+        }
+        [Then(@"user chooses '(.*)' column")]
+        public void ThenUserChoosesColumn(string column)
+        {
+            new ProfilePage(driverContext).SortByUploadDate(column);
+        }
+        [Then(@"dates are displayed in Ascending order")]
+        public void ThenDatesAreDisplayedInAscendingOrder()
+        {
+            new ProfilePage(driverContext);
+            DateTime dt1 = DateTime.Now;
+            DateTime dt2 = DateTime.Now + TimeSpan.FromMinutes(1);
+            var value = dt2.CompareTo(dt1);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
+
 
 }
 

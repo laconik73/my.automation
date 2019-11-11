@@ -8,7 +8,7 @@ using Nowpow.Automation.Features.PageObjects;
 using Nowpow.Automation.Features.StepDefinitions;
 using System.Linq;
 using OpenQA.Selenium;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 
 namespace NowPow.Automation.Features.StepDefinitions
 
@@ -101,6 +101,31 @@ namespace NowPow.Automation.Features.StepDefinitions
         {
             WaitForNot(smallSpinner, Be.InDom);
             favoritesIcon.Click();
+            return new ProfilePage(DriverContext);
+        }
+
+        internal ProfilePage RefreshPage()
+        {
+            Driver.Navigate().Refresh();
+            return new ProfilePage(DriverContext);
+        }
+
+        internal ProfilePage OpenDocuments()
+        {           
+            S(By.Id("documents")).Click();
+            return new ProfilePage(DriverContext);
+        }
+
+        internal ProfilePage SortByDocumentName(string column)
+        {
+            S("th[aria-label*='DOCUMENT NAME']").Click();         
+          
+            return new ProfilePage(DriverContext);
+        }
+
+        internal ProfilePage SortByUploadDate(string column)
+        {
+            S("th[aria-label*='UPLOAD DATE']").Click();
             return new ProfilePage(DriverContext);
         }
     }

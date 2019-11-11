@@ -19,7 +19,11 @@ namespace Nowpow.Automation.Features.PageObjects
         SeleneElement sendButton = S("#send-button");
         SeleneElement backButton = S("span#back-link");
         SeleneElement referralStatus = S(By.XPath("//span[@class='referral-icon-label'][contains(text(),'New')]"));
-        
+        SeleneElement chevronDown = S(".btn-activity.open-drawer");
+        SeleneElement addDocumentButton = S(".btn.btn-white.attach-document");
+        SeleneElement redDeleteIcon = S(".btn-delete-document");
+        SeleneElement deleteButton = S("#btn-add");
+        SeleneElement downloadIcon = S(".download-icon-blue.download-document");
 
         public ReferralsSentPage(DriverContext driverContext) : base(driverContext)
         {
@@ -76,6 +80,46 @@ namespace Nowpow.Automation.Features.PageObjects
                 Console.WriteLine("Coordinated Receiver "+element.ToString());
             }
 
+            return this;
+        }
+
+        internal ReferralsSentPage OpenChevronDown()
+        {            
+            chevronDown.Click();
+            return this;
+        }
+
+        internal UploadDocumentModal AddDocument()
+        {            
+            addDocumentButton.Click();
+            return new UploadDocumentModal(DriverContext);
+        }
+
+        internal ReferralsSentPage DeleteDocument()
+        {           
+            redDeleteIcon.Click();
+            return new ReferralsSentPage(DriverContext);
+        }
+
+        internal ReferralsSentPage ProceedWithDelete()
+        {
+            
+            deleteButton.Click();
+            return new ReferralsSentPage(DriverContext);
+        }
+
+        internal ReferralsSentPage DownloadDocument()
+        {
+            try
+            {
+                downloadIcon.Click();
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(" test failed");
+            }
+
+            
             return this;
         }
     }

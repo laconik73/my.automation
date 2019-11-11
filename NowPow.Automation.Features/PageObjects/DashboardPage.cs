@@ -29,6 +29,8 @@ namespace NowPow.Automation.Features.StepDefinitions
         SeleneElement expandedNav = S(".inset-nav");
         SeleneElement notificationIcon = S("#nav-item-notifications");
         SeleneElement bellIcon = S("a[id='nav-item-notifications'][type]");
+        SeleneElement referralsMenu = S("#referralsDropdown");
+        SeleneElement referralsSent = S("#nav-item-referrals-sent.profile-link");
         private bool? _menuIsCollapsed = null;
 
         bool MenuIsCollapsed
@@ -161,6 +163,19 @@ namespace NowPow.Automation.Features.StepDefinitions
             String tableHeader = S("#table-header").GetText();
             Console.WriteLine(tableHeader);
             return new NotificationsPage(DriverContext);
+        }
+
+        internal ReferralsSentPage OpenReferralsSent()
+        {            
+            referralsMenu.Click();
+            referralsSent.Click();
+            return new ReferralsSentPage(DriverContext);
+        }
+
+        internal ReferralsReceivedPage OpenReceivedReferrals()
+        {
+            S("a[id='nav-item-referrals-received']").Click();
+            return new ReferralsReceivedPage(DriverContext);
         }
     }
 }

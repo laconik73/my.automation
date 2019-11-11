@@ -10,6 +10,7 @@ using System.Threading;
 using System.Diagnostics;
 using Microsoft.JScript;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Nowpow.Automation.Features.PageObjects;
 
 namespace Nowpow.Automation.Features.StepDefinitions
 {
@@ -91,6 +92,18 @@ namespace Nowpow.Automation.Features.StepDefinitions
         {
             documentNote.SendKeys(note);
             return this;
+        }
+
+        internal ReferralsSentPage UploadToReferralSent()
+        {
+            uploadButton.Click();
+            return new ReferralsSentPage(DriverContext);
+        }
+
+        internal ReferralsReceivedPage UploadToReceivedReferrals()
+        {
+            uploadButton.Click();
+            return new ReferralsReceivedPage(DriverContext);
         }
     }
 }

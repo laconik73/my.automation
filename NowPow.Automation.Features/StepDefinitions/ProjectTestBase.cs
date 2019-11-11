@@ -12,6 +12,9 @@
     using OpenQA.Selenium.Chrome;
     using System.Configuration;
 
+    
+    
+
     /// <summary>
     /// The base class for all tests <see href="https://github.com/ObjectivityLtd/NowPow/wiki/ProjectTestBase-class">More details on wiki</see>
     /// </summary>
@@ -114,31 +117,38 @@
 
         }
 
+        [Obsolete]
         public void SetBrowserStack()
         {
+            //DesiredCapabilities capability = new DesiredCapabilities();
+            //capability.SetCapability("browserName", "Firefox");
+            //capability.SetCapability("marionette", true);
+            //capability.SetCapability("geckodriver", true);
+            //var hubUri = new Uri("http://52.165.22.223:4444/wd/hub");
+            //IWebDriver driver = new RemoteWebDriver(hubUri, capability);
+
+
+
+            //IWebDriver dr = new RemoteWebDriver(new Uri("http://52.165.22.223:4444/wd/hub"), capabilities);
             DesiredCapabilities capabilities = new DesiredCapabilities();
-            capabilities.SetCapability("browserName", "firefox");
+            capabilities.SetCapability("browserName", "Chrome");
+            capabilities.SetCapability("browserVersion", "76.0");
+            capabilities.SetCapability("resolution", "1920x1080");
+            Dictionary<string, object> browserstackOptions = new Dictionary<string, object>();
+            browserstackOptions.Add("os", "Windows");
+            browserstackOptions.Add("osVersion", "10");
+            browserstackOptions.Add("resolution", "1920x1080");
+            browserstackOptions.Add("local", "false");
+            browserstackOptions.Add("seleniumVersion", "3.5.2");
+            browserstackOptions.Add("userName", "semiloreajibola1");
+            browserstackOptions.Add("accessKey", "Nb5FsLPHpy9peecC1Cpw");
+            capabilities.SetCapability("bstack:options", browserstackOptions);
 
-            IWebDriver dr = new RemoteWebDriver(new Uri("http://52.165.22.223:4444/wd/hub"), capabilities);
-            //DesiredCapabilities capabilities = new DesiredCapabilities();
-            //capabilities.SetCapability("browserName", "Chrome");
-            //capabilities.SetCapability("browserVersion", "76.0");
-            //capabilities.SetCapability("resolution", "1920x1080");
-            //Dictionary<string, object> browserstackOptions = new Dictionary<string, object>();
-            //browserstackOptions.Add("os", "Windows");
-            //browserstackOptions.Add("osVersion", "10");
-            //browserstackOptions.Add("resolution", "1920x1080");
-            //browserstackOptions.Add("local", "false");
-            //browserstackOptions.Add("seleniumVersion", "3.5.2");
-            //browserstackOptions.Add("userName", "semiloreajibola1");
-            //browserstackOptions.Add("accessKey", "Nb5FsLPHpy9peecC1Cpw");
-            //capabilities.SetCapability("bstack:options", browserstackOptions);
-
-            //IWebDriver dr = new RemoteWebDriver(
-            //  new Uri("http://hub-cloud.browserstack.com/wd/hub/"), capabilities
-            //);
-            //dr.Manage().Window.Maximize();
-            //dr.Navigate().GoToUrl("http://www.google.com");
+            IWebDriver dr = new RemoteWebDriver(
+              new Uri("http://hub-cloud.browserstack.com/wd/hub/"), capabilities
+            );
+            dr.Manage().Window.Maximize();
+            dr.Navigate().GoToUrl("http://www.google.com");
         }
 
         /// <summary>
