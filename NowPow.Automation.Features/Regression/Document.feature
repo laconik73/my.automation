@@ -151,6 +151,27 @@ Given 'CPT3' user is logged in
 	Then documents are displayed in Ascending order
 	And user chooses 'Upload Date' column
 	Then dates are displayed in Ascending order
+
+Scenario: 18. Verify Referral Sender views same document as Referral Taker
+Given 'CPT3' user is logged in
+And user is on 'Referrals Sent' page
+When user views documents
+Then all documents associated to the referral are listed 
+
+Scenario: 19. Verify Referral Taker views same document as Referral Sender
+Given 'CPT4' user is logged in
+And user is on Referrals Received page
+When user views documents on received referrals
+Then all documents associated to the received referrals are listed 
+And user clicks on 'Task View'
+Then same documents are displayed in sidepanel tab related to 'Acceptance Status'
+
+
+
+
+
+
+
 	
 
 

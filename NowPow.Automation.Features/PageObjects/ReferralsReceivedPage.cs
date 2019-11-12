@@ -5,6 +5,11 @@ using static NSelene.Selene;
 using OpenQA.Selenium;
 using System;
 using NLog;
+using System.Collections.Generic;
+using Nowpow.Automation.Features.StepDefinitions;
+using System.Threading;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OpenQA.Selenium.Interactions;
 
 namespace Nowpow.Automation.Features.StepDefinitions
 {
@@ -21,10 +26,15 @@ namespace Nowpow.Automation.Features.StepDefinitions
         SeleneElement addDocumentButton = S(".btn.btn-white.attach-document");
         SeleneElement redDeleteIcon = S(".btn-delete-document");
         SeleneElement deleteButton = S("#btn-add");
+        SeleneElement patientSearch = S("#patient-search");
+        SeleneElement submitSearch = S("#btn-search");
+        SeleneElement attendanceTab = S("#attendance-tab");
+       
 
         public ReferralsReceivedPage(DriverContext driverContext): base(driverContext)
         {
-            
+            DriverContext.Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+            DriverContext.Driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(5);
         }
 
         internal ReferralsReceivedPage OpenTaskView(string subNav)
@@ -103,6 +113,57 @@ namespace Nowpow.Automation.Features.StepDefinitions
             }
            
             return new ReferralsReceivedPage(DriverContext);
+        }
+
+        internal ReferralsReceivedPage SearchPatient()
+        {            
+            patientSearch.Hover().SendKeys("bradley adams");            
+            submitSearch.Click();
+            return new ReferralsReceivedPage(DriverContext);
+        }
+
+        internal ReferralsReceivedPage OpenPatientInfo()
+        {
+            SeleneElement patientInfo = S(By.XPath("//i[@id='2656']"));
+            patientInfo.Click();
+            return this;
+        }
+
+        internal ReferralsReceivedPage OpenAttendanceAndOutcomes(string sidepanelTab)
+        {            
+            attendanceTab.Click();
+            Thread.Sleep(3000);
+            return new ReferralsReceivedPage(DriverContext);
+        }
+
+        internal ReferralsReceivedPage SearchPatientAttendance()
+        {
+            WaitFor(S("#patient-search-attendance"), Be.Visible).Hover().SendKeys("bradley adams");
+            WaitFor(S("#btn-search-attendance"), Be.Visible).Hover().Click();            
+            WaitFor(S("#attendance-content-container"), Be.Visible);            
+            return new ReferralsReceivedPage(DriverContext);
+        }
+
+        internal ReferralsReceivedPage ViewSameDocuments()
+        {
+            S(By.XPath("//i[@id='2605']")).Click();
+            var js = (IJavaScriptExecutor)Driver;
+            try
+            {
+                var document = S("div[class*='document_container'] div.info:nth-child(7)");
+                if (document.Location.Y > 200)
+                {
+                    js.ExecuteScript("arguments[0].scrollIntoView(true);", document);
+                }
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine("test failed");
+            }   
+            
+                                            
+
+            return this;
         }
     }
 }

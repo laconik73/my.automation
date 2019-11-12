@@ -437,6 +437,63 @@ namespace Nowpow.Automation.Features.StepDefinitions
             DateTime dt2 = DateTime.Now + TimeSpan.FromMinutes(1);
             var value = dt2.CompareTo(dt1);
         }
+        [Then(@"all documents associated to the referral are listed")]
+        public void ThenAllDocumentsAssociatedToTheReferralAreListed()
+        {
+            new ReferralsSentPage(driverContext);
+            IList<IWebElement> documents= SS("div[class*='document_container'] div.info");
+            IList<string> attachedDocuments = new List<string>();
+            foreach (IWebElement document in documents)
+            {
+                attachedDocuments.Add(document.ToString());
+            }
+            String document1 = S("div[class*='document_container'] div.info:nth-child(3)").Text;
+            Console.WriteLine(document1.ToString());
+            String document2 = S("div[class*='document_container'] div.info:nth-child(4)").Text;
+            Console.WriteLine(document2.ToString());
+        }
+        [When(@"user views documents on received referrals")]
+        public void WhenUserViewsDocumentsOnReceivedReferrals()
+        {
+            new ReferralsReceivedPage(driverContext)
+                .SearchPatient()
+                .OpenPatientInfo();          
+
+        }
+        [Then(@"all documents associated to the received referrals are listed")]
+        public void ThenAllDocumentsAssociatedToTheReceivedReferralsAreListed()
+        {
+            new ReferralsReceivedPage(driverContext);
+            IList<IWebElement> documents = SS("div[class*='document_container'] div.info");
+            IList<string> attachedDocuments = new List<string>();
+            foreach (IWebElement document in documents)
+            {
+                attachedDocuments.Add(document.ToString());
+            }
+            String document1 = S("div[class*='document_container'] div.info:nth-child(7)").Text;
+            Console.WriteLine(document1.ToString());
+            String document2 = S("div[class*='document_container'] div.info:nth-child(6)").Text;
+            Console.WriteLine(document2.ToString());
+        }
+        [Then(@"user clicks on '(.*)'")]
+        public void ThenUserClicksOn(string subtabName)
+        {
+            new ReferralsReceivedPage(driverContext).OpenTaskView(subtabName);
+        }
+        [Then(@"same documents are displayed in sidepanel tab related to '(.*)'")]
+        public void ThenSameDocumentsAreDisplayedInSidepanelTabRelatedTo(string sidepanelTab)
+        {
+            new ReferralsReceivedPage(driverContext)
+                .OpenAttendanceAndOutcomes(sidepanelTab)
+                .SearchPatientAttendance()
+                .ViewSameDocuments();
+        }
+
+
+
+
+
+
 
 
 
