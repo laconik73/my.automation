@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading;
-using AutoItX3Lib;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using AutoIt;
 using NLog;
 using Nowpow.Automation.Features.PageObjects;
 using NowPow.Automation.Features.StepDefinitions;
@@ -9,7 +8,6 @@ using NowPow.Automation.PageObjects;
 using NSelene;
 using Ocaramba;
 using static NSelene.Selene;
-using OpenQA.Selenium;
 
 namespace Nowpow.Automation.Features.StepDefinitions
 {
@@ -76,11 +74,10 @@ namespace Nowpow.Automation.Features.StepDefinitions
             addDocumentButton.Click();
             Thread.Sleep(1000);
             //AutoIT= Handles Windows that do not belong to browser.
-            AutoItX3 autoIt = new AutoItX3();
-            autoIt.WinActivate("Open");
-            autoIt.Send("C:\\Users\\sabina.dovlati\\Desktop\\ScaleTestDocs\\Scale.docx");
+            AutoItX.WinActivate("Open");
+            AutoItX.Send("C:\\Users\\sabina.dovlati\\Desktop\\ScaleTestDocs\\Scale.docx");
             Thread.Sleep(1000);
-            autoIt.Send(@"{ENTER}");
+            AutoItX.Send(@"{ENTER}");
             Thread.Sleep(1000);
             return this;
         }
@@ -90,11 +87,10 @@ namespace Nowpow.Automation.Features.StepDefinitions
             addDocumentButton.Click();
             Thread.Sleep(1000);
             //AutoIT= Handles Windows that do not belong to browser.
-            AutoItX3 autoIt = new AutoItX3();
-            autoIt.WinActivate("Open");
-            autoIt.Send("C:\\Users\\sabina.dovlati\\Desktop\\Scale.pdf");
+            AutoItX.WinActivate("Open");
+            AutoItX.Send("C:\\Users\\sabina.dovlati\\Desktop\\Scale.pdf");
             Thread.Sleep(1000);
-            autoIt.Send(@"{ENTER}");
+            AutoItX.Send(@"{ENTER}");
             Thread.Sleep(1000);
             return this;
         }
@@ -160,11 +156,10 @@ namespace Nowpow.Automation.Features.StepDefinitions
             addDocumentButton.Click();
             Thread.Sleep(1000);
             //AutoIT= Handles Windows that do not belong to browser.
-            AutoItX3 autoIt = new AutoItX3();
-            autoIt.WinActivate("Open");
-            autoIt.Send("C:\\Users\\sabina.dovlati\\Desktop\\eicar.txt");
+            AutoItX.WinActivate("Open");
+            AutoItX.Send("C:\\Users\\sabina.dovlati\\Desktop\\eicar.txt");
             Thread.Sleep(1000);
-            autoIt.Send(@"{ENTER}");
+            AutoItX.Send(@"{ENTER}");
             Thread.Sleep(1000);
             return this;
         }
