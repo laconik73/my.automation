@@ -21,7 +21,7 @@ namespace Nowpow.Automation.Features.StepDefinitions
 
         private static readonly NLog.Logger Logger = LogManager.GetCurrentClassLogger();
         SeleneElement conductScreeningButton = S("#btn-conduct-screening");
-
+        SeleneElement takeActionButton = S("#btn-takeAction");
 
 
         public PatientScreeningPage(DriverContext driverContext) : base(driverContext)
@@ -34,6 +34,12 @@ namespace Nowpow.Automation.Features.StepDefinitions
             WaitForNot(smallSpinner, Be.InDom);
             conductScreeningButton.Click();
             return new ConductScreeningPage(DriverContext);
+        }
+
+        internal PatientScreeningPage OpenTakeAction(string dropdown)
+        {
+            takeActionButton.Hover().Click();
+            return this;
         }
     }
 }

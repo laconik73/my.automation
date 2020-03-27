@@ -43,6 +43,12 @@ namespace Nowpow.Automation.Features.StepDefinitions
                 .RefreshPage()
                 .BackToPatientScreening();
         }
+        [When(@"user expands '(.*)'")]
+        public void WhenUserExpands(string dropdown)
+        {
+            new PatientScreeningPage(driverContext).OpenTakeAction(dropdown);
+        }
+
         [Then(@"screening is autosaved")]
         public void ThenScreeningIsAutosaved()
         {
@@ -50,6 +56,12 @@ namespace Nowpow.Automation.Features.StepDefinitions
 
             String incompleteScreening = S("span.card-label i").Text;
             Console.WriteLine(incompleteScreening.ToString());
+        }
+        [Then(@"'(.*)' screening action is displayed")]
+        public void ThenScreeningActionIsDisplayed(string completeAction)
+        {
+            new PatientScreeningPage(driverContext);
+            Assert.IsTrue(S(By.LinkText("Complete")).IsDisplayed());
         }
 
 

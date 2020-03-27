@@ -239,8 +239,6 @@
     <Compile Include="Regression\ReferralsSent\ServiceReceivedOutcomeDropdown.feature.cs" />
     <Compile Include="Regression\ReferralsSent\ServiceReferral.feature.cs" />
     <Compile Include="Regression\ReferralsSent\ViewAdditionalInfo.feature.cs" />
-    <Compile Include="Regression\Screening\AutoSave.feature.cs" />
-    <Compile Include="Regression\Screening\CompleteAction.feature.cs" />
     <Compile Include="Regression\Service\FavoritingService.feature.cs" />
     <Compile Include="Smoke\CoordinatedReferrals\AcceptingReferral.feature.cs" />
     <Compile Include="Smoke\CoordinatedReferrals\DocumentSubtab.feature.cs" />
@@ -403,8 +401,7 @@
     <None Include="Regression\ReferralsSent\ServiceReceivedOutcomeDropdown.feature" />
     <None Include="Regression\ReferralsSent\ServiceReferral.feature" />
     <None Include="Regression\ReferralsSent\ViewAdditionalInfo.feature" />
-    <None Include="Regression\Screening\AutoSave.feature" />
-    <None Include="Regression\Screening\CompleteAction.feature" />
+    <None Include="Regression\Screening\PatientScreening.feature" />
     <None Include="Regression\Service\FavoritingService.feature" />
     <None Include="Regression\Service\SearchFilters.feature" />
     <None Include="Smoke\CoordinatedReferrals\AcceptingReferral.feature" />

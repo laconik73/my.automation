@@ -31,7 +31,7 @@ namespace Nowpow.Automation.Features.StepDefinitions
         }
         internal PatientOverviewPage ChoosePatientCard()
         {
-            WaitForNot(spinner, Be.InDom);
+            WaitForNot(spinner, Be.Selected);
             patientCards.ElementAt(0).Click();
             return new PatientOverviewPage(DriverContext);
         }

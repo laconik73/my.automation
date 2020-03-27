@@ -137,12 +137,7 @@ namespace Nowpow.Automation.Features.StepDefinitions
         {
             new ProfilePage(driverContext).OpenTakeAction();
         }
-        [Then(@"'(.*)' screening action is displayed")]
-        public void ThenScreeningActionIsDisplayed(string completeAction)
-        {
-            new ProfilePage(driverContext);
-            Assert.IsTrue(S(By.LinkText("Complete")).IsDisplayed());
-        }
+        
 
 
 
