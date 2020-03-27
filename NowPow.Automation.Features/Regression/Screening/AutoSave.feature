@@ -1,8 +1,10 @@
 ﻿Feature: AutoSave
-	
+	As a user, I want my screening to be saved 
+	in the case that my browser window closes.NQ-T11990
+
 
 @regression
-Scenario:01. Unsaved Screening 
+Scenario:01. Verify Screening Auto Save functionality 
 	Given 'CPT11' user is logged in
 	And user chooses tab 'Patient'
 	And user chooses patient card

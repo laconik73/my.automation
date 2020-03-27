@@ -1,6 +1,6 @@
 ﻿namespace NowPow.Automation.Features
 {
-    using System;   
+    using System;
     using static NSelene.Selene;
     using TechTalk.SpecFlow;
     using Ocaramba;
@@ -10,10 +10,10 @@
     using OpenQA.Selenium;
     using System.Collections.Generic;
     using OpenQA.Selenium.Chrome;
-    using System.Configuration;
 
-    
-    
+
+
+
 
     /// <summary>
     /// The base class for all tests <see href="https://github.com/ObjectivityLtd/NowPow/wiki/ProjectTestBase-class">More details on wiki</see>
@@ -23,7 +23,7 @@
     {
         private readonly ScenarioContext scenarioContext;
         private DriverContext driverContext = new DriverContext();
-        private string BrowserConfig => ConfigurationManager.AppSettings["browser"];
+
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ProjectTestBase"/> class.
@@ -62,22 +62,22 @@
         {
             get
             {
-                return this.DriverContext1;
+                return this.driverContext;
             }
-            set { this.DriverContext1 = value; }
+            set { this.driverContext = value; }
         }
 
         public object TimeUnit { get; private set; }
         public ChromeDriver driver { get; private set; }
-        public DriverContext DriverContext1 { get => driverContext; set => driverContext = value; }
+
 
         /// <summary>
         /// Before the class.
         /// </summary>
         [BeforeFeature]
         public static void BeforeClass()
-        { 
-            
+        {
+
         }
 
         /// <summary>
@@ -97,9 +97,9 @@
         {
             this.DriverContext.CurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
             this.DriverContext.TestTitle = this.scenarioContext.ScenarioInfo.Title;
-            this.LogTest.LogTestStarting(this.DriverContext1);
+            this.LogTest.LogTestStarting(this.driverContext);
 
-            if (BrowserConfig == BrowserType.RemoteWebDriver.ToString())
+            if (false)
             {
                 SetBrowserStack();
             }
@@ -114,25 +114,13 @@
             SetWebDriver(DriverContext.Driver);
             DriverContext.Driver.Manage().Window.Maximize();
 
-
         }
 
-        [Obsolete]
         public void SetBrowserStack()
         {
-            //DesiredCapabilities capability = new DesiredCapabilities();
-            //capability.SetCapability("browserName", "Firefox");
-            //capability.SetCapability("marionette", true);
-            //capability.SetCapability("geckodriver", true);
-            //var hubUri = new Uri("http://52.165.22.223:4444/wd/hub");
-            //IWebDriver driver = new RemoteWebDriver(hubUri, capability);
-
-
-
-            //IWebDriver dr = new RemoteWebDriver(new Uri("http://52.165.22.223:4444/wd/hub"), capabilities);
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.SetCapability("browserName", "Chrome");
-            capabilities.SetCapability("browserVersion", "76.0");
+            capabilities.SetCapability("browserVersion", "79.0");
             capabilities.SetCapability("resolution", "1920x1080");
             Dictionary<string, object> browserstackOptions = new Dictionary<string, object>();
             browserstackOptions.Add("os", "Windows");
@@ -140,15 +128,16 @@
             browserstackOptions.Add("resolution", "1920x1080");
             browserstackOptions.Add("local", "false");
             browserstackOptions.Add("seleniumVersion", "3.5.2");
-            browserstackOptions.Add("userName", "semiloreajibola1");
-            browserstackOptions.Add("accessKey", "Nb5FsLPHpy9peecC1Cpw");
+            browserstackOptions.Add("userName", "sabinadovlati2");
+            browserstackOptions.Add("accessKey", "Natzs5qz4gqA615Sizrr");
             capabilities.SetCapability("bstack:options", browserstackOptions);
 
             IWebDriver dr = new RemoteWebDriver(
               new Uri("http://hub-cloud.browserstack.com/wd/hub/"), capabilities
             );
             dr.Manage().Window.Maximize();
-            dr.Navigate().GoToUrl("http://www.google.com");
+            //dr.Navigate().GoToUrl("http://www.google.com"); 
+
         }
 
         /// <summary>
@@ -159,13 +148,13 @@
         {
             try
             {
-                this.DriverContext.IsTestFailed = this.scenarioContext.TestError != null || !this.DriverContext1.VerifyMessages.Count.Equals(0);
-                var filePaths = this.SaveTestDetailsIfTestFailed(this.DriverContext1);
+                this.DriverContext.IsTestFailed = this.scenarioContext.TestError != null || !this.driverContext.VerifyMessages.Count.Equals(0);
+                var filePaths = this.SaveTestDetailsIfTestFailed(this.driverContext);
                 this.SaveAttachmentsToTestContext(filePaths);
                 var javaScriptErrors = this.DriverContext.LogJavaScriptErrors();
 
-                this.LogTest.LogTestEnding(this.DriverContext1);
-                if (this.IsVerifyFailedAndClearMessages(this.DriverContext1) && this.scenarioContext.TestError == null)
+                this.LogTest.LogTestEnding(this.driverContext);
+                if (this.IsVerifyFailedAndClearMessages(this.driverContext) && this.scenarioContext.TestError == null)
                 {
                     Assert.Fail();
                 }

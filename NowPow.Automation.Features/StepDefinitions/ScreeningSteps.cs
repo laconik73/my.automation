@@ -26,10 +26,23 @@ namespace Nowpow.Automation.Features.StepDefinitions
 
             this.driverContext = this.scenarioContext["DriverContext"] as DriverContext;
         }
-        [Given(@"user chooses a tab '(.*)'")]
-        public void GivenUserChoosesATab(string tabName)
+        //[Given(@"user chooses a tab '(.*)'")]
+        //public void GivenUserChoosesATab(string tabName)
+        //{
+        //    new DashboardPage(driverContext).OpenScreenings(tabName);
+        //}
+        [Given(@"user chooses '(.*)' subtab")]
+        public void GivenUserChoosesSubtab(string subtabName)
         {
-            new DashboardPage(driverContext).OpenScreenings(tabName);
+            new PatientPage(driverContext).OpenScreenings(subtabName);
+        }
+        [When(@"user clicks  '(.*)'")]
+        public void WhenUserClicks(string button)
+        {
+            new ProfilePage(driverContext)
+                .ConductScreening(button)
+                .StartButton()
+                .SelectFirstSection();
         }
 
         [When(@"user chooses  '(.*)'")]
@@ -84,11 +97,7 @@ namespace Nowpow.Automation.Features.StepDefinitions
 
         
         
-        [Given(@"user chooses '(.*)' subtab")]
-        public void GivenUserChoosesSubtab(string subtabName)
-        {
-            new PatientPage(driverContext).OpenScreenings(subtabName);
-        }
+        
         [When(@"user clicks on '(.*)' button")]
         public void WhenUserClicksOnButton(string startScreening)
         {
@@ -136,14 +145,7 @@ namespace Nowpow.Automation.Features.StepDefinitions
         {
             new PatientPage(driverContext).ReturnToPatient();
         }
-        [When(@"user clicks  '(.*)'")]
-        public void WhenUserClicks(string button)
-        {
-            new ProfilePage(driverContext)
-                .ConductScreening(button)
-                .StartButton()
-                .SelectFirstSection();
-        }
+        
         [When(@"user doesn't save screening")]
         public void WhenUserDoesnTSaveScreening()
         {

@@ -2,7 +2,7 @@
 	
 
 @regression
-#Scenario:01. Verify Service search filters
+Scenario:01. Verify Service search filters
 #    Given 'CPT11' user is logged in
 #	When user chooses tab 'Services'
 #	And user searches for a 'Service'
