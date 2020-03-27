@@ -21,7 +21,7 @@ namespace NowPow.Automation.Features.StepDefinitions
         SeleneElement radioButton1 = S("input[id='question-2-answer-1']");
         SeleneElement radioButton2 = S("input[id='question-5-answer-6']");
         SeleneElement radioButton3 = S("input[id='question-6-answer-9']");
-        SeleneElement nextButton = S("#next.btn");        
+        SeleneElement nextButton = S("#next.btn");
         SeleneElement saveButton = S("#save.btn.btn-next");
         SeleneElement generateErxButton = S("#generate-erx");
         
@@ -106,29 +106,8 @@ namespace NowPow.Automation.Features.StepDefinitions
             S("#btn-confirm").Click();
             return new PatientPage(DriverContext);
         }
-        internal ScreeningPage StartButton()
-        {
-            S(".btn.btn-primary").Click();
-            return new ScreeningPage(DriverContext);
-        }
-        internal ScreeningPage SelectFirstSection()
-        {
-            IList<IWebElement> radioButton = SS("input[type='radio']");
-            int iSize = radioButton.Count;
-            for (int i=0; i<iSize; i++)
-            {
-                String Value = radioButton.ElementAt(i).GetAttribute("value");
-                if (Value.Equals("Mordor"))
-                {
-                    WaitForNot(S(".answer"), Be.Selected);
-                    radioButton.ElementAt(i).Click();
-                    break;
-                }
-            }
-           
-                       
-            return new ScreeningPage(DriverContext);
-        }
+       
+        
 
         
     }    

@@ -27,11 +27,7 @@ namespace NowPow.Automation.Features.StepDefinitions
          
         }
        
-        [Given(@"user chooses patient card")]
-        public void GivenUserChoosesPatientCard()
-        {
-            new DashboardPage(driverContext).ChoosePatientCard();
-        }
+        
         [Given(@"user opens subtab '(.*)'")]
         public void GivenUserOpensSubtab(string subtabName)
         {

@@ -26,24 +26,9 @@ namespace Nowpow.Automation.Features.StepDefinitions
 
             this.driverContext = this.scenarioContext["DriverContext"] as DriverContext;
         }
-        //[Given(@"user chooses a tab '(.*)'")]
-        //public void GivenUserChoosesATab(string tabName)
-        //{
-        //    new DashboardPage(driverContext).OpenScreenings(tabName);
-        //}
-        [Given(@"user chooses '(.*)' subtab")]
-        public void GivenUserChoosesSubtab(string subtabName)
-        {
-            new PatientPage(driverContext).OpenScreenings(subtabName);
-        }
-        [When(@"user clicks  '(.*)'")]
-        public void WhenUserClicks(string button)
-        {
-            new ProfilePage(driverContext)
-                .ConductScreening(button)
-                .StartButton()
-                .SelectFirstSection();
-        }
+        
+        
+        
 
         [When(@"user chooses  '(.*)'")]
         public void WhenUserChooses(string start)
@@ -146,17 +131,7 @@ namespace Nowpow.Automation.Features.StepDefinitions
             new PatientPage(driverContext).ReturnToPatient();
         }
         
-        [When(@"user doesn't save screening")]
-        public void WhenUserDoesnTSaveScreening()
-        {
-            new ScreeningPage(driverContext);
-
-        }
-        [Then(@"screening is autosaved")]
-        public void ThenScreeningIsAutosaved()
-        {
-            new ScreeningPage(driverContext);
-        }
+        
         [When(@"user takes action")]
         public void WhenUserTakesAction()
         {

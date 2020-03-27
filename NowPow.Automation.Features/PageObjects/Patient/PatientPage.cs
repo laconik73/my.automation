@@ -278,11 +278,7 @@ namespace Nowpow.Automation.Features.StepDefinitions
             generateAutomaticErx.Click();
             return new ErxPage(DriverContext);
         }
-        internal PatientPage OpenScreenings(string subtabname)
-        {
-            S(By.Id("screenings")).Click();
-            return new PatientPage(DriverContext);
-        }
+        
         internal ScreeningPage ConductScreening(string startScreening)
         {
             WaitForNot(smallSpinner, Be.InDom);

@@ -93,7 +93,8 @@ namespace NowPow.Automation.Features.StepDefinitions
         {
             string originalWindowHandle = Driver.WindowHandles.First();
             var originalWindow = Driver.SwitchTo().Window(originalWindowHandle);                     
-            Assert.IsTrue(logOutDisplay.IsDisplayed());          
+            Assert.IsTrue(logOutDisplay.IsDisplayed()); 
+            
             
             return new LoginPage(DriverContext);            
         }

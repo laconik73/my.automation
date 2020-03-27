@@ -23,7 +23,7 @@ namespace NowPow.Automation.Features.StepDefinitions
         SeleneElement addInteractionButton = S("#add-interaction");
         SeleneElement nowpowLogo = S("#nav-home");
         SeleneElement screeningSummary = S("a[href*='summary']");
-        SeleneElement conductScreeningButton = S("#btn-conduct-screening");       
+               
         SeleneElement takeActionButton = S("#btn-takeAction");
         SeleneElement sendReferralButton = S("button[class*='btn-send-tracked-referral']");
         SeleneElement favoritesIcon = S("#favorites-icon-subtab");
@@ -78,12 +78,7 @@ namespace NowPow.Automation.Features.StepDefinitions
             return new ScreeningErxPage(DriverContext);
         }
 
-        internal ScreeningPage ConductScreening(string button)
-        {
-            WaitForNot(smallSpinner, Be.InDom);
-            conductScreeningButton.Click();
-            return new ScreeningPage(DriverContext);
-        }
+        
 
         internal ProfilePage OpenTakeAction()
         {

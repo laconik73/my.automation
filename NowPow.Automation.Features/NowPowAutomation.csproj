@@ -162,10 +162,14 @@
     <Compile Include="PageObjects\AddNeedModal.cs" />
     <Compile Include="PageObjects\AnalyticsPage.cs" />
     <Compile Include="PageObjects\AppointmentReminderModal.cs" />
+    <Compile Include="PageObjects\DashboardPage\TabsNavigationPage.cs" />
     <Compile Include="PageObjects\EditReferralModal.cs" />
     <Compile Include="PageObjects\ErxPage.cs" />
     <Compile Include="PageObjects\LivingSituationPage.cs" />
     <Compile Include="PageObjects\OrganizationPage.cs" />
+    <Compile Include="PageObjects\Patient\PatientCardsPage.cs" />
+    <Compile Include="PageObjects\Patient\PatientOverviewPage.cs" />
+    <Compile Include="PageObjects\Patient\PatientScreeningPage.cs" />
     <Compile Include="PageObjects\ReferralsSentPage.cs" />
     <Compile Include="PageObjects\ProjectPageBase.cs" />
     <Compile Include="PageObjects\DashboardPage\DashboardPage.cs" />
@@ -173,7 +177,8 @@
     <Compile Include="PageObjects\AddReferralModal.cs" />
     <Compile Include="PageObjects\MakeReferralModal.cs" />
     <Compile Include="PageObjects\ScreeningPage.cs" />
-    <Compile Include="PageObjects\PatientPage.cs" />
+    <Compile Include="PageObjects\Patient\PatientPage.cs" />
+    <Compile Include="PageObjects\ScreeningsPage\ConductScreeningPage.cs" />
     <Compile Include="PageObjects\SearchForServicesModal.cs" />
     <Compile Include="PageObjects\SendNudgeModal.cs" />
     <Compile Include="PageObjects\SLSOrganizationPage.cs" />
@@ -278,20 +283,23 @@
     <Compile Include="Smoke\SLS\SendPassword.feature.cs" />
     <Compile Include="Smoke\SLS\SurveyManagement.feature.cs" />
     <Compile Include="StepDefinitions\AnalyticsSteps.cs" />
+    <Compile Include="StepDefinitions\Dashboard\TabSteps.cs" />
     <Compile Include="StepDefinitions\DocumentsSteps.cs" />
     <Compile Include="StepDefinitions\ErxSteps.cs" />
     <Compile Include="PageObjects\FoodPage.cs" />
     <Compile Include="PageObjects\NotesModal.cs" />
     <Compile Include="PageObjects\NotificationsPage.cs" />
+    <Compile Include="StepDefinitions\Patient\PatientCardSteps.cs" />
+    <Compile Include="StepDefinitions\Patient\PatientScreeningSteps.cs" />
     <Compile Include="StepDefinitions\ReferralFilterOptionSteps.cs" />
     <Compile Include="PageObjects\ReferralsReceivedPage.cs" />
     <Compile Include="StepDefinitions\ReferralSteps.cs" />
     <Compile Include="StepDefinitions\Remote\BrowserStack.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StepDefinitions\NeedSteps.cs" />
-    <Compile Include="PageObjects\LoginPage.cs" />
+    <Compile Include="PageObjects\LoginPage\LoginPage.cs" />
     <Compile Include="StepDefinitions\LoginSteps.cs" />
-    <Compile Include="StepDefinitions\PatientSteps.cs" />
+    <Compile Include="StepDefinitions\Patient\PatientSteps.cs" />
     <Compile Include="PageObjects\ServicePage.cs" />
     <Compile Include="PageObjects\ScreeningResultsModal.cs" />
     <Compile Include="PageObjects\SafetyPage.cs" />
@@ -1298,6 +1306,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Connected Services\" />
+    <Folder Include="StepDefinitions\Screening\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

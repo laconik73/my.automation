@@ -15,11 +15,11 @@ namespace NowPow.Automation.Features.StepDefinitions
     internal class DashboardPage : ProjectPageBase
     {
         private static readonly NLog.Logger Logger = LogManager.GetCurrentClassLogger();
-        SeleneElement patientCard = S(".patient");
+        
         SeleneElement addNeedButton = S("#btn-addNeed");
         SeleneElement takeActionButton = S("#btn-takeAction");
         SeleneElement addInteraction = S(By.XPath("//a[contains(text(),'Add Interaction')]"));
-        SeleneElement patientTab = S("[data-link*='patients'][type]");        
+                
         SeleneElement referralsTab = S("#referralsMenu");
         SeleneElement screeningsTab = S("[data-link*='screenings'][type]");     
         SeleneElement erxTab = S("[data-link*='eRX'][type]");       
@@ -50,12 +50,7 @@ namespace NowPow.Automation.Features.StepDefinitions
         }
 
         //To click on first patient card from LandingPage/DashboardPage
-        internal DashboardPage ChoosePatientCard()
-        {
-            WaitForNot(spinner, Be.InDom);
-            patientCard.Click();
-            return this;
-        }
+        
 
         //Open subtab "Needs" from patient details
         internal DashboardPage OpenNeeds(string subtabName)
@@ -93,14 +88,7 @@ namespace NowPow.Automation.Features.StepDefinitions
         }
 
         //Verify Patient tab
-        internal PatientPage OpenPatient(string tabName)
-        {
-            //patientTab = MenuIsCollapsed ? S("#navbar-collapse #nav-item-patients") : S(".inset-nav #nav-item-patients");
-            //ClickNavigationLink(patientTab);
-            //WaitFor(S("#count-top"), Be.Visible);
-            patientTab.Click();
-            return new PatientPage(DriverContext);
-        }
+        
 
         //Verify Referrals tab
         internal ReferralsSentPage OpenReferrals(string tabName)
