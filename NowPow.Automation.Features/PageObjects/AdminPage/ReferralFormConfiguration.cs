@@ -49,5 +49,10 @@ namespace NowPow.Automation.Features.StepDefinitions
             }
             return this;
         }
+
+        internal void OpenServiceOutcome(string subpanel)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

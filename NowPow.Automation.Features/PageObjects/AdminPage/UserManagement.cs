@@ -27,8 +27,10 @@ namespace NowPow.Automation.Features.StepDefinitions
         SeleneElement activateButton = S(".reactivate-btn");
         SeleneElement deactivateAction = S(By.PartialLinkText("Deactiva"));
         SeleneElement resendPasswordAction = S(By.PartialLinkText("Resend Passwo"));
-        SeleneElement viewEditAction = S(By.PartialLinkText("View/Ed"));
+        SeleneElement viewEditAction = S(By.PartialLinkText("View/Ed"));      
         IList<IWebElement> confirmButton = SS(".modal-footer button");
+        SeleneElement addUsersButton = S("button[class*='add-users-button']");
+
 
         public UserManagement(DriverContext driverContext) : base(driverContext)
         {
@@ -64,7 +66,6 @@ namespace NowPow.Automation.Features.StepDefinitions
             viewEditAction.Hover().Click();
             return new UserManagement(DriverContext);
         }
-
         
         internal UserManagement ResendPassword()
         {
@@ -87,6 +88,11 @@ namespace NowPow.Automation.Features.StepDefinitions
             }
             
             return new UserManagement(DriverContext);
+        }
+        internal AddUserModal AddUsers(string button)
+        {
+            addUsersButton.Hover().Click();
+            return new AddUserModal(DriverContext);
         }
     }
 }

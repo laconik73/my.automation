@@ -23,6 +23,9 @@ namespace NowPow.Automation.Features.StepDefinitions
         private static readonly NLog.Logger Logger = LogManager.GetCurrentClassLogger();
         SeleneElement configurationsSubtab = S("#configurations");
         SeleneElement referralFormSidePanel = S("#referralFormSubTab");
+        SeleneElement userManagementTab = S("#user-management-tab");
+
+
         public AdminPage(DriverContext driverContext) : base(driverContext)
         {
             DriverContext.Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
@@ -38,6 +41,12 @@ namespace NowPow.Automation.Features.StepDefinitions
         {
             referralFormSidePanel.Hover().Click();
             return new ReferralFormConfiguration(DriverContext);
+        }
+
+        internal UserManagement OpenUserManagement(string subPanel)
+        {
+            userManagementTab.Hover().Click();
+            return new UserManagement(DriverContext);
         }
     }
 }
