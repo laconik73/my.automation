@@ -23,18 +23,6 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Smoke|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Smoke\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Smoke|x64' ">
-    <PlatformTarget>x64</PlatformTarget>
-  </PropertyGroup>
   <PropertyGroup>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
@@ -200,7 +188,6 @@
     <Compile Include="ProjectBaseConfiguration.cs" />
     <Compile Include="ProjectPageBase.cs" />
     <Compile Include="ProjectTestBase.cs" />
-    <Compile Include="Regression\Anyalitics\PageAccess.feature.cs" />
     <Compile Include="Regression\CustomerAdminUI\AdditionalField.feature.cs" />
     <Compile Include="Regression\CustomerAdminUI\CommRxPlusUsers.feature.cs" />
     <Compile Include="Regression\CustomerAdminUI\CommRxUsers.feature.cs" />
@@ -221,38 +208,7 @@
     <Compile Include="Regression\Documents\Upload.feature.cs" />
     <Compile Include="Regression\Documents\UploadVirusDoc.feature.cs" />
     <Compile Include="Regression\Documents\ViewDocument.feature.cs" />
-    <Compile Include="Regression\Erx\AlternativeService.feature.cs" />
-    <Compile Include="Regression\Erx\AutomaticErx.feature.cs" />
-    <Compile Include="Regression\Erx\GenerateErx.feature.cs" />
-    <Compile Include="Regression\Login\SinglePage.feature.cs" />
-    <Compile Include="Regression\Patient\CreateNew.feature.cs" />
-    <Compile Include="Regression\Patient\Edit.feature.cs" />
-    <Compile Include="Regression\Patient\EngagementInteraction.feature.cs" />
-    <Compile Include="Regression\Patient\Search.feature.cs" />
-    <Compile Include="Regression\ReferralsReceived\AcceptanceStatus.feature.cs" />
-    <Compile Include="Regression\ReferralsReceived\Appointment.feature.cs" />
-    <Compile Include="Regression\ReferralsReceived\Coordinated.feature.cs" />
-    <Compile Include="Regression\ReferralsReceived\ExpectedWalkIn.feature.cs" />
-    <Compile Include="Regression\ReferralsReceived\SendMessage.feature.cs" />
-    <Compile Include="Regression\ReferralsReceived\TaskView.feature.cs" />
-    <Compile Include="Regression\ReferralsSent\AcceptanceStatus.feature.cs" />
-    <Compile Include="Regression\ReferralsSent\AdditionalField.feature.cs" />
-    <Compile Include="Regression\ReferralsSent\Appointment.feature.cs" />
-    <Compile Include="Regression\ReferralsSent\ClosedInteraction.feature.cs" />
-    <Compile Include="Regression\ReferralsSent\ContactStatus.feature.cs" />
-    <Compile Include="Regression\ReferralsSent\ExpectedWalkIn.feature.cs" />
-    <Compile Include="Regression\ReferralsSent\MakeReferral.feature.cs" />
-    <Compile Include="Regression\ReferralsSent\PatientReferralAccess.feature.cs" />
-    <Compile Include="Regression\ReferralsSent\RadioButtons.feature.cs" />
-    <Compile Include="Regression\ReferralsSent\ReferralNote.feature.cs" />
-    <Compile Include="Regression\ReferralsSent\RestrictionCheckbox.feature.cs" />
-    <Compile Include="Regression\ReferralsSent\SendMessage.feature.cs" />
-    <Compile Include="Regression\ReferralsSent\ServiceOutcome.feature.cs" />
-    <Compile Include="Regression\ReferralsSent\ServiceReceived.feature.cs" />
-    <Compile Include="Regression\ReferralsSent\ServiceReceivedOutcomeDropdown.feature.cs" />
-    <Compile Include="Regression\ReferralsSent\ServiceReferral.feature.cs" />
-    <Compile Include="Regression\ReferralsSent\ViewAdditionalInfo.feature.cs" />
-    <Compile Include="Regression\Service\FavoritingService.feature.cs" />
+    <Compile Include="Regression\Referrals\Coordinated.feature.cs" />
     <Compile Include="Smoke\CoordinatedReferrals\AcceptingReferral.feature.cs" />
     <Compile Include="Smoke\CoordinatedReferrals\DocumentSubtab.feature.cs" />
     <Compile Include="Smoke\CoordinatedReferrals\ReferableServices.feature.cs" />
@@ -265,77 +221,21 @@
     <Compile Include="Smoke\CustomerAdminUI\AddUsersButton.feature.cs" />
     <Compile Include="Smoke\CustomerAdminUI\AdminVisibility.feature.cs" />
     <Compile Include="Smoke\CustomerAdminUI\NowPowDefaultField.feature.cs" />
-    <Compile Include="Smoke\Erx\AddDeleteService.feature.cs" />
-    <Compile Include="Smoke\Erx\AutomaticErx.feature.cs" />
-    <Compile Include="Smoke\Erx\BuildNewErx.feature.cs" />
-    <Compile Include="Smoke\Erx\CardToppers.feature.cs" />
-    <Compile Include="Smoke\Erx\HealtheRx.feature.cs" />
-    <Compile Include="Smoke\Erx\Nudge.feature.cs" />
-    <Compile Include="Smoke\Erx\ViewErx.feature.cs" />
-    <Compile Include="Smoke\Login\ForgotPassword.feature.cs" />
-    <Compile Include="Smoke\Needs\AddInteraction.feature.cs" />
-    <Compile Include="Smoke\Needs\AddNeed.feature.cs" />
-    <Compile Include="Smoke\Patient\EmailToggles.feature.cs" />
-    <Compile Include="Smoke\Patient\ImportPatient.feature.cs" />
-    <Compile Include="Smoke\Patient\Nudge.feature.cs" />
-    <Compile Include="Smoke\Patient\SearchPatient.feature.cs" />
-    <Compile Include="Smoke\Referrals\FavoriteService.feature.cs" />
-    <Compile Include="Smoke\Referrals\PatientReferral.feature.cs" />
-    <Compile Include="Smoke\Referrals\ReferralForm.feature.cs" />
-    <Compile Include="Smoke\Screenings\Complete.feature.cs" />
-    <Compile Include="Smoke\Screenings\GetCode.feature.cs" />
-    <Compile Include="Smoke\Screenings\Incomplete.feature.cs" />
-    <Compile Include="Smoke\Screenings\PatientScreening.feature.cs" />
-    <Compile Include="Smoke\Service\ServiceAction.feature.cs" />
-    <Compile Include="Smoke\SLS\AddRole.feature.cs" />
-    <Compile Include="Smoke\SLS\Analytics.feature.cs" />
-    <Compile Include="Smoke\SLS\OrganizationManagement.feature.cs" />
-    <Compile Include="Smoke\SLS\RemoveRole.feature.cs" />
-    <Compile Include="Smoke\SLS\SendPassword.feature.cs" />
-    <Compile Include="Smoke\SLS\SurveyManagement.feature.cs" />
     <Compile Include="StepDefinitions\Admin\AdditionalFieldSteps.cs" />
     <Compile Include="StepDefinitions\Admin\SubPanelSteps.cs" />
-    <Compile Include="StepDefinitions\Admin\UserManagementStepscs.cs" />
-    <Compile Include="StepDefinitions\AnalyticsSteps.cs" />
+    <Compile Include="StepDefinitions\Admin\TakeActionSteps.cs" />
     <Compile Include="StepDefinitions\Dashboard\TabSteps.cs" />
-    <Compile Include="StepDefinitions\DocumentsSteps.cs" />
-    <Compile Include="StepDefinitions\ErxSteps.cs" />
-    <Compile Include="StepDefinitions\Patient\PatientCardSteps.cs" />
-    <Compile Include="StepDefinitions\Patient\PatientScreeningSteps.cs" />
-    <Compile Include="StepDefinitions\ReferralFilterOptionSteps.cs" />
-    <Compile Include="StepDefinitions\ReferralSteps.cs" />
+    <Compile Include="StepDefinitions\Documents\DocumentsSteps.cs" />
+    <Compile Include="StepDefinitions\Referrals\ReferralSteps.cs" />
     <Compile Include="StepDefinitions\Remote\BrowserStack.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StepDefinitions\NeedSteps.cs" />
     <Compile Include="PageObjects\LoginPage\LoginPage.cs" />
-    <Compile Include="StepDefinitions\LoginSteps.cs" />
-    <Compile Include="StepDefinitions\Patient\PatientSteps.cs" />
-    <Compile Include="StepDefinitions\ServiceSteps.cs" />
-    <Compile Include="StepDefinitions\ScreeningSteps.cs" />
-    <Compile Include="StepDefinitions\SLSSteps.cs" />
-    <Compile Include="UAT\Referrals\ClosingReferral.feature.cs" />
-    <Compile Include="UAT\Referrals\ExpectedWalkIn.feature.cs" />
-    <Compile Include="UAT\Referrals\PatientSearch.feature.cs" />
-    <Compile Include="UAT\Referrals\RadioButtons.feature.cs" />
-    <Compile Include="UAT\Referrals\ServiceOutcome.feature.cs" />
-    <Compile Include="UAT\Referrals\ServiceOutcomeDetails.feature.cs" />
-    <Compile Include="UAT\Referrals\ServiceReferral.feature.cs" />
-    <Compile Include="UAT\Referrals\SetAppointmentStatus.feature.cs" />
-    <Compile Include="UAT\Referrals\TaskViewDefaultSort.feature.cs" />
-    <Compile Include="UAT\Referrals\TaskViewTooltip.feature.cs" />
-    <Compile Include="UAT\Referrals\ViewAdditionalInfo.feature.cs" />
-    <Compile Include="UAT\Screening\CompleteCoordinated.feature.cs" />
-    <Compile Include="UAT\Screening\Details.feature.cs" />
-    <Compile Include="UAT\Screening\IncompleteCoordinated.feature.cs" />
+    <Compile Include="StepDefinitions\Login\LoginSteps.cs" />
     <None Include=".vs\NowPow.Automation.Features\v16\TestStore\0\000-0000.testlog" />
     <None Include=".vs\NowPow.Automation.Features\v16\TestStore\0\testlog.manifest" />
     <None Include=".vs\ProjectSettings.json" />
     <None Include=".vs\slnx.sqlite" />
     <None Include=".vs\VSWorkspaceState.json" />
-    <None Include="App.Smoke.config">
-      <DependentUpon>App.config</DependentUpon>
-      <IsTransformFile>true</IsTransformFile>
-    </None>
     <None Include="App.Staged.config">
       <DependentUpon>App.config</DependentUpon>
       <IsTransformFile>true</IsTransformFile>
@@ -359,7 +259,6 @@
     <None Include="obj\UAT\DesignTimeResolveAssemblyReferencesInput.cache" />
     <None Include="obj\UAT\NowPowAutomation.csproj.CoreCompileInputs.cache" />
     <None Include="obj\UAT\NowPowAutomation.csprojAssemblyReference.cache" />
-    <None Include="Regression\Anyalitics\PageAccess.feature" />
     <None Include="Regression\CustomerAdminUI\AdditionalField.feature" />
     <None Include="Regression\CustomerAdminUI\CommRxPlusUsers.feature" />
     <None Include="Regression\CustomerAdminUI\CommRxUsers.feature" />
@@ -380,40 +279,7 @@
     <None Include="Regression\Documents\Upload.feature" />
     <None Include="Regression\Documents\UploadVirusDoc.feature" />
     <None Include="Regression\Documents\ViewDocument.feature" />
-    <None Include="Regression\Erx\AlternativeService.feature" />
-    <None Include="Regression\Erx\AutomaticErx.feature" />
-    <None Include="Regression\Erx\GenerateErx.feature" />
-    <None Include="Regression\Login\SinglePage.feature" />
-    <None Include="Regression\Patient\CreateNew.feature" />
-    <None Include="Regression\Patient\Edit.feature" />
-    <None Include="Regression\Patient\EngagementInteraction.feature" />
-    <None Include="Regression\Patient\Search.feature" />
-    <None Include="Regression\ReferralsReceived\AcceptanceStatus.feature" />
-    <None Include="Regression\ReferralsReceived\Appointment.feature" />
-    <None Include="Regression\ReferralsReceived\Coordinated.feature" />
-    <None Include="Regression\ReferralsReceived\ExpectedWalkIn.feature" />
-    <None Include="Regression\ReferralsReceived\SendMessage.feature" />
-    <None Include="Regression\ReferralsReceived\TaskView.feature" />
-    <None Include="Regression\ReferralsSent\AcceptanceStatus.feature" />
-    <None Include="Regression\ReferralsSent\AdditionalField.feature" />
-    <None Include="Regression\ReferralsSent\Appointment.feature" />
-    <None Include="Regression\ReferralsSent\ClosedInteraction.feature" />
-    <None Include="Regression\ReferralsSent\ContactStatus.feature" />
-    <None Include="Regression\ReferralsSent\ExpectedWalkIn.feature" />
-    <None Include="Regression\ReferralsSent\MakeReferral.feature" />
-    <None Include="Regression\ReferralsSent\PatientReferralAccess.feature" />
-    <None Include="Regression\ReferralsSent\RadioButtons.feature" />
-    <None Include="Regression\ReferralsSent\ReferralNote.feature" />
-    <None Include="Regression\ReferralsSent\RestrictionCheckbox.feature" />
-    <None Include="Regression\ReferralsSent\SendMessage.feature" />
-    <None Include="Regression\ReferralsSent\ServiceOutcome.feature" />
-    <None Include="Regression\ReferralsSent\ServiceReceived.feature" />
-    <None Include="Regression\ReferralsSent\ServiceReceivedOutcomeDropdown.feature" />
-    <None Include="Regression\ReferralsSent\ServiceReferral.feature" />
-    <None Include="Regression\ReferralsSent\ViewAdditionalInfo.feature" />
-    <None Include="Regression\Screening\PatientScreening.feature" />
-    <None Include="Regression\Service\FavoritingService.feature" />
-    <None Include="Regression\Service\SearchFilters.feature" />
+    <None Include="Regression\Referrals\Coordinated.feature" />
     <None Include="Smoke\CoordinatedReferrals\AcceptingReferral.feature" />
     <None Include="Smoke\CoordinatedReferrals\DocumentSubtab.feature" />
     <None Include="Smoke\CoordinatedReferrals\ReferableServices.feature" />
@@ -426,50 +292,8 @@
     <None Include="Smoke\CustomerAdminUI\AddUsersButton.feature" />
     <None Include="Smoke\CustomerAdminUI\AdminVisibility.feature" />
     <None Include="Smoke\CustomerAdminUI\NowPowDefaultField.feature" />
-    <None Include="Smoke\Erx\AddDeleteService.feature" />
-    <None Include="Smoke\Erx\AutomaticErx.feature" />
-    <None Include="Smoke\Erx\BuildNewErx.feature" />
-    <None Include="Smoke\Erx\CardToppers.feature" />
-    <None Include="Smoke\Erx\HealtheRx.feature" />
-    <None Include="Smoke\Erx\Nudge.feature" />
-    <None Include="Smoke\Erx\ViewErx.feature" />
-    <None Include="Smoke\Login\ForgotPassword.feature" />
-    <None Include="Smoke\Needs\AddInteraction.feature" />
-    <None Include="Smoke\Needs\AddNeed.feature" />
-    <None Include="Smoke\Patient\EmailToggles.feature" />
-    <None Include="Smoke\Patient\ImportPatient.feature" />
-    <None Include="Smoke\Patient\Nudge.feature" />
-    <None Include="Smoke\Patient\SearchPatient.feature" />
-    <None Include="Smoke\Referrals\FavoriteService.feature" />
-    <None Include="Smoke\Referrals\PatientReferral.feature" />
-    <None Include="Smoke\Referrals\ReferralForm.feature" />
-    <None Include="Smoke\Screenings\Complete.feature" />
-    <None Include="Smoke\Screenings\GetCode.feature" />
-    <None Include="Smoke\Screenings\Incomplete.feature" />
-    <None Include="Smoke\Screenings\PatientScreening.feature" />
-    <None Include="Smoke\Service\ServiceAction.feature" />
-    <None Include="Smoke\SLS\AddRole.feature" />
-    <None Include="Smoke\SLS\Analytics.feature" />
-    <None Include="Smoke\SLS\OrganizationManagement.feature" />
-    <None Include="Smoke\SLS\RemoveRole.feature" />
-    <None Include="Smoke\SLS\SendPassword.feature" />
-    <None Include="Smoke\SLS\SurveyManagement.feature" />
     <None Include="specflow.json" />
     <None Include="TestData\ImportPatient.xlsx" />
-    <None Include="UAT\Referrals\ClosingReferral.feature" />
-    <None Include="UAT\Referrals\ExpectedWalkIn.feature" />
-    <None Include="UAT\Referrals\PatientSearch.feature" />
-    <None Include="UAT\Referrals\RadioButtons.feature" />
-    <None Include="UAT\Referrals\ServiceOutcome.feature" />
-    <None Include="UAT\Referrals\ServiceOutcomeDetails.feature" />
-    <None Include="UAT\Referrals\ServiceReferral.feature" />
-    <None Include="UAT\Referrals\SetAppointmentStatus.feature" />
-    <None Include="UAT\Referrals\TaskViewDefaultSort.feature" />
-    <None Include="UAT\Referrals\TaskViewTooltip.feature" />
-    <None Include="UAT\Referrals\ViewAdditionalInfo.feature" />
-    <None Include="UAT\Screening\CompleteCoordinated.feature" />
-    <None Include="UAT\Screening\Details.feature" />
-    <None Include="UAT\Screening\IncompleteCoordinated.feature" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -1320,7 +1144,6 @@
     <Folder Include="obj\Dev\TempPE\" />
     <Folder Include="obj\Smoke\TempPE\" />
     <Folder Include="obj\UAT\TempPE\" />
-    <Folder Include="StepDefinitions\Screening\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

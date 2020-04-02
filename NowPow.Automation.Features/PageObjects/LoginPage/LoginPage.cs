@@ -7,11 +7,7 @@ using Ocaramba;
 using Ocaramba.Extensions;
 using NowPow.Automation.PageObjects;
 using OpenQA.Selenium;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Linq;
-using OpenQA.Selenium.Chrome;
-using System.Threading;
-using OpenQA.Selenium;
+
 
 namespace NowPow.Automation.Features.StepDefinitions
 
@@ -64,40 +60,7 @@ namespace NowPow.Automation.Features.StepDefinitions
             return new DashboardPage(DriverContext);
         }
 
-        internal LoginPage OpenNewWindow()
-        {
-            var driver = new ChromeDriver();
-            driver.FindElement(By.CssSelector("Body")).SendKeys(Keys.Control + "t");
-            
-
-            string newWindowHandle = Driver.WindowHandles.Last();
-            var newWindow = Driver.SwitchTo().Window(newWindowHandle);
-
-            driver.Navigate().GoToUrl("https://app-staged.nowpow.com/");
-
-
-
-            driver.FindElement(By.Id("inputEmail")).SendKeys("user-automation@stage.org");            
-            driver.FindElementById("btn-next").Click();
-            Thread.Sleep(2000);
-            driver.FindElement(By.Id("inputPassword")).SendKeys("Test1234");
-            driver.FindElementById("btn-signin").Click();
-
-            Thread.Sleep(10000);
-            driver.FindElement(By.CssSelector("Body")).SendKeys(Keys.Control + 'w');
-            driver.Close();
-
-            return new LoginPage(DriverContext);
-        }
-        internal LoginPage SwitchToFirstWindow()
-        {
-            string originalWindowHandle = Driver.WindowHandles.First();
-            var originalWindow = Driver.SwitchTo().Window(originalWindowHandle);                     
-            Assert.IsTrue(logOutDisplay.IsDisplayed()); 
-            
-            
-            return new LoginPage(DriverContext);            
-        }
+       
        
     }
 

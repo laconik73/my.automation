@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace NowPowAutomaiton.Regression.CustomerAdminUI
+namespace NowPowAutomaiton.Regression.Referrals
 {
     using TechTalk.SpecFlow;
     
@@ -18,20 +18,20 @@ namespace NowPowAutomaiton.Regression.CustomerAdminUI
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.0.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Configurations")]
-    public partial class ConfigurationsFeature
+    [NUnit.Framework.DescriptionAttribute("Coordinated")]
+    public partial class CoordinatedFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "Configurations.feature"
+#line 1 "Coordinated.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Configurations", null, ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Coordinated", null, ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -69,42 +69,44 @@ namespace NowPowAutomaiton.Regression.CustomerAdminUI
             testRunner.CollectScenarioErrors();
         }
         
-        public virtual void FeatureBackground()
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("01. Verify Refferred patient is not visible until accepted")]
+        [NUnit.Framework.CategoryAttribute("regression")]
+        public virtual void _01_VerifyRefferredPatientIsNotVisibleUntilAccepted()
         {
-#line 3
-#line 4
-testRunner.Given("\'CPT8\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("01. Verify Refferred patient is not visible until accepted", null, new string[] {
+                        "regression"});
 #line 5
-testRunner.And("user nagivates to \'Admin\' page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+this.ScenarioInitialize(scenarioInfo);
+            this.ScenarioStart();
+#line 6
+  testRunner.Given("\'CPT3\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 7
+  testRunner.When("user does not accept new referral", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 8
+  testRunner.And("user searches for a new referred patient", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 9
+  testRunner.Then("search results return no matching criteria", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
+            this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("01. Configurations side-panel display")]
-        [NUnit.Framework.CategoryAttribute("regression")]
-        public virtual void _01_ConfigurationsSide_PanelDisplay()
+        [NUnit.Framework.DescriptionAttribute("02.Verify Referred Patient is visible when accepted")]
+        public virtual void _02_VerifyReferredPatientIsVisibleWhenAccepted()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("01. Configurations side-panel display", null, new string[] {
-                        "regression"});
-#line 8
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("02.Verify Referred Patient is visible when accepted", null, ((string[])(null)));
+#line 11
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 3
-this.FeatureBackground();
-#line 10
- testRunner.When("user expands \'Configurations\' side panel", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 11
- testRunner.Then("\'Referral Form\' and \'Service Outcome\' subtabs are displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line 12
- testRunner.And("user chooses \'Referral Form\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.Given("\'CPT3\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 13
- testRunner.And("user expands Organization Level", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+ testRunner.When("user accepts new referral", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 14
- testRunner.Then("Admin hierarchy is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.And("user searches accepted referral", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line 15
- testRunner.And("user chooses \'Service Outcome\' side-panel", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 16
- testRunner.Then("\'Org Level\' displays user organization they are currently logged into", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("new patient is created and patient card is displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
