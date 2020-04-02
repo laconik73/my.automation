@@ -69,6 +69,14 @@ namespace NowPowAutomaiton.Regression.Anyalitics
             testRunner.CollectScenarioErrors();
         }
         
+        public virtual void FeatureBackground()
+        {
+#line 7
+#line 8
+testRunner.Given("\'CPT11\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+        }
+        
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("01. Accessing the Analytics page")]
         [NUnit.Framework.CategoryAttribute("regression")]
@@ -76,18 +84,18 @@ namespace NowPowAutomaiton.Regression.Anyalitics
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("01. Accessing the Analytics page", null, new string[] {
                         "regression"});
-#line 5
+#line 11
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 6
- testRunner.Given("\'CPT11\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line 7
+this.FeatureBackground();
+#line 12
  testRunner.When("user chooses \'Analytics\' tab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 8
+#line 13
  testRunner.Then("user navigates to Analytics page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 9
- testRunner.And("user chooses \'NowPow\' logo from Analytics page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line 10
+#line 14
+ testRunner.When("user chooses \'NowPow\' logo from Analytics page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 15
  testRunner.Then("user redirects back to \'CPT\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

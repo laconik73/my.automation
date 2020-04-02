@@ -349,11 +349,7 @@ namespace Nowpow.Automation.Features.StepDefinitions
             S("div.send-referral").Hover().Click();
             return new AddReferralModal(DriverContext);
         }
-        internal SendNudgeModal SendNudge()
-        {
-            S("#btn-nudge").Click();
-            return new SendNudgeModal(DriverContext);
-        }
+        
         internal UploadDocumentModal ClickUploadDocument(string button)
         {
             WaitForNot(smallSpinner, Be.InDOM);

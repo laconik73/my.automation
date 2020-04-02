@@ -85,14 +85,7 @@ namespace Nowpow.Automation.Features.StepDefinitions
             String expectedModalTitle = "Upload Document";
             Assert.AreEqual(actualModalTitle, expectedModalTitle);
         }
-        [Then(@"'(.*)' modal displays")]
-        public void ThenModalDisplays(string modalTitle)
-        {
-            new NotesModal(driverContext);
-            String actualModalTitle = S(By.XPath("//h4[@class='modal-title']")).GetText();
-            String expectedModalTitle = "Notes";
-            Assert.AreEqual(actualModalTitle, expectedModalTitle);
-        }
+       
         [When(@"user uploads file")]
         public void WhenUserUploadsFile()
         {

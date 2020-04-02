@@ -10,13 +10,13 @@ using NSelene;
 namespace Nowpow.Automation.Features.StepDefinitions
 {
     [Binding]
-    public class TabSteps
+    public class SubPanelSteps
     {
         private readonly DriverContext driverContext;
         private readonly ScenarioContext scenarioContext;
         private string note;
 
-        public TabSteps(ScenarioContext scenarioContext)
+        public SubPanelSteps(ScenarioContext scenarioContext)
         {
             if (scenarioContext == null)
             {
@@ -27,19 +27,13 @@ namespace Nowpow.Automation.Features.StepDefinitions
 
             this.driverContext = this.scenarioContext["DriverContext"] as DriverContext;
         }
-        [Given(@"user chooses tab '(.*)'")]
-        public void GivenUserChoosesTab(string tabName)
+        [Given(@"user is on '(.*)'")]
+        public void GivenUserIsOn(string subPanel)
         {
-            new TabsNavigationPage(driverContext)
-                .OpenPatient(tabName)
-                .ChoosePatientCard();
-        }
-        [Given(@"user nagivates to '(.*)' page")]
-        public void GivenUserNagivatesToPage(string tabName)
-        {
-            new TabsNavigationPage(driverContext).OpenAdmin(tabName);
+            new AdminPage(driverContext)
+                .OpenConfigurations(subPanel)
+                .OpenReferralForm();
         }
 
     }
 }
-

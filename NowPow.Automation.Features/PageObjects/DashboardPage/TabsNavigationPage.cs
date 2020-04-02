@@ -22,7 +22,7 @@ namespace NowPow.Automation.Features.StepDefinitions
     {
         private static readonly NLog.Logger Logger = LogManager.GetCurrentClassLogger();
         SeleneElement patientTab = S("[data-link*='patients'][type]");
-
+        SeleneElement adminTab = S("a[id='nav-item-admin'][type]");
 
         public TabsNavigationPage(DriverContext driverContext) : base(driverContext)
         {
@@ -35,6 +35,12 @@ namespace NowPow.Automation.Features.StepDefinitions
             //WaitFor(S("#count-top"), Be.Visible);
             patientTab.Click();
             return new PatientCardsPage(DriverContext);
+        }
+
+        internal AdminPage OpenAdmin(string tabName)
+        {
+            adminTab.Click();
+            return new AdminPage(DriverContext);
         }
     }
 }

@@ -275,12 +275,7 @@ namespace Nowpow.Automation.Features.PageObjects
             return this;
         }
 
-        internal SendNudgeModal SendNudge()
-        {
-            WaitForNot(spinner, Be.InDom);
-            S("#btn-nudge").Click();
-            return new SendNudgeModal(DriverContext);
-        }
+        
 
         internal ErxPage ClickConditions()
         {

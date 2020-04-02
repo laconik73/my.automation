@@ -1,45 +1,54 @@
-﻿Feature: CommRxUsers
-	
+﻿Feature: CommRxUsers 
+
+#Data Driven approach in BDD 
+
+Background: 
+Given 'CPT5' user is logged in
 
 @regression
-Scenario:01. Deactivate User (CommRx) 
-	Given 'CPT5' user is logged in
-	When user chooses to deactivate user
-	Then success modal displayed
+Scenario Outline: 03.Take Action (Deactivate)	
+	When user selects <action>
+	Then <modal> is displayed
 
-Scenario:02. Activate User (CommRx) 
-	Given 'CPT5' user is logged in
-	When user chooses to activate user
-	Then success modal  is displayed
+	Examples: 
+	| action          | modal           |
+	| deactivate      | deactivate user |
+	
 
-Scenario:03. Download Users CSV (CommRx) 
-	Given 'CPT5' user is logged in
-	When user chooses download
-	Then full list of users is downloaded in csv format
+Scenario Outline: 04.Take Action (Activate)	
+	When user chooses <action>
+	Then <modal> is displayed
 
-Scenario:04. Resend Password for users (CommRx) 
-	Given 'CPT5' user is logged in
-	When user selects 'Resend Password' action
-	Then confirmation modal with 'message' displays
+	Examples: 
+	| action          | modal           |
+	| activate        | activate user   |
+	
 
 
-Scenario:05. Verify CommRx "User" modal display 
-	Given 'CPT5' user is logged in
-	When user on 'Add User' modal
-	Then modal display permission message for 'Service search' and 'eRx Creation'
+Scenario Outline: 02.Take Action (Resend Password)	
+	When user clicks <action>
+	Then <modal> is displayed
 
-Scenario:06.Display CommRx user roles
-	Given 'CPT5' user is logged in
-	When user expands 'User Roles' filter
-	Then filter display roles based on org license
+	Examples: 
+	| action          | modal           |	
+	| resend password | resend password |
+	
 
-Scenario:07. Add single user for CommRx
-	Given 'CPT5' user is logged in
-	When user on 'Add User' modal
-	And user creates account
-	Then modal display a text
-	And user closes modal 
-	Then user list is refreshed
+Scenario Outline: 01.Take Action (View/Edit)	
+	When I select <action>
+	Then <modal> is displayed
+
+	Examples: 
+	| action          | modal           |	
+	| view/edit       | view/edit user  |
+
+
+
+
+
+
+
+
 
 
 

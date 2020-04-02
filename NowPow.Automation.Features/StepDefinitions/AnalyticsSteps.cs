@@ -33,17 +33,19 @@ namespace Nowpow.Automation.Features.StepDefinitions
         {
             new DashboardPage(driverContext).OpenAnalytics(tabName);
         }
+        [When(@"user chooses '(.*)' logo from Analytics page")]
+        public void WhenUserChoosesLogoFromAnalyticsPage(string logo)
+        {
+            new AnalyticsPage(driverContext).ClickOnLogo(logo);
+        }
+
         [Then(@"user navigates to Analytics page")]
         public void ThenUserNavigatesToAnalyticsPage()
         {
             new AnalyticsPage(driverContext);
             Assert.IsTrue(S(By.XPath("//h1[@class='nav secondary-title']")).IsDisplayed());
         }
-        [Then(@"user chooses '(.*)' logo from Analytics page")]
-        public void ThenUserChoosesLogoFromAnalyticsPage(string logo)
-        {
-            new AnalyticsPage(driverContext).ClickOnLogo(logo);
-        }
+        
         [Then(@"user redirects back to '(.*)'")]
         public void ThenUserRedirectsBackTo(string mainPage)
         {

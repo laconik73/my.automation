@@ -69,41 +69,29 @@ namespace NowPowAutomaiton.Regression.CustomerAdminUI
             testRunner.CollectScenarioErrors();
         }
         
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("01. Verify CommRx+ \"User\" modal display")]
-        [NUnit.Framework.CategoryAttribute("regression")]
-        public virtual void _01_VerifyCommRxUserModalDisplay()
+        public virtual void FeatureBackground()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("01. Verify CommRx+ \"User\" modal display", null, new string[] {
-                        "regression"});
-#line 5
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 6
- testRunner.Given("\'CPT6\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 7
- testRunner.When("user on \'Add User\' modal", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 8
- testRunner.Then("modal display permission message for \'Service search\' and \'eRx Creation\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 9
- testRunner.And("optional permission checkbox \'Receive Tracked Referrals\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 3
+#line 4
+testRunner.Given("\'CPT6\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-            this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("02.Display CommRx+ user roles")]
-        public virtual void _02_DisplayCommRxUserRoles()
+        [NUnit.Framework.DescriptionAttribute("01.Display CommRx+ user roles")]
+        [NUnit.Framework.CategoryAttribute("regression")]
+        public virtual void _01_DisplayCommRxUserRoles()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("02.Display CommRx+ user roles", null, ((string[])(null)));
-#line 11
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("01.Display CommRx+ user roles", null, new string[] {
+                        "regression"});
+#line 8
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 12
- testRunner.Given("\'CPT6\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 13
+#line 3
+this.FeatureBackground();
+#line 9
  testRunner.When("user expands \'User Roles\' filter", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 14
+#line 10
  testRunner.Then("filter display roles based on org license", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

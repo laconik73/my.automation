@@ -1,6 +1,6 @@
 ﻿Feature: SinglePage
 	
-
+ 
 @regression
 Scenario:01. Verify Single-page application functionality
 	Given 'CPT11' user is logged in
