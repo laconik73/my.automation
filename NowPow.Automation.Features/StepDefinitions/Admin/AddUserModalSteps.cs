@@ -34,18 +34,19 @@ namespace Nowpow.Automation.Features.StepDefinitions
         {
             new UserManagement(driverContext).AddUsers(button);
         }
-        [When(@"user adds email '(.*)'")]
-        public void WhenUserAddsEmail(string email)
+        [When(@"user adds duplicate email '(.*)'")]
+        public void WhenUserAddsDuplicateEmail(string email)
         {
             new AddUserModal(driverContext).InputEmail(email);
         }
-        [When(@"user adds username '(.*)'")]
-        public void WhenUserAddsUsername(string username)
+        [When(@"user adds duplicate username '(.*)'")]
+        public void WhenUserAddsDuplicateUsername(string username)
         {
             new AddUserModal(driverContext)
                 .CheckUsername()
                 .InputUsername(username);
         }
+        
         [Then(@"user should see error message")]
         public void ThenUserShouldSeeErrorMessage()
         {

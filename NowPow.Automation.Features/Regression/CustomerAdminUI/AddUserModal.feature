@@ -8,8 +8,8 @@ Background:
 
 @regression
 Scenario Outline:Check for existing user
-	When user adds email '<email>'	
-	And user adds username '<username>'
+	When user adds duplicate email '<email>'	
+	And user adds duplicate username '<username>'
 	Then user should see error message  
 
 	Examples: 
