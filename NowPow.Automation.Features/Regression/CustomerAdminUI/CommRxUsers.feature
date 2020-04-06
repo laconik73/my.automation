@@ -1,7 +1,5 @@
 ﻿Feature: CommRxUsers 
 
-#Data Driven approach in BDD 
-
 Background: 
 Given 'CPT5' user is logged in
 

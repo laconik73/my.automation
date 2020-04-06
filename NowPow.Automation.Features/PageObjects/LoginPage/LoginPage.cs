@@ -20,15 +20,14 @@ namespace NowPow.Automation.Features.StepDefinitions
         SeleneElement nextButton = S("#btn-next");
         SeleneElement passwordTextbox = S("#inputPassword");
         SeleneElement signInButton = S("#btn-signin");
-        SeleneElement logOutDisplay = S(By.XPath("//h2[contains(text(),'Logged Out')]"));
+       
         
 
         public LoginPage(DriverContext driverContext) : base(driverContext)
         {
             DriverContext.Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
-        }         
-         // Pre-condition for all test cases
-          
+        }       
+                   
         internal LoginPage GoTo()
         {
             var url = BaseConfiguration.GetUrlValue;
@@ -41,7 +40,6 @@ namespace NowPow.Automation.Features.StepDefinitions
             emailTextbox.SendKeys(email);
             return this;
         }
-
         internal LoginPage Submit()
         {
             nextButton.Click();
@@ -52,15 +50,12 @@ namespace NowPow.Automation.Features.StepDefinitions
         {
             passwordTextbox.SendKeys(password);
             return this;
-        }
-        //After successful login user lands to DashboardPage/main page
+        }        
         internal DashboardPage SignIn()
         {
             signInButton.Click();
             return new DashboardPage(DriverContext);
-        }
-
-       
+        }       
        
     }
 

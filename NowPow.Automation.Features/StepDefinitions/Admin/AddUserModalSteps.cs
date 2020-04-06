@@ -16,6 +16,8 @@ namespace Nowpow.Automation.Features.StepDefinitions
         private readonly DriverContext driverContext;
         private readonly ScenarioContext scenarioContext;
         private string note;
+        
+
 
 
         public AddUserModalSteps(ScenarioContext scenarioContext)
@@ -46,19 +48,53 @@ namespace Nowpow.Automation.Features.StepDefinitions
                 .CheckUsername()
                 .InputUsername(username);
         }
-        
+        [When(@"user '(.*)' permission is selected")]
+        public void WhenUserPermissionIsSelected(string license)
+        {
+            new AddUserModal(driverContext)
+                .SelectNowRx(license)
+                .SelectPowRx(license);            
+        }
+        [When(@"signle user is added")]
+        public void WhenSignleUserIsAdded()
+        {
+            new AddUserModal(driverContext)
+                .InputFirstName("sabina")
+                .InputLastName("test")
+                .InputTitle("qa")
+                .InputDepartment("n/a")
+                .InputEmail()
+                .SelectNowRx()
+                .Create()
+                .Create()
+                .Close();
+        }
+
+
         [Then(@"user should see error message")]
         public void ThenUserShouldSeeErrorMessage()
         {
             new AddUserModal(driverContext).VerifyExistingUser();
         }
+        [Then(@"'(.*)' permission checkboxes are displayed")]
+        public void ThenPermissionCheckboxesAreDisplayed(string userRoles)
+        {
+            new AddUserModal(driverContext);
+            userRoles = S("#checkbox-group").Text;
+            Console.WriteLine(userRoles.ToString());
+        }
+        
 
 
 
 
 
 
-       
+
+
+
+
+
 
 
 

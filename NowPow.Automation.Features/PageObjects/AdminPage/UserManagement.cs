@@ -1,18 +1,11 @@
 ﻿using System;
-using System.Globalization;
 using NLog;
 using NSelene;
 using static NSelene.Selene;
 using Ocaramba;
-using Ocaramba.Extensions;
 using NowPow.Automation.PageObjects;
 using OpenQA.Selenium;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Linq;
-using OpenQA.Selenium.Chrome;
-using System.Threading;
-using OpenQA.Selenium;
-using Nowpow.Automation.Features.StepDefinitions;
 using System.Collections.Generic;
 
 namespace NowPow.Automation.Features.StepDefinitions
@@ -30,7 +23,9 @@ namespace NowPow.Automation.Features.StepDefinitions
         SeleneElement viewEditAction = S(By.PartialLinkText("View/Ed"));      
         IList<IWebElement> confirmButton = SS(".modal-footer button");
         SeleneElement addUsersButton = S("button[class*='add-users-button']");
-
+        IList<IWebElement> pagination = SS("#pagination-control li");
+        SeleneElement userSearch = S("#user-search");
+        SeleneElement buttonSearch = S("#btn-search");
 
         public UserManagement(DriverContext driverContext) : base(driverContext)
         {
@@ -41,13 +36,13 @@ namespace NowPow.Automation.Features.StepDefinitions
         {
             userRolesFilter.Hover().Click();                        
             return this;
-        }
+        }       
 
         internal UserManagement TakeAction()
         {
             actionButton.ElementAt(0).Click();
             return this;
-        }
+        }       
 
         internal UserManagement Activate()
         {
@@ -93,6 +88,24 @@ namespace NowPow.Automation.Features.StepDefinitions
         {
             addUsersButton.Hover().Click();
             return new AddUserModal(DriverContext);
+        }
+        internal UserManagement GoThroughResultSet()
+        {
+            pagination.ElementAt(3).Click();
+            pagination.ElementAt(4).Click();
+            pagination.ElementAt(1).Click();
+            pagination.ElementAt(0).Click();
+            return new UserManagement(DriverContext);
+        }
+        internal UserManagement SearchUser(string searchBox)
+        {
+            userSearch.SendKeys(searchBox);
+            return this;
+        }
+        internal UserManagement Submit()
+        {
+            buttonSearch.Click();
+            return new UserManagement(DriverContext);
         }
     }
 }

@@ -1,18 +1,10 @@
 ﻿using System;
-using System.Globalization;
 using NLog;
 using NSelene;
 using static NSelene.Selene;
 using Ocaramba;
-using Ocaramba.Extensions;
 using NowPow.Automation.PageObjects;
 using OpenQA.Selenium;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Linq;
-using OpenQA.Selenium.Chrome;
-using System.Threading;
-using OpenQA.Selenium;
-using Nowpow.Automation.Features.StepDefinitions;
 using System.Collections.Generic;
 
 namespace NowPow.Automation.Features.StepDefinitions
@@ -50,9 +42,6 @@ namespace NowPow.Automation.Features.StepDefinitions
             return this;
         }
 
-        internal void OpenServiceOutcome(string subpanel)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

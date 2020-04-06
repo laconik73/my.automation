@@ -71,8 +71,8 @@ namespace NowPowAutomaiton.Regression.CustomerAdminUI
         
         public virtual void FeatureBackground()
         {
-#line 5
-#line 6
+#line 3
+#line 4
 testRunner.Given("\'CPT5\' user is logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
         }
@@ -90,14 +90,14 @@ testRunner.Given("\'CPT5\' user is logged in", ((string)(null)), ((TechTalk.Spec
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
             }
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("03.Take Action (Deactivate)", null, @__tags);
-#line 9
+#line 7
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 5
+#line 3
 this.FeatureBackground();
-#line 10
+#line 8
  testRunner.When(string.Format("user selects {0}", action), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 11
+#line 9
  testRunner.Then(string.Format("{0} is displayed", modal), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -109,14 +109,14 @@ this.FeatureBackground();
         public virtual void _04_TakeActionActivate(string action, string modal, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("04.Take Action (Activate)", null, exampleTags);
-#line 18
+#line 16
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 5
+#line 3
 this.FeatureBackground();
-#line 19
+#line 17
  testRunner.When(string.Format("user chooses {0}", action), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 20
+#line 18
  testRunner.Then(string.Format("{0} is displayed", modal), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -128,14 +128,14 @@ this.FeatureBackground();
         public virtual void _02_TakeActionResendPassword(string action, string modal, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("02.Take Action (Resend Password)", null, exampleTags);
-#line 28
+#line 26
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 5
+#line 3
 this.FeatureBackground();
-#line 29
+#line 27
  testRunner.When(string.Format("user clicks {0}", action), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 30
+#line 28
  testRunner.Then(string.Format("{0} is displayed", modal), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
@@ -147,14 +147,14 @@ this.FeatureBackground();
         public virtual void _01_TakeActionViewEdit(string action, string modal, string[] exampleTags)
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("01.Take Action (View/Edit)", null, exampleTags);
-#line 37
+#line 35
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
-#line 5
+#line 3
 this.FeatureBackground();
-#line 38
+#line 36
  testRunner.When(string.Format("I select {0}", action), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 39
+#line 37
  testRunner.Then(string.Format("{0} is displayed", modal), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();

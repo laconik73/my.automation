@@ -1,10 +1,12 @@
 ﻿Feature: Pagination
 	
-
-@regression
-Scenario:01. Users Table Paging (PowRx)
+Background: 
 	Given 'CPT8' user is logged in
 	And user nagivates to 'Admin' page
-	And user on 'Customer Admin UI'
-	When user pages through the result set
-	Then page results are updated
+	And user chooses 'User Management' subpanel
+
+@regression
+Scenario:01. Users Table Paging (PowRx)	
+	When user table shows paging controls
+	Then user able to page through the result set
+	
