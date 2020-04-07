@@ -148,6 +148,7 @@
     <Compile Include="Helpers\WordHelper.cs" />
     <Compile Include="PageObjects\AdminPage\AdditionalFieldModal.cs" />
     <Compile Include="PageObjects\AdminPage\AddUserModal.cs" />
+    <Compile Include="PageObjects\AdminPage\EditAdditionalField.cs" />
     <Compile Include="PageObjects\AdminPage\ReferralFormConfiguration.cs" />
     <Compile Include="PageObjects\AdminPage\UserManagement.cs" />
     <Compile Include="PageObjects\AdminPage\AdminPage.cs" />
@@ -185,12 +186,9 @@
     <Compile Include="Smoke\CoordinatedReferrals\TakeAction.feature.cs" />
     <Compile Include="Smoke\CoordinatedReferrals\UploadModal.feature.cs" />
     <Compile Include="Smoke\CoordinatedReferrals\UploadVirusDoc.feature.cs" />
-    <Compile Include="Smoke\CustomerAdminUI\AdditionalField.feature.cs" />
-    <Compile Include="Smoke\CustomerAdminUI\AddUsersButton.feature.cs" />
-    <Compile Include="Smoke\CustomerAdminUI\AdminVisibility.feature.cs" />
-    <Compile Include="Smoke\CustomerAdminUI\NowPowDefaultField.feature.cs" />
     <Compile Include="StepDefinitions\Admin\AdditionalFieldSteps.cs" />
     <Compile Include="StepDefinitions\Admin\AddUserModalSteps.cs" />
+    <Compile Include="StepDefinitions\Admin\NowPowDefaultFieldSteps.cs" />
     <Compile Include="StepDefinitions\Admin\SubPanelSteps.cs" />
     <Compile Include="StepDefinitions\Admin\TakeActionSteps.cs" />
     <Compile Include="StepDefinitions\Admin\UserManagementSteps.cs" />
@@ -226,8 +224,10 @@
     <None Include="obj\UAT\NowPowAutomation.csproj.CoreCompileInputs.cache" />
     <None Include="obj\UAT\NowPowAutomation.csprojAssemblyReference.cache" />
     <None Include="Regression\CustomerAdminUI\AdditionalField.feature" />
+    <None Include="Regression\CustomerAdminUI\AddUserButton.feature" />
+    <None Include="Regression\CustomerAdminUI\NowPowDefaultField.feature" />
     <None Include="Regression\CustomerAdminUI\UserRoles.feature" />
-    <None Include="Regression\CustomerAdminUI\CommRxUsers.feature" />
+    <None Include="Regression\CustomerAdminUI\TakeAction.feature" />
     <None Include="Regression\CustomerAdminUI\Configurations.feature" />
     <None Include="Regression\CustomerAdminUI\AddUserModal.feature" />
     <None Include="Regression\CustomerAdminUI\Pagination.feature" />
@@ -251,10 +251,6 @@
     <None Include="Smoke\CoordinatedReferrals\TakeAction.feature" />
     <None Include="Smoke\CoordinatedReferrals\UploadModal.feature" />
     <None Include="Smoke\CoordinatedReferrals\UploadVirusDoc.feature" />
-    <None Include="Smoke\CustomerAdminUI\AdditionalField.feature" />
-    <None Include="Smoke\CustomerAdminUI\AddUsersButton.feature" />
-    <None Include="Smoke\CustomerAdminUI\AdminVisibility.feature" />
-    <None Include="Smoke\CustomerAdminUI\NowPowDefaultField.feature" />
     <None Include="specflow.json" />
     <None Include="TestData\ImportPatient.xlsx" />
   </ItemGroup>

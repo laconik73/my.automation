@@ -40,6 +40,33 @@ namespace Nowpow.Automation.Features.StepDefinitions
                 .SelectService()
                 .AddField();
         }
+        [When(@"user edits title")]
+        public void WhenUserEditsTitle()
+        {
+            new ReferralFormConfiguration(driverContext)
+                .EditAdditionalField()
+                .EditTitle();                
+        }
+        [When(@"user edits service")]
+        public void WhenUserEditsService()
+        {
+            new EditAdditionalField(driverContext)
+                .EditService()
+                .EditField();
+        }
+
+        [When(@"user mouses over to the tooltip")]
+        public void WhenUserMousesOverToTheTooltip()
+        {
+            new ReferralFormConfiguration(driverContext).HoverToTooltip();
+        }
+        [When(@"user deletes additional field")]
+        public void WhenUserDeletesAdditionalField()
+        {
+            new ReferralFormConfiguration(driverContext).DeleteField();
+        }
+
+
         [Then(@"new additional field becomes required")]
         public void ThenNewAdditionalFieldBecomesRequired()
         {
@@ -69,6 +96,27 @@ namespace Nowpow.Automation.Features.StepDefinitions
             new ReferralFormConfiguration(driverContext).VerifyTable();
            
         }
-               
+        [Then(@"tooltip displays '(.*)'")]
+        public void ThenTooltipDisplays(string tooltipText)
+        {
+            new ReferralFormConfiguration(driverContext);
+            tooltipText = S(By.ClassName("tooltip-inner")).Text;
+            Console.WriteLine(tooltipText.ToString());
+        }
+        [Then(@"field is deleted")]
+        public void ThenFieldIsDeleted()
+        {
+            new ReferralFormConfiguration(driverContext);           
+            additionalField.Count.ToString();
+        }
+        [Then(@"edited fields display in '(.*)' section")]
+        public void ThenEditedFieldsDisplayInSection(string editedField)
+        {
+            Console.WriteLine(S(By.XPath("//tr[1]//td[3]")).Text);
+        }
+
+
+
+
     }
 }

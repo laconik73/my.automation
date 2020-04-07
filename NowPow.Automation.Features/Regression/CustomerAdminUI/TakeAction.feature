@@ -1,4 +1,4 @@
-﻿Feature: CommRxUsers 
+﻿Feature: TakeAction (CommRx)
 
 Background: 
 Given 'CPT5' user is logged in

@@ -47,7 +47,14 @@ namespace Nowpow.Automation.Features.StepDefinitions
             new UserManagement(driverContext)
                 .SearchUser(searchBox)
                 .Submit();
-        }        
+        }
+        [When(@"admin user selects '(.*)' from org level")]
+        public void WhenAdminUserSelectsFromOrgLevel(string filter)
+        {
+            new UserManagement(driverContext)
+                .SelectOrganization(filter)
+                .SelectEnterprise(filter);                
+        }
 
         [Then(@"user able to page through the result set")]
         public void ThenUserAbleToPageThroughTheResultSet()
@@ -74,9 +81,14 @@ namespace Nowpow.Automation.Features.StepDefinitions
             Console.WriteLine(showUsers.ToString());
             rows.Count.ToString();
         }
-
-
-
+        [Then(@"'(.*)' button is not displayed")]
+        public void ThenButtonIsNotDisplayed(string addUsers)
+        {
+            new UserManagement(driverContext);
+            //verify 'AddUsers' button is not displayed
+            S(".add-users-button").ShouldNot(Be.Visible);
+           
+        }   
 
     }
 }

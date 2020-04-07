@@ -7,6 +7,8 @@ using NowPow.Automation.PageObjects;
 using OpenQA.Selenium;
 using System.Linq;
 using System.Collections.Generic;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Threading;
 
 namespace NowPow.Automation.Features.StepDefinitions
 
@@ -16,6 +18,7 @@ namespace NowPow.Automation.Features.StepDefinitions
     {
         private static readonly NLog.Logger Logger = LogManager.GetCurrentClassLogger();
         SeleneElement userRolesFilter = S(".filter-dropdown-container");
+        SeleneElement orgLevelFilter = S("#organization-dropdown-container");
         IList<IWebElement> actionButton = SS(".take-action-dropdown");
         SeleneElement activateButton = S(".reactivate-btn");
         SeleneElement deactivateAction = S(By.PartialLinkText("Deactiva"));
@@ -26,6 +29,7 @@ namespace NowPow.Automation.Features.StepDefinitions
         IList<IWebElement> pagination = SS("#pagination-control li");
         SeleneElement userSearch = S("#user-search");
         SeleneElement buttonSearch = S("#btn-search");
+        IList<IWebElement> organizations = SS(".ent-org-btn");
 
         public UserManagement(DriverContext driverContext) : base(driverContext)
         {
@@ -42,13 +46,13 @@ namespace NowPow.Automation.Features.StepDefinitions
         {
             actionButton.ElementAt(0).Click();
             return this;
-        }       
+        }        
 
         internal UserManagement Activate()
         {
             activateButton.Hover().Click();
             return new UserManagement(DriverContext);
-        }
+        }       
 
         internal UserManagement DeactivateUser(string action)
         {
@@ -106,6 +110,24 @@ namespace NowPow.Automation.Features.StepDefinitions
         {
             buttonSearch.Click();
             return new UserManagement(DriverContext);
+        }
+        internal UserManagement SelectEnterprise(string filter)
+        {
+            //open filter
+            orgLevelFilter.Hover().Click();
+            //select enterprise
+            S("div.org-to-be-acted-on > span:nth-child(3)").Click();                  
+            return this;
+        }
+        internal UserManagement SelectOrganization(string filter)
+        {
+            //open filter
+            orgLevelFilter.Hover().Click();
+
+            //select organization
+            organizations.ElementAt(20).Click();
+            Assert.IsTrue(S(".add-users-button").Displayed);
+            return this;
         }
     }
 }
