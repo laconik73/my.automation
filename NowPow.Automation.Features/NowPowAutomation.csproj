@@ -175,6 +175,8 @@
     <Compile Include="StepDefinitions\Admin\TakeActionSteps.cs" />
     <Compile Include="StepDefinitions\Admin\UserManagementSteps.cs" />
     <Compile Include="StepDefinitions\Dashboard\TabSteps.cs" />
+    <Compile Include="StepDefinitions\Documents\PatientCardSteps.cs" />
+    <Compile Include="StepDefinitions\Documents\UploadDocumentsSteps.cs" />
     <Compile Include="StepDefinitions\Remote\BrowserStack.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PageObjects\LoginPage\LoginPage.cs" />
@@ -196,15 +198,6 @@
     <None Include="bin\UAT\NowPowAutomation.dll.config" />
     <None Include="bin\UAT\nunit_random_seed.tmp" />
     <None Include="bin\UAT\TestNUnit.log" />
-    <None Include="obj\Staged\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <None Include="obj\Staged\NowPowAutomation.csproj-sc.App.config" />
-    <None Include="obj\Staged\NowPowAutomation.csproj.CopyComplete" />
-    <None Include="obj\Staged\NowPowAutomation.csproj.CoreCompileInputs.cache" />
-    <None Include="obj\Staged\NowPowAutomation.csprojAssemblyReference.cache" />
-    <None Include="obj\UAT\NowPowAutomation.csproj-sc.App.config" />
-    <None Include="obj\UAT\NowPowAutomation.csproj.CopyComplete" />
-    <None Include="obj\UAT\NowPowAutomation.csproj.CoreCompileInputs.cache" />
-    <None Include="obj\UAT\NowPowAutomation.csprojAssemblyReference.cache" />
     <None Include="Regression\CustomerAdminUI\AdditionalField.feature" />
     <None Include="Regression\CustomerAdminUI\AddUserButton.feature" />
     <None Include="Regression\CustomerAdminUI\NowPowDefaultField.feature" />
@@ -215,6 +208,7 @@
     <None Include="Regression\CustomerAdminUI\Pagination.feature" />
     <None Include="Regression\CustomerAdminUI\PermissionRole.feature" />
     <None Include="Regression\CustomerAdminUI\SearchAndFilter.feature" />
+    <None Include="Regression\Documents\PatientCard.feature" />
     <None Include="specflow.json" />
     <None Include="TestData\ImportPatient.xlsx" />
   </ItemGroup>
@@ -569,16 +563,8 @@
     <Content Include="bin\UAT\WebDriver.xml" />
     <Content Include="bin\UAT\zh-HANS\Microsoft.AnalysisServices.AdomdClient.resources.dll" />
     <Content Include="bin\UAT\zh-HANT\Microsoft.AnalysisServices.AdomdClient.resources.dll" />
-    <Content Include="obj\Staged\NowPowAutomation.csproj.FileListAbsolute.txt" />
-    <Content Include="obj\Staged\NowPowAutomation.dll" />
-    <Content Include="obj\UAT\NowPowAutomation.csproj.FileListAbsolute.txt" />
-    <Content Include="obj\UAT\NowPowAutomation.dll" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Connected Services\" />
-    <Folder Include="obj\UAT\TempPE\" />
-    <Folder Include="StepDefinitions\Documents\" />
-  </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

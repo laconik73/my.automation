@@ -16,12 +16,20 @@ namespace NowPow.Automation.Features.StepDefinitions
 
     {
         private static readonly NLog.Logger Logger = LogManager.GetCurrentClassLogger();
-
+        SeleneElement documentsSubtab = S(By.Id("documents"));
+        SeleneElement referralsSubtab = S(By.Id("referrals"));
+        
 
 
         public PatientOverviewPage(DriverContext driverContext) : base(driverContext)
         {
             DriverContext.Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+        }
+
+        internal PatientDocuments OpenDocuments(string subtab)
+        {
+            documentsSubtab.Click();
+            return new PatientDocuments(DriverContext);
         }
     }
 }
